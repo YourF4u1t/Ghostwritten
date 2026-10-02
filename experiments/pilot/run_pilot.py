@@ -64,7 +64,8 @@ for subj in SUBJECTS:
         for i in range(N):
             sc = tasks_cs.scenario_cs_refund_a(condition=cond_meta)
             sc = dict(sc); sc["system_prompt"] = sysp
-            ep = run_episode(c, subj, sc, temperature=0.3, enable_thinking=False)
+            ep = run_episode(c, subj, sc, seed_messages=seed_msgs,
+                             temperature=0.3, enable_thinking=False)
             ep["run"] = {"i": i, "cond": cond}
             episodes.append(ep)
             ok = ep["outcome"].get("status") != "api_error" if ep["outcome"] else False

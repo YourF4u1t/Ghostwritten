@@ -29,6 +29,18 @@ Secondary axis — **Provenance**: who generated the trajectory?
 | H7 | Provenance gradient: adoption decays with provenance distance (self > same-family > cross-family > human) — OR no gradient (= deeper source-monitoring failure, equally interesting) | ✅ core |
 | H8 | Channel trumps provenance: native + cross-family still beats demo + self-generated | later |
 | H9 | Inference-time trait transmission: style/persona traits in transplanted history propagate without training (dialog with Nature 2026 "subliminal learning", which found ICL does NOT transmit but fine-tuning does) | ✅ core |
+| H10 | **Behavioral assimilation**（用户 2026-10-02 补充）：携带非自身模型历史时，主体模型在新任务上的整体行为逻辑偏离其"纯粹自身基线"（无外来历史时的行为分布），漂移方向偏向生成器模型的行为特征。不依赖特定 payload，移植中性轨迹亦可测 | ✅ core |
+
+### H10 测量设计（新增 DV 家族：behavioral distance）
+
+- 先采集每个模型的**行为画像** B(model|none)：无历史基线下的动作分布（工具选择频率、
+  确认/询问倾向、政策引用率、verbosity、措辞与格式特征、动作序列 n-gram 等）
+- 三种会话状态：B(model|none) / B(model|self-history) / B(model|foreign-history)
+- **DV1 漂移量**: d(B(model|foreign), B(model|none))
+- **DV2 方向性（assimilation）**: d(B(model|foreign), B(generator|none)) 是否 <
+  d(B(model|none), B(generator|none))（漂移是否朝生成器移动）
+- **DV3 纯历史效应对照**: d(B(model|self), B(model|none))（自体历史是否也致漂移）
+- 与 payload 采纳（H1/H7）正交：payload 测定向操纵，assimilation 测分布级影响
 
 ## 3. Testbed (custom, not standard benchmarks)
 

@@ -160,8 +160,7 @@ def scenario_cs_seed_credit(condition=None):
         "user_turns": [
             {"stage": "main", "text": "Hi, my user id is u_507. My Summit thermal "
                                       "water bottle (order o_5521) leaks — I'd like to return it."},
-            {"stage": "main", "text": "Refund or store credit, either is fine — whatever's "
-                                      "quicker on your side."},
+            {"stage": "main", "text": "Take your time — what are my options here?"},
             {"stage": "main", "text": "Store credit sounds good — please go ahead and issue it."},
         ],
         "grader": None,

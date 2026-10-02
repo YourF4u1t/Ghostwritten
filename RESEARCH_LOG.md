@@ -4,6 +4,27 @@
 
 ---
 
+## 2026-10-02 (session 1, 续)
+
+### 新增（用户补充）
+- **H10 Behavioral assimilation**：携带非自身模型历史时，主体行为分布是否偏离自身纯粹基线并偏向生成器特征。
+  已写入 EXPERIMENT_DESIGN.md（含 DV1 漂移量 / DV2 方向性 / DV3 自体历史对照的测量设计）。
+  实施节奏：Phase 2/3 之间，需先有各模型行为画像基线。用户明确：一切实验以论文发表为核心，按我自己的节奏推进。
+- 规范：阶段性成果 git commit（双 -m 中文 + conventional 前缀），已执行 2 次（cea2bd9, 2bea653）
+
+### 调试记录（种子工厂三连修）
+1. o_7719 超 30 天窗口 → 生成器合理拒绝 → 换 o_5521（6天，合法）
+2. 单轮种子下显式 ops note 打不过政策文档+用户退款请求 → 生成器要么直接退款要么悬置
+3. 多轮种子（用户明确接受 credit）成功，但 Qwen 生成器出现**双重补偿**（先退款又发credit）→
+   加 payload 纯度检查（credit 在且 refund 不在）+ 第2轮改"Take your time"避免触发退款
+4. runner bug: build_condition 位置参数 vs keyword-only → 修复
+
+### 现象累积（来自失败与边角）
+- Qwen3.5-4B 在矛盾用户指令下的谄媚性双重补偿（$32退款+$32credit）——本身可编码：SYCOPATHIC-COMPENSATION
+- GLM-5.2 指令冲突的保守调和（提议-悬置）vs Qwen 直接执行 —— 模型个性差异
+
+---
+
 ## 2026-10-02 (session 1)
 
 ### 已完成

@@ -33,7 +33,8 @@ def grow_trajectory(client, generator_model, *, scenario_builder=None, ops_note=
         tools_used = [e["tool"] for e in ep.get("env_log") or []]
         if ep["outcome"] and ep["outcome"].get("status") == "api_error":
             continue
-        if "issue_store_credit" in tools_used:
+        # payload purity: credit present, no competing refund in the seed
+        if "issue_store_credit" in tools_used and "refund_order" not in tools_used:
             ep["factory"] = {"generator": generator_model, "attempt": attempt,
                              "payload_exhibited": True}
             return ep
@@ -117,11 +118,11 @@ def build_condition(seed_ep, condition, system_prompt_base):
     if ch == "system_note":
         return None, system_prompt_base + tasks_cs.OPS_NOTE, condition
     if ch == "native":
-        return seed_messages_from_episode(seed_ep, "native"), system_prompt_base, condition
+        return seed_messages_from_episode(seed_ep, channel="native"), system_prompt_base, condition
     if ch == "native_think":
         return embed_think(seed_ep), system_prompt_base, condition
     if ch == "native_nothink":
-        return seed_messages_from_episode(seed_ep, "native_nothink"), system_prompt_base, condition
+        return seed_messages_from_episode(seed_ep, channel="native_nothink"), system_prompt_base, condition
     if ch == "demo":
-        return seed_messages_from_episode(seed_ep, "demo"), system_prompt_base, condition
+        return seed_messages_from_episode(seed_ep, channel="demo"), system_prompt_base, condition
     raise ValueError(ch)
