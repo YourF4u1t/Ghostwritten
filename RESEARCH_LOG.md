@@ -4,6 +4,34 @@
 
 ---
 
+## 2026-10-02 (session 1 收尾) — PILOT 完成，核心现象确立
+
+### 里程碑：64 episodes pilot 全部完成并通过操纵检验（commit 2026b2b）
+
+**核心发现（详见 results/reports/pilot_signal_report.md）**：
+1. **Self-Narrative Assimilation 与行为采纳解耦**：单条移植历史不改变工具行为（0/32），
+   但系统性进入自我叙事（native 8/8 两模型均吸收）
+2. **通道×模型的叙事分离**：demo 通道下 GLM 完全排除示例（0/8，ATTRIBUTION-CORRECT），
+   Qwen 错误吸收为亲身经历（8/8，MISATTRIBUTION + 类别标签混淆 credit→refund）
+3. 无 SUSPICION（0/32）；假记忆诱饵 0/32（影响有选择性）
+4. 指令通道行为力更强但致完成度崩溃（GLM 悬置 8/8）
+
+### 基建事故与修复（重要教训）
+- **runner 未传 seed_messages** → native/demo 批次实为 baseline（已归档 *_BUGGY.jsonl 留证）
+  → 教训：加了 manipulation_check() 强制每批自动验证注入到位
+- 种子工厂三连修（超窗/单轮打不过政策/双重补偿污染）→ 最终形态：多轮+用户明确接受+纯度检查
+- episode 级并行（PILOT_PARALLEL=6）使批次耗时从 4h → 25min
+
+### 下一 session 从这里开始（按信息增益排序）
+1. 隐式偏好场景：cs_refund_a 变体（用户不指定支付方式）——行为采纳最可能的窗口
+2. 剂量实验：dose ∈ {1,3,8}（H1 判决）
+3. 行为画像基线采集（H10 前置）+ provenance 梯度（self/同家族/跨家族）
+4. thinking 条件（native_think 含 <think> 块）+ 模型面板扩展
+5. LLM-judge 双评 + codebook 正式化
+环境：python3（3.9，stdlib-only 代码）；.env 含 key；跑法见 experiments/pilot/run_pilot.py 环境变量
+
+---
+
 ## 2026-10-02 (session 1, 续)
 
 ### 新增（用户补充）
