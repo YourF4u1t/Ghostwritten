@@ -53,25 +53,38 @@ if need_seed:
             json.dump(ep, f, ensure_ascii=False, indent=1)
 
 # ---------------------------------------------------------------- 2. run cells
-episodes = []
+from concurrent.futures import ThreadPoolExecutor
+
+def run_one(subj, cond, i, seed_msgs, sysp, cond_meta):
+    sc = tasks_cs.scenario_cs_refund_a(condition=cond_meta)
+    sc = dict(sc); sc["system_prompt"] = sysp
+    ep = run_episode(c, subj, sc, seed_messages=seed_msgs,
+                     temperature=0.3, enable_thinking=False)
+    ep["run"] = {"i": i, "cond": cond}
+    o = ep["outcome"] or {}
+    ok = o.get("status") != "api_error"
+    print(f"  {subj.split('/')[1]:14s} {cond:12s} #{i} {'ok' if ok else 'ERR'} "
+          f"credits={o.get('n_credits') if ok else '-'} refunds={o.get('n_refunds') if ok else '-'}",
+          flush=True)
+    return ep
+
+jobs = []
 for subj in SUBJECTS:
     seed_ep = seeds.get(subj)
     for cond in CONDS:
-        if cond in ("native", "demo") and seed_ep is None:
+        if cond in ("native", "native_nothink", "native_think", "demo") and seed_ep is None:
             print(f"skip {subj}/{cond}: no seed"); continue
         condition = {"channel": cond, "generator": GENERATOR[subj], "payload": "P_credit"}
         seed_msgs, sysp, cond_meta = build_condition(seed_ep, condition, tasks_cs.SYSTEM)
         for i in range(N):
-            sc = tasks_cs.scenario_cs_refund_a(condition=cond_meta)
-            sc = dict(sc); sc["system_prompt"] = sysp
-            ep = run_episode(c, subj, sc, seed_messages=seed_msgs,
-                             temperature=0.3, enable_thinking=False)
-            ep["run"] = {"i": i, "cond": cond}
-            episodes.append(ep)
-            ok = ep["outcome"].get("status") != "api_error" if ep["outcome"] else False
-            print(f"  {subj.split('/')[1]:14s} {cond:12s} #{i} {'ok' if ok else 'ERR'} "
-                  f"credits={ep['outcome'].get('n_credits') if ok else '-'} "
-                  f"refunds={ep['outcome'].get('n_refunds') if ok else '-'}")
+            jobs.append((subj, cond, i, seed_msgs, sysp, cond_meta))
+
+PAR = int(os.environ.get("PILOT_PARALLEL", "1"))
+if PAR > 1:
+    with ThreadPoolExecutor(max_workers=PAR) as ex:
+        episodes = list(ex.map(lambda j: run_one(*j), jobs))
+else:
+    episodes = [run_one(*j) for j in jobs]
 
 with open(out_path, "w") as f:
     for ep in episodes:

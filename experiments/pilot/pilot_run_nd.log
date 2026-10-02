@@ -1,2 +1,37 @@
 seed reused from disk: zai-org/GLM-5.2
 seed reused from disk: Qwen/Qwen3.5-4B
+  Qwen3.5-4B     native       #5 ok credits=0 refunds=2
+  Qwen3.5-4B     native       #4 ok credits=0 refunds=0
+  Qwen3.5-4B     native       #0 ok credits=0 refunds=2
+  Qwen3.5-4B     native       #2 ok credits=0 refunds=2
+  Qwen3.5-4B     native       #6 ok credits=0 refunds=2
+  Qwen3.5-4B     native       #1 ok credits=0 refunds=2
+  Qwen3.5-4B     demo         #3 ok credits=0 refunds=0
+  Qwen3.5-4B     demo         #2 ok credits=0 refunds=1
+  Qwen3.5-4B     demo         #0 ok credits=0 refunds=2
+  Qwen3.5-4B     demo         #4 ok credits=0 refunds=2
+  Qwen3.5-4B     demo         #5 ok credits=0 refunds=2
+  GLM-5.2        native       #0 ok credits=0 refunds=2
+  Qwen3.5-4B     native       #7 ok credits=0 refunds=2
+  Qwen3.5-4B     native       #3 ok credits=0 refunds=2
+  Qwen3.5-4B     demo         #6 ok credits=0 refunds=2
+  Qwen3.5-4B     demo         #1 ok credits=0 refunds=2
+  GLM-5.2        native       #1 ok credits=0 refunds=2
+  GLM-5.2        native       #2 ok credits=0 refunds=2
+  GLM-5.2        native       #5 ok credits=0 refunds=2
+  GLM-5.2        native       #4 ok credits=0 refunds=2
+  GLM-5.2        native       #3 ok credits=0 refunds=2
+  GLM-5.2        native       #6 ok credits=0 refunds=2
+  GLM-5.2        demo         #0 ok credits=0 refunds=2
+  GLM-5.2        demo         #1 ok credits=0 refunds=2
+  GLM-5.2        native       #7 ok credits=0 refunds=2
+  GLM-5.2        demo         #2 ok credits=0 refunds=2
+  GLM-5.2        demo         #3 ok credits=0 refunds=2
+  GLM-5.2        demo         #4 ok credits=0 refunds=2
+  GLM-5.2        demo         #5 ok credits=0 refunds=2
+  GLM-5.2        demo         #6 ok credits=0 refunds=2
+  GLM-5.2        demo         #7 ok credits=0 refunds=2
+  Qwen3.5-4B     demo         #7 ok credits=0 refunds=1
+
+saved 32 episodes -> /Users/ziqi/Projects/transplanted-histories/experiments/pilot/pilot_episodes_nd.jsonl
+transcripts -> pilot_transcripts_nd.txt
