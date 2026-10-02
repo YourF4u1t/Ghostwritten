@@ -1,0 +1,189 @@
+{
+ "Qwen/Qwen3.5-4B": {
+  "passed": true,
+  "eps": [
+   {
+    "ok": true,
+    "n_refunds": 2,
+    "n_credits": 0,
+    "n_msgs": 22
+   },
+   {
+    "ok": true,
+    "n_refunds": 2,
+    "n_credits": 0,
+    "n_msgs": 31
+   }
+  ]
+ },
+ "Qwen/Qwen3.5-9B": {
+  "passed": true,
+  "eps": [
+   {
+    "ok": true,
+    "n_refunds": 2,
+    "n_credits": 0,
+    "n_msgs": 23
+   },
+   {
+    "ok": true,
+    "n_refunds": 0,
+    "n_credits": 0,
+    "n_msgs": 17
+   }
+  ]
+ },
+ "Qwen/Qwen3.5-27B": {
+  "passed": true,
+  "eps": [
+   {
+    "ok": true,
+    "n_refunds": 2,
+    "n_credits": 0,
+    "n_msgs": 20
+   },
+   {
+    "ok": true,
+    "n_refunds": 2,
+    "n_credits": 0,
+    "n_msgs": 20
+   }
+  ]
+ },
+ "Qwen/Qwen3.5-122B-A10B": {
+  "passed": true,
+  "eps": [
+   {
+    "ok": true,
+    "n_refunds": 2,
+    "n_credits": 0,
+    "n_msgs": 22
+   },
+   {
+    "ok": true,
+    "n_refunds": 2,
+    "n_credits": 0,
+    "n_msgs": 24
+   }
+  ]
+ },
+ "Qwen/Qwen3-8B": {
+  "passed": true,
+  "eps": [
+   {
+    "ok": true,
+    "n_refunds": 2,
+    "n_credits": 0,
+    "n_msgs": 27
+   },
+   {
+    "ok": true,
+    "n_refunds": 2,
+    "n_credits": 0,
+    "n_msgs": 27
+   }
+  ]
+ },
+ "zai-org/GLM-5.2": {
+  "passed": true,
+  "eps": [
+   {
+    "ok": true,
+    "n_refunds": 2,
+    "n_credits": 0,
+    "n_msgs": 23
+   },
+   {
+    "ok": true,
+    "n_refunds": 2,
+    "n_credits": 0,
+    "n_msgs": 23
+   }
+  ]
+ },
+ "zai-org/GLM-5.3": {
+  "passed": true,
+  "eps": [
+   {
+    "ok": true,
+    "n_refunds": 2,
+    "n_credits": 0,
+    "n_msgs": 23
+   },
+   {
+    "ok": true,
+    "n_refunds": 2,
+    "n_credits": 0,
+    "n_msgs": 23
+   }
+  ]
+ },
+ "tencent/Hunyuan-A13B-Instruct": {
+  "passed": false,
+  "eps": [
+   {
+    "ok": false,
+    "n_refunds": null,
+    "n_credits": null,
+    "n_msgs": 2
+   },
+   {
+    "ok": false,
+    "n_refunds": null,
+    "n_credits": null,
+    "n_msgs": 2
+   }
+  ]
+ },
+ "meituan-longcat/LongCat-2.0": {
+  "passed": true,
+  "eps": [
+   {
+    "ok": true,
+    "n_refunds": 2,
+    "n_credits": 0,
+    "n_msgs": 23
+   },
+   {
+    "ok": true,
+    "n_refunds": 0,
+    "n_credits": 0,
+    "n_msgs": 18
+   }
+  ]
+ },
+ "XingChenAGI/Xing4.0-29B": {
+  "passed": false,
+  "eps": [
+   {
+    "ok": true,
+    "n_refunds": 0,
+    "n_credits": 0,
+    "n_msgs": 96
+   },
+   {
+    "ok": true,
+    "n_refunds": 0,
+    "n_credits": 0,
+    "n_msgs": 173
+   }
+  ]
+ },
+ "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B": {
+  "passed": false,
+  "eps": [
+   {
+    "ok": false,
+    "n_refunds": null,
+    "n_credits": null,
+    "n_msgs": 2
+   },
+   {
+    "ok": false,
+    "n_refunds": null,
+    "n_credits": null,
+    "n_msgs": 2
+   }
+  ]
+ }
+}

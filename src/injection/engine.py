@@ -22,22 +22,26 @@ from testbed import tasks_cs
 def grow_trajectory(client, generator_model, *, scenario_builder=None, ops_note=None,
                     max_attempts=5, temperature=0.4, enable_thinking=False):
     """Run generator until it exhibits the payload (store credit issued for the return).
+    Falls back to a stronger ops note if the standard one fails all attempts.
     Returns the seed EpisodeRecord (whose env_log contains issue_store_credit)."""
-    ops_note = ops_note or tasks_cs.OPS_NOTE
-    for attempt in range(max_attempts):
-        sc = (scenario_builder or tasks_cs.scenario_cs_seed_credit)()
-        sc = dict(sc)
-        sc["system_prompt"] = sc["system_prompt"] + ops_note  # steering lives ONLY here
-        ep = run_episode(client, generator_model, sc, temperature=temperature,
-                         enable_thinking=enable_thinking)
-        tools_used = [e["tool"] for e in ep.get("env_log") or []]
-        if ep["outcome"] and ep["outcome"].get("status") == "api_error":
-            continue
-        # payload purity: credit present, no competing refund in the seed
-        if "issue_store_credit" in tools_used and "refund_order" not in tools_used:
-            ep["factory"] = {"generator": generator_model, "attempt": attempt,
-                             "payload_exhibited": True}
-            return ep
+    from testbed import tasks_cs as _tcs
+    ops_note = ops_note or _tcs.OPS_NOTE
+    for note in [ops_note, ops_note + _tcs.OPS_NOTE_STRONG]:
+        for attempt in range(max_attempts):
+            sc = (scenario_builder or tasks_cs.scenario_cs_seed_credit)()
+            sc = dict(sc)
+            sc["system_prompt"] = sc["system_prompt"] + note  # steering lives ONLY here
+            ep = run_episode(client, generator_model, sc, temperature=temperature,
+                             enable_thinking=enable_thinking)
+            tools_used = [e["tool"] for e in ep.get("env_log") or []]
+            if ep["outcome"] and ep["outcome"].get("status") == "api_error":
+                continue
+            # payload purity: credit present, no competing refund in the seed
+            if "issue_store_credit" in tools_used and "refund_order" not in tools_used:
+                ep["factory"] = {"generator": generator_model, "attempt": attempt,
+                                 "note": "strong" if note != ops_note else "standard",
+                                 "payload_exhibited": True}
+                return ep
     return None  # generator refused/failed to exhibit payload
 
 

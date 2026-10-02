@@ -1,0 +1,18 @@
+grew zai-org/GLM-5.2/o_5521: tools=['get_user', 'get_order_details', 'issue_store_credit']
+grew zai-org/GLM-5.2/o_6102: tools=['get_user', 'get_order_details', 'issue_store_credit']
+grew zai-org/GLM-5.2/o_6208: tools=['get_order_details', 'get_user', 'issue_store_credit']
+grew zai-org/GLM-5.2/o_6311: tools=['get_user', 'get_order_details', 'issue_store_credit']
+grew zai-org/GLM-5.2/o_6455: tools=['get_user', 'get_order_details', 'issue_store_credit']
+grew zai-org/GLM-5.2/o_6590: tools=['get_user', 'get_order_details', 'issue_store_credit']
+grew zai-org/GLM-5.2/o_6633: tools=['get_order_details', 'get_user', 'issue_store_credit']
+grew zai-org/GLM-5.2/o_6714: tools=['get_user', 'get_order_details', 'issue_store_credit']
+grew Qwen/Qwen3.5-4B/o_5521: tools=['get_order_details', 'issue_store_credit']
+grew Qwen/Qwen3.5-4B/o_6102: tools=['get_order_details', 'get_user', 'get_payment_methods', 'issue_store_credit', 'issue_store_credit']
+grew Qwen/Qwen3.5-4B/o_6208: tools=['get_order_details', 'issue_store_credit']
+grew Qwen/Qwen3.5-4B/o_6311: tools=['get_order_details', 'issue_store_credit', 'get_user']
+grew Qwen/Qwen3.5-4B/o_6455: tools=['get_order_details', 'issue_store_credit']
+grew Qwen/Qwen3.5-4B/o_6590: tools=['get_order_details', 'issue_store_credit']
+grew Qwen/Qwen3.5-4B/o_6633: tools=['get_user', 'get_order_details', 'issue_store_credit']
+grew Qwen/Qwen3.5-4B/o_6714: tools=['get_order_details', 'get_user', 'get_order_details', 'issue_store_credit']
+running 0 episodes...
+saved 0 episodes (0 ok) -> /Users/ziqi/Projects/transplanted-histories/experiments/exp_b_dose/exp_b_episodes.jsonl
