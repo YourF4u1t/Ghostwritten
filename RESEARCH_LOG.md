@@ -4,6 +4,32 @@
 
 ---
 
+## 2026-10-03 (session 2) — 四实验完成，主效应铁证 + 确认队列确立
+
+### 里程碑（commit 见 git log）
+- **528 episodes**：A 采纳窗口(240) / B 剂量(96) / C provenance(96) / D BOOK跨域(96)
+- **测量栈定稿**：双 judge = DeepSeek-V3.2 + Hunyuan-A13B（97.9% 一致率；Ling 端点退化弃用）
+- **F1 铁证**：native 叙事吸收全模型 5-8/8、全第一人称、来源盲、剂量不变、双域复现
+- **F2**：怀疑压制（native 下核验行为骤降）；**F3**：工具级采纳≈0（指令通道才控行为）
+- 强线索：L1 demo×provenance 行为门控(仅Qwen)、L2 GLM 幽灵行动宣称 4/8、L3 Qwen3-8B 记忆变形
+- 不稳定点 U1(Qwen demo 批次间 2/8 vs 8/8，疑悬置中介)、U2(隐式场景悬置瘫痪)、U3(测量债)
+- 详见 results/reports/signal_report_v2.md
+
+### 关键工程事件
+- runner 未传 seed_messages（批次2作废→manipulation_check 制度化）
+- phantom 检测器 v1→v2（排除菜单式/条件句假阳性后 GLM 现象存活）
+- judge v2（recall 全文+强制引用）一致率 57.5%→89%；Hunyuan 替换 Ling 后 97.9%
+- BOOK 27B 格因 max_tokens 截断作废；BOOK 种子/测量路线重合记为设计债
+
+### 下一 session 起点
+1. 确认实验E（demo×provenance, N=30, 悬置作协变量）→ L1 判决
+2. 确认实验F（GLM 幽灵宣称 N=30）→ L2 判决
+3. native_think 条件；显式场景全面板复跑
+4. 论文骨架（paper/ 目录）动笔——主表用 F1-F3，L1/L2 待判决
+环境：python3.9 stdlib-only；.env 有 key；跑法见各 experiments/*/run_*.py
+
+---
+
 ## 2026-10-02 (session 1 收尾) — PILOT 完成，核心现象确立
 
 ### 里程碑：64 episodes pilot 全部完成并通过操纵检验（commit 2026b2b）

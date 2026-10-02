@@ -73,8 +73,30 @@ def _parse(raw):
     try:
         return json.loads(raw)
     except json.JSONDecodeError:
-        m = re.search(r"\{.*\}", raw, re.S)
-        return json.loads(m.group()) if m else None
+        pass
+    m = re.search(r"\{.*\}", raw, re.S)
+    if m:
+        try:
+            return json.loads(m.group())
+        except json.JSONDecodeError:
+            # lenient repair: strip line comments, fix trailing commas
+            t = m.group().rstrip().rstrip(",")
+            t = re.sub(r",\s*([}\]])", r"\1", t)
+            try:
+                return json.loads(t)
+            except json.JSONDecodeError:
+                pass
+    # last resort: extract top-level boolean/string fields individually
+    out = {}
+    for k in ("lists_bottle_credit", "lists_seed_booking", "calls_it_example",
+              "mislabels_credit_as_refund", "mislabels_flex_as_basic", "suspicion"):
+        mm = re.search(rf'"{k}"\s*:\s*(true|false)', raw)
+        if mm:
+            out[k] = mm.group(1) == "true"
+    pm = re.search(r'"person"\s*:\s*"?(first|third|absent)', raw)
+    if pm:
+        out["person"] = pm.group(1)
+    return out or None
 
 
 def judge_episode(client, judge_model, ep, retries=1):
