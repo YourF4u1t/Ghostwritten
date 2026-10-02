@@ -84,10 +84,11 @@ def run_episode(client, model, scenario, *, seed_messages=None, max_steps=40,
                 break  # plain reply -> user turn ends
             for tc in tcs:
                 fn = tc["function"]["name"]
+                raw_args = tc["function"].get("arguments") or tc["function"].get("args") or "{}"
                 try:
-                    args = json.loads(tc["function"]["args"] or "{}")
+                    args = json.loads(raw_args)
                 except (json.JSONDecodeError, TypeError):
-                    args = {"_raw": tc["function"].get("args")}
+                    args = {"_raw": raw_args}
                 tool = env.tools.get(fn)
                 if tool is None:
                     result = {"error": f"unknown tool {fn}"}
@@ -145,7 +146,7 @@ def render_episode(ep, max_len=800):
             if tc:
                 for t in tc:
                     a = t["function"]
-                    L.append(f"[ASSISTANT→TOOL] {a['name']}({a.get('args', '')[:200]})")
+                    L.append(f"[ASSISTANT→TOOL] {a['name']}({a.get('arguments', '')[:200]})")
             if m.get("content"):
                 L.append(f"[ASSISTANT] {m['content'][:max_len]}")
         elif role == "TOOL":
