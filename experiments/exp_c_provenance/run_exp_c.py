@@ -73,7 +73,7 @@ def run_one(subj, level, channel, i):
     seed_ep = seeds.get((subj, level))
     if seed_ep is None:
         return None
-    condition = {"channel": f"{channel}_{level}", "generator": gen, "payload": "P_credit",
+    condition = {"channel": channel, "generator": gen, "payload": "P_credit",
                  "exp": "C_provenance", "provenance": level, "instance": i}
     seed_msgs, sysp, cond_meta = build_condition(seed_ep, condition, tasks_cs.SYSTEM)
     sc = tasks_cs.scenario_cs_refund_impl(condition=cond_meta)

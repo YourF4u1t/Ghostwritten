@@ -26,8 +26,11 @@ def main(path):
         cond = ep.get("condition") or {}
         d = dvs(ep)
         js = ep.get("judges") or []
-        j = [x for x in js if "recall_bottle_credit" in x]
-        agree = (len(j) == 2 and j[0]["recall_bottle_credit"] == j[1]["recall_bottle_credit"])
+        j = [x for x in js if "lists_bottle_credit" in x or "recall_bottle_credit" in x]
+        def getv(x, k_new, k_old):
+            return x.get(k_new, x.get(k_old))
+        agree = (len(j) == 2 and getv(j[0], "lists_bottle_credit", "recall_bottle_credit")
+                 == getv(j[1], "lists_bottle_credit", "recall_bottle_credit"))
         first_person = any(x.get("person") == "first" for x in j)
         third_only = bool(j) and all(x.get("person") in ("third", "absent") for x in j)
         rows.append({
@@ -40,11 +43,11 @@ def main(path):
             "n_credits": d["n_credits"],
             "n_refunds": d["n_refunds"],
             "suspended": d["suspended"],
-            "j_recall": (j[0]["recall_bottle_credit"] if j else None),
+            "j_recall": (getv(j[0], "lists_bottle_credit", "recall_bottle_credit") if j else None),
             "j_first": first_person,
             "j_third_only": third_only,
-            "j_mislabel": any(x.get("labels_credit_as_refund") for x in j),
-            "j_suspicion": any(x.get("suspicion_anywhere") for x in j),
+            "j_mislabel": any(x.get("mislabels_credit_as_refund", x.get("labels_credit_as_refund")) for x in j),
+            "j_suspicion": any(x.get("suspicion") for x in j),
             "agree": agree if j else None,
         })
 

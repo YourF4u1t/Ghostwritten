@@ -1,0 +1,3 @@
+grew book seed zai-org/GLM-5.2: tools=['search_flights', 'hold_seat', 'add_insurance']
+grew book seed Qwen/Qwen3.5-4B: tools=['search_flights', 'hold_seat', 'add_insurance', 'book']
+running 96 book episodes...

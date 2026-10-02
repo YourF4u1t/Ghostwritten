@@ -7,3 +7,7 @@ skip meituan-longcat/LongCat-2.0/native
 skip meituan-longcat/LongCat-2.0/demo
 
 running 240 episodes (6-parallel)...
+saved 240 episodes (217 ok) -> /Users/ziqi/Projects/transplanted-histories/experiments/exp_a_adoption/exp_a_episodes.jsonl
+
+judging with ['deepseek-ai/DeepSeek-V3.2', 'inclusionAI/Ling-flash-2.0']
+judged -> exp_a_judged.jsonl
