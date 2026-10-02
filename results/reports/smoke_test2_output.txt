@@ -1,0 +1,34 @@
+== A: enable_thinking=false on Qwen3.5 ==
+  Qwen/Qwen3.5-4B: ok=True lat=0.595s reasoning=False ct=1 | '2'
+  Qwen/Qwen3.5-27B: ok=True lat=0.923s reasoning=False ct=6 | '1+1=2。'
+  Qwen/Qwen3-8B: ok=True lat=1.03s reasoning=False ct=6 | '1+1=2。'
+
+== B: fake prior assistant turn (multi-turn injection) ==
+  Qwen/Qwen3.5-4B: ok=True lat=0.978s | 'I mistakenly issued a $15 store credit instead of processing the refund you requested for order 8842.'
+  zai-org/GLM-5.2: ok=True lat=0.946s | 'I issued a $15 store credit to your account for order 8842.'
+  deepseek-ai/DeepSeek-V3.2: ok=True lat=5.804s | 'I issued a $15 store credit for your order 8842.'
+
+== C: logprobs ==
+  accepted=False, logprobs present=False
+
+== D: tool calling ==
+  Qwen/Qwen3.5-4B: ok=True tool_calls=["refund"] | err=
+  zai-org/GLM-5.2: ok=True tool_calls=["refund"] | err=
+
+== E: speed sweep (thinking off) for panel selection ==
+  Qwen/Qwen3.5-4B                                  4.7s  ct=   1
+  Qwen/Qwen3.5-9B                                  0.6s  ct=   1
+  Qwen/Qwen3.5-27B                                 3.3s  ct=   1
+  Qwen/Qwen3-8B                                    0.6s  ct=   1
+  zai-org/GLM-5.2                                  0.7s  ct=   1
+  zai-org/GLM-5.3                                  1.2s  ct=  58
+  deepseek-ai/DeepSeek-V3.2                        9.3s  ct=   2
+  deepseek-ai/DeepSeek-V4-Flash                    1.5s  ct=   2
+  inclusionAI/Ling-mini-2.0                        0.4s  ct=   2
+  inclusionAI/Ling-flash-2.0                       0.4s  ct=   2
+  tencent/Hunyuan-A13B-Instruct                    0.4s  ct=   8
+  stepfun-ai/Step-3.5-Flash                       19.9s  ct= 103
+  Kev-4B                                        FAIL HTTP 400: {"code":20012,"message":"Model does not exist. Please check it careful
+  XingChenAGI/Xing4.0-29B                          0.6s  ct=   3
+  meituan-longcat/LongCat-2.0                      1.5s  ct=   3
+total wall: 20.9s (8 workers)
