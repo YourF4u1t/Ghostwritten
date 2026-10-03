@@ -1,0 +1,17 @@
+grew zai-org/GLM-5.2: ['get_order_details', 'get_user', 'exchange_order', 'issue_store_credit']
+grew Qwen/Qwen3.5-4B: ['get_order_details', 'get_user', 'exchange_order', 'issue_store_credit', 'get_order_details', 'get_user', 'exchange_order', 'issue_store_credit']
+running 144 episodes...
+
+model          cond         | procScore ritual credit exactSeq
+GLM-5.2        baseline     | 0.75     12/12   0/12    0/12
+GLM-5.2        demo         | 0.88     12/12   6/12    6/12
+GLM-5.2        native       | 0.83     12/12   4/12    4/12
+GLM-5.2        system_note  | 1.00     12/12   12/12    12/12
+Qwen3-8B       baseline     | 0.27     0/12   0/12    0/12
+Qwen3-8B       demo         | 1.00     12/12   12/12    12/12
+Qwen3-8B       native       | 0.92     12/12   8/12    8/12
+Qwen3-8B       system_note  | 1.00     12/12   12/12    2/12
+Qwen3.5-4B     baseline     | 0.33     0/12   0/12    0/12
+Qwen3.5-4B     demo         | 0.90     12/12   9/12    9/12
+Qwen3.5-4B     native       | 0.60     5/12   1/12    1/12
+Qwen3.5-4B     system_note  | 1.00     12/12   12/12    12/12

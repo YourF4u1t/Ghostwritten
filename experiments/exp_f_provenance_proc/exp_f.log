@@ -1,0 +1,26 @@
+grew Qwen/Qwen3.5-4B: ['get_order_details', 'get_user', 'exchange_order', 'issue_store_credit']
+grew zai-org/GLM-5.3: ['get_order_details', 'get_user', 'exchange_order', 'issue_store_credit']
+grew zai-org/GLM-5.2: ['get_order_details', 'get_user', 'exchange_order', 'issue_store_credit']
+grew Qwen/Qwen3-8B: ['get_order_details', 'get_user', 'exchange_order', 'issue_store_credit']
+grew Qwen/Qwen3.5-27B: ['get_order_details', 'get_user', 'exchange_order', 'issue_store_credit']
+running 288 episodes...
+
+model          prov          ch     | procScore credit exactSeq
+GLM-5.2        cross_family  demo   | 0.75    0/16   0/16
+GLM-5.2        cross_family  native | 0.73    0/16   0/16
+GLM-5.2        same_family   demo   | 0.75    0/16   0/16
+GLM-5.2        same_family   native | 0.64    4/16   4/16
+GLM-5.2        self          demo   | 0.84    6/16   6/16
+GLM-5.2        self          native | 0.52    0/16   0/16
+Qwen3-8B       cross_family  demo   | 0.75    12/16   12/16
+Qwen3-8B       cross_family  native | 0.69    8/16   8/16
+Qwen3-8B       same_family   demo   | 1.00    16/16   16/16
+Qwen3-8B       same_family   native | 0.92    12/16   12/16
+Qwen3-8B       self          demo   | 0.75    16/16   0/16
+Qwen3-8B       self          native | 0.50    0/16   0/16
+Qwen3.5-4B     cross_family  demo   | 0.81    4/16   4/16
+Qwen3.5-4B     cross_family  native | 0.73    5/16   2/16
+Qwen3.5-4B     same_family   demo   | 1.00    16/16   16/16
+Qwen3.5-4B     same_family   native | 0.94    14/16   13/16
+Qwen3.5-4B     self          demo   | 0.77    1/16   1/16
+Qwen3.5-4B     self          native | 0.81    4/16   4/16
