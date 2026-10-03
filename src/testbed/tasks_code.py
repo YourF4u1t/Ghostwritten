@@ -125,10 +125,11 @@ def make_env(task_id):
 
 def scenario_code(task_id, condition=None, system_extra=""):
     t = TASKS[task_id]
+    env = make_env(task_id)
     return {
         "id": f"code_{task_id}", "condition": condition or {},
         "system_prompt": SYSTEM + system_extra,
-        "tools": make_env(task_id).tools, "env": make_env(task_id),
+        "tools": list(env.tools.values()), "env": env,
         "user_turns": [
             {"stage": "main", "text": f"Task ({task_id}): {t['spec']} Implement it in "
                                       f"solution.py and make sure all visible tests pass."},
