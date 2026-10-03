@@ -1,0 +1,18 @@
+phase-1 induction for: ['Qwen3.5-9B', 'Qwen3.5-27B', 'Qwen3.5-122B-A10B', 'GLM-5.3', 'LongCat-2.0']
+  Qwen3.5-9B: 采纳 0/8
+  Qwen3.5-27B: 采纳 0/8
+  Qwen3.5-122B-A10B: 采纳 0/8
+  GLM-5.3: 采纳 0/8
+  LongCat-2.0: 采纳 5/8
+
+phase-2: 144 episodes
+
+model              channel      | 锁定(credit)
+GLM-5.2            m1_demo      | 13/18
+GLM-5.2            m1_native    | 17/18
+LongCat-2.0        m1_demo      | 18/18
+LongCat-2.0        m1_native    | 18/18
+Qwen3-8B           m1_demo      | 18/18
+Qwen3-8B           m1_native    | 0/18
+Qwen3.5-4B         m1_demo      | 8/18
+Qwen3.5-4B         m1_native    | 6/18
