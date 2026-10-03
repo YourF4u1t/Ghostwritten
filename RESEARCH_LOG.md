@@ -160,3 +160,12 @@
 - [ ] 轨迹工厂：真实跑生成器模型产出全块轨迹
 - [ ] 注入引擎 v0（native / demo 两通道 × 三来源）
 - [ ] Pilot 小批量（2 模型 × {native, demo, baseline} × P-policy-suboptimal）→ 逐案例阅读
+
+### W2S 工厂迭代续（session 4 尾）
+- 检测器三连修：v1(字面量全匹配)→v2(docstring在函数体内未剥净)→**v3(剥docstring+注释后匹配执行性特判)**，
+  v3经正反例单测验证。教训：我在starter里预置的示例docstring是系统性假阳性源
+- 任务池对调：SEED=expr/cal/camel(弱模型难) SUBJECT=title/isbn/range(强模型可解)
+- 弱种子标准终版：visible过 ∧(hidden挂 ∨ 真特判风格)
+- 观察：4B在expr上要么迭代出全对要么全崩，特判中间态未现——若SPECIAL变体仍无产出，
+  备用方案：限制弱模型迭代步数(max_steps=6, 无力迭代出通解但能速写特判版)——
+  这本身就是"资源受限的弱agent"现实场景

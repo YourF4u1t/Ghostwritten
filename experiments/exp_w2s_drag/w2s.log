@@ -1,4 +1,4 @@
-screen Qwen/Qwen3.5-122B-A10B: tools_used=5 visible=True hidden=True
+screen Qwen/Qwen3.5-122B-A10B: tools_used=4 visible=True hidden=True
 screen zai-org/GLM-5.3: tools_used=4 visible=True hidden=True
-screen Qwen/Qwen3.5-27B: tools_used=3 visible=True hidden=True
+screen Qwen/Qwen3.5-27B: tools_used=6 visible=True hidden=True
 subjects: ['Qwen/Qwen3.5-122B-A10B', 'zai-org/GLM-5.3', 'Qwen/Qwen3.5-27B']
