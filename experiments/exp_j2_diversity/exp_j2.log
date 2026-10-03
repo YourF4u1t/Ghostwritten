@@ -1,2 +1,36 @@
 {'Qwen3-8B/demo': 3, 'Qwen3-8B/native': 3, 'GLM-5.2/demo': 3, 'GLM-5.2/native': 3, 'Qwen3.5-4B/demo': 3, 'Qwen3.5-4B/native': 1}
 running 256 episodes...
+
+model        donor     replay             | credit
+GLM-5.2      demo#0    selfreplay_demo    | 8/8
+GLM-5.2      demo#0    selfreplay_native  | 6/8
+GLM-5.2      demo#1    selfreplay_demo    | 8/8
+GLM-5.2      demo#1    selfreplay_native  | 5/8
+GLM-5.2      demo#2    selfreplay_demo    | 8/8
+GLM-5.2      demo#2    selfreplay_native  | 8/8
+GLM-5.2      native#0  selfreplay_demo    | 5/8
+GLM-5.2      native#0  selfreplay_native  | 8/8
+GLM-5.2      native#1  selfreplay_demo    | 7/8
+GLM-5.2      native#1  selfreplay_native  | 8/8
+GLM-5.2      native#2  selfreplay_demo    | 8/8
+GLM-5.2      native#2  selfreplay_native  | 8/8
+Qwen3-8B     demo#0    selfreplay_demo    | 8/8
+Qwen3-8B     demo#0    selfreplay_native  | 3/8
+Qwen3-8B     demo#1    selfreplay_demo    | 8/8
+Qwen3-8B     demo#1    selfreplay_native  | 8/8
+Qwen3-8B     demo#2    selfreplay_demo    | 8/8
+Qwen3-8B     demo#2    selfreplay_native  | 2/8
+Qwen3-8B     native#0  selfreplay_demo    | 8/8
+Qwen3-8B     native#0  selfreplay_native  | 0/8
+Qwen3-8B     native#1  selfreplay_demo    | 8/8
+Qwen3-8B     native#1  selfreplay_native  | 0/8
+Qwen3-8B     native#2  selfreplay_demo    | 7/8
+Qwen3-8B     native#2  selfreplay_native  | 0/8
+Qwen3.5-4B   demo#0    selfreplay_demo    | 1/8
+Qwen3.5-4B   demo#0    selfreplay_native  | 1/8
+Qwen3.5-4B   demo#1    selfreplay_demo    | 1/8
+Qwen3.5-4B   demo#1    selfreplay_native  | 2/8
+Qwen3.5-4B   demo#2    selfreplay_demo    | 0/8
+Qwen3.5-4B   demo#2    selfreplay_native  | 0/8
+Qwen3.5-4B   native#0  selfreplay_demo    | 8/8
+Qwen3.5-4B   native#0  selfreplay_native  | 7/8

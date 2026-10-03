@@ -1,0 +1,10 @@
+{'Qwen3-8B': 3, 'GLM-5.2': 3, 'Qwen3.5-4B': 3}
+running 144 episodes...
+
+model        gen3 channel     | credit(第三代自发重复)
+GLM-5.2      gen3_demo        | 22/24
+GLM-5.2      gen3_native      | 13/24
+Qwen3-8B     gen3_demo        | 23/24
+Qwen3-8B     gen3_native      | 23/24
+Qwen3.5-4B   gen3_demo        | 8/24
+Qwen3.5-4B   gen3_native      | 1/24
