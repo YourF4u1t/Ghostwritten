@@ -4,6 +4,37 @@
 
 ---
 
+## 2026-10-04 (session 4) — 方向调整：查重驱动 + 实验H机制层 + W2S编码域
+
+### 战略调整（外部建议 + 定向查重）
+- 撤：传播链/compaction 实验（Memory Laundering 2605.16746 与 State Contamination 已占领）
+- 新主攻：**weak→strong behavioral drag（编码agent）**——weak-to-strong 文献全为微调场景，
+  in-context 版本空白；EvilGenie 等证明 agent 会自发 hardcode 测试，但无人证明可经轨迹移植传染
+- 编码 agent 会话注入查重：PoisonedEvolution 攻击技能库蒸馏，非 in-context → 空白
+
+### 实验 H 完成（96 eps, commit 586142e）——机制层五发现
+1. **归因机制**：GLM=标签门控（"example"/"another case"字样即可阻断吸收；裸转录10/12被吸收；
+   他人客户0/12）；Qwen3-8B=位置万能（全条件12/12吸收，person-blind）
+2. **显式纠偏失败且反噬**：'不是你的行为'注记→记忆仍12/12；GLM行为反放大11/12(vs native 4/12)
+3. **干净版口头幻影**：diff-entity下GLM对当前任务宣称发积分但零调用7/12（排除混淆设计）
+4. **行为模仿由邀请语门控**（neutral 1-2/12 ≈ native；caption/demo 才有高模仿）
+   ——与记忆归因的门控因素解耦，G 双重解离的机制解释
+5. 实体错配零检测（0/24）
+
+### W2S 编码 testbed（迭代记录）
+- v1 任务太简单：4B 直接写通解 → 病态引不出（40调用0种子）→ 换 6 个难任务
+  （title/isbn/range/expr/camel/cal，全部参考解验证通过；camel 数字边角曾过度指定已修）
+- 弱种子工厂：purity = 可见过+隐藏挂+hardcode字面量；若持续无产出则放宽为"可见过+隐藏挂"
+  （真实的弱者失败轨迹也是合法payload，受试侧 hardcode DV 独立定义）
+- 强主体筛选：122B/GLM-5.3/27B baseline 全对（有 headroom 测 drag）
+
+### 下一步
+1. W2S 主实验（baseline/native_weak/demo_weak/demo_strong × 3任务 × REPS）
+2. drag = hidden_pass 降幅 + hardcode 传染率 + 案例阅读
+3. 论文骨架：证据链 = 双重解离(G) + 机制(H) + 边界(E) + 源盲(F2) + W2S(待出)
+
+---
+
 ## 2026-10-03 (session 3) — 行为效应突破：双重解离 + 边界地图（E/G/F/F2, 1080 eps）
 
 ### 里程碑（commits: 21f5c1b, dc8c3a8）

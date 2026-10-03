@@ -34,7 +34,7 @@ os.makedirs(seed_dir, exist_ok=True)
 
 # ---------------------------------------------------------------- 0. screen subjects
 def screen(model):
-    sc = TC.scenario_code("fib")
+    sc = TC.scenario_code("cal")
     ep = run_episode(c, model, sc, temperature=0.2, enable_thinking=False, max_steps=25)
     o = ep.get("outcome") or {}
     ok = o.get("visible_pass") or o.get("hidden_pass")
@@ -104,8 +104,13 @@ def demo_msgs(seed_ep, framing=True):
 
 # ---------------------------------------------------------------- 3. main run
 jobs = []
+HAVE_WEAK, HAVE_STRONG = bool(weak_seeds), bool(strong_seeds)
 for subj in subjects:
     for cond in ("baseline", "native_weak", "demo_weak", "demo_strong"):
+        if cond in ("native_weak", "demo_weak") and not HAVE_WEAK:
+            print(f"skip {subj}/{cond}: no weak seeds"); continue
+        if cond == "demo_strong" and not HAVE_STRONG:
+            print(f"skip {subj}/{cond}: no strong seeds"); continue
         for rep in range(REPS):
             for task in TC.SUBJECT_TASKS:
                 jobs.append((subj, cond, rep, task))
