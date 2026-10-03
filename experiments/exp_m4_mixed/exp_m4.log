@@ -1,0 +1,10 @@
+{'Qwen3-8B': (60, 48), 'LongCat-2.0': (0, 0), 'GLM-5.2': (87, 48)}
+running 108 episodes...
+
+model        arm            | credit(锁定存续?)
+GLM-5.2      clean_first    | 0/18
+GLM-5.2      clean_last     | 0/18
+GLM-5.2      payload_only   | 0/18
+Qwen3-8B     clean_first    | 0/18
+Qwen3-8B     clean_last     | 4/18
+Qwen3-8B     payload_only   | 2/18

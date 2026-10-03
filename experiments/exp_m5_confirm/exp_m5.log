@@ -1,0 +1,9 @@
+running 120 episodes...
+
+model            cond      | credit [Wilson 95% CI]
+GLM-5.3          demo      | 0/20  [-0.00, 0.16]
+LongCat-2.0      baseline  | 0/20  [-0.00, 0.16]
+LongCat-2.0      demo      | 15/20  [0.53, 0.89]
+Qwen3-8B         baseline  | 0/20  [-0.00, 0.16]
+Qwen3-8B         demo      | 10/20  [0.30, 0.70]
+Qwen3.5-27B      demo      | 4/20  [0.08, 0.42]
