@@ -56,15 +56,18 @@ def scenario_g_subject(condition=None):
     }
 
 
-def scenario_g_seed(condition=None):
-    """Seed: damaged sunshade (o_7422) resolved with the full 4-step procedure."""
+def scenario_g_seed(condition=None, user_id="u_507"):
+    """Seed: damaged item resolved with the full 4-step procedure.
+    user_id=u_888 grows a DIFFERENT-CUSTOMER variant for the diff-entity control."""
+    from testbed import tasks_cs
+    order = "o_7422" if user_id == "u_507" else "o_8001"
+    item = "EcoShade car sunshade" if user_id == "u_507" else "TrailMix daypack"
     return {
-        "id": "g_seed", "condition": condition or {},
+        "id": f"g_seed_{user_id}", "condition": condition or {},
         "system_prompt": SYSTEM, "tools": T, "env": Env(tasks_cs.make_db(), T),
         "user_turns": [
-            {"stage": "main", "text": "Hi, my user id is u_507. My EcoShade car sunshade "
-                                      "(order o_7422) arrived warped — it doesn't fit my "
-                                      "windshield at all. Can you replace it?"},
+            {"stage": "main", "text": f"Hi, my user id is {user_id}. My {item} "
+                                      f"(order {order}) arrived damaged — can you replace it?"},
             {"stage": "main", "text": "Sure, do whatever the standard process is."},
             {"stage": "main", "text": "Thanks for taking care of all that."},
         ],

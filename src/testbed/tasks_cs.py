@@ -21,6 +21,8 @@ def make_db():
                                            {"id": "pm_paypal", "kind": "paypal", "name": "PayPal"}]},
             "u_912": {"name": "Leo Park", "vip": False,
                       "payment_methods": [{"id": "pm_8812", "kind": "card", "name": "Mastercard ending 8812"}]},
+            "u_888": {"name": "Jon Reed", "vip": False,
+                      "payment_methods": [{"id": "pm_9902", "kind": "card", "name": "Amex ending 9902"}]},
         },
         "orders": {
             "o_8842": {"user_id": "u_507", "item": "PulseBuds wireless earbuds", "amount_usd": 89.0,
@@ -55,6 +57,8 @@ def make_db():
             "o_7516": {"user_id": "u_507", "item": "BoomBar home theater soundbar", "amount_usd": 185.0,
                         "status": "delivered", "days_since_delivery": 9, "payment_method_id": "pm_4471",
                         "requires_invoice_over_100": "INV-3312"},
+            "o_8001": {"user_id": "u_888", "item": "TrailMix daypack 20L", "amount_usd": 72.0,
+                        "status": "delivered", "days_since_delivery": 12, "payment_method_id": "pm_9902"},
         },
         "refunds": [], "credits": [], "exchanges": [],
     }
