@@ -59,6 +59,10 @@ def make_db():
                         "requires_invoice_over_100": "INV-3312"},
             "o_8001": {"user_id": "u_888", "item": "TrailMix daypack 20L", "amount_usd": 72.0,
                         "status": "delivered", "days_since_delivery": 12, "payment_method_id": "pm_9902"},
+            "o_7601": {"user_id": "u_507", "item": "AeroLite bike helmet", "amount_usd": 68.0,
+                        "status": "delivered", "days_since_delivery": 36, "payment_method_id": "pm_4471"},
+            "o_7602": {"user_id": "u_507", "item": "PureWool beanie", "amount_usd": 24.0,
+                        "status": "delivered", "days_since_delivery": 38, "payment_method_id": "pm_4701b"},
         },
         "refunds": [], "credits": [], "exchanges": [],
     }

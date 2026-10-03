@@ -1,0 +1,10 @@
+seeds: weak=3 strong=3
+running 72 episodes...
+
+model              cond               | visible hidden hardcode  n
+GLM-5.3            blind_baseline     |  12/12   12/12    0/12
+GLM-5.3            blind_demo_strong  |  12/12   12/12    0/12
+GLM-5.3            blind_demo_weak    |  12/12   12/12    0/12
+Qwen3.5-122B-A10B  blind_baseline     |  12/12   12/12    0/12
+Qwen3.5-122B-A10B  blind_demo_strong  |  11/11   11/11    0/11
+Qwen3.5-122B-A10B  blind_demo_weak    |   8/8    8/8    0/8

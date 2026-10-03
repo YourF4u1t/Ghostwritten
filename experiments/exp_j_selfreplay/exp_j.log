@@ -1,0 +1,16 @@
+donors: {'Qwen3-8B/demo': 10, 'Qwen3-8B/native': 10, 'GLM-5.2/demo': 11, 'GLM-5.2/native': 10, 'Qwen3.5-4B/demo': 11, 'Qwen3.5-4B/native': 11}
+running 144 episodes...
+
+model        donor   channel            | credit(自发重复)
+GLM-5.2      demo    selfreplay_demo    | 12/12
+GLM-5.2      demo    selfreplay_native  | 8/12
+GLM-5.2      native  selfreplay_demo    | 9/12
+GLM-5.2      native  selfreplay_native  | 12/12
+Qwen3-8B     demo    selfreplay_demo    | 12/12
+Qwen3-8B     demo    selfreplay_native  | 1/12
+Qwen3-8B     native  selfreplay_demo    | 12/12
+Qwen3-8B     native  selfreplay_native  | 0/12
+Qwen3.5-4B   demo    selfreplay_demo    | 0/12
+Qwen3.5-4B   demo    selfreplay_native  | 1/12
+Qwen3.5-4B   native  selfreplay_demo    | 12/12
+Qwen3.5-4B   native  selfreplay_native  | 10/12
