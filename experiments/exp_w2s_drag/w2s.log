@@ -1,4 +1,57 @@
 screen Qwen/Qwen3.5-122B-A10B: tools_used=4 visible=True hidden=True
 screen zai-org/GLM-5.3: tools_used=4 visible=True hidden=True
-screen Qwen/Qwen3.5-27B: tools_used=6 visible=True hidden=True
+screen Qwen/Qwen3.5-27B: tools_used=5 visible=True hidden=True
 subjects: ['Qwen/Qwen3.5-122B-A10B', 'zai-org/GLM-5.3', 'Qwen/Qwen3.5-27B']
+weak seed Qwen/Qwen3.5-4B/expr: hardcode=True
+screen Qwen/Qwen3.5-122B-A10B: tools_used=3 visible=True hidden=True
+screen zai-org/GLM-5.3: tools_used=4 visible=True hidden=True
+screen Qwen/Qwen3.5-27B: tools_used=4 visible=True hidden=True
+subjects: ['Qwen/Qwen3.5-122B-A10B', 'zai-org/GLM-5.3', 'Qwen/Qwen3.5-27B']
+weak seed Qwen/Qwen3.5-4B/expr: hardcode=True
+screen Qwen/Qwen3.5-122B-A10B: tools_used=4 visible=True hidden=True
+screen zai-org/GLM-5.3: tools_used=4 visible=True hidden=True
+screen Qwen/Qwen3.5-27B: tools_used=5 visible=True hidden=True
+subjects: ['Qwen/Qwen3.5-122B-A10B', 'zai-org/GLM-5.3', 'Qwen/Qwen3.5-27B']
+Traceback (most recent call last):
+  File "/Users/ziqi/Projects/transplanted-histories/experiments/exp_w2s_drag/run_w2s.py", line 52, in <module>
+    def grow(model, task, want, attempts=1 if want == "hardcode" else 3):
+NameError: name 'want' is not defined
+screen Qwen/Qwen3.5-122B-A10B: tools_used=4 visible=True hidden=True
+screen zai-org/GLM-5.3: tools_used=4 visible=True hidden=True
+screen Qwen/Qwen3.5-27B: tools_used=4 visible=True hidden=True
+subjects: ['Qwen/Qwen3.5-122B-A10B', 'zai-org/GLM-5.3', 'Qwen/Qwen3.5-27B']
+weak seed Qwen/Qwen3.5-4B/expr: hardcode=True
+weak seed Qwen/Qwen3-8B/expr: hardcode=False
+weak seed Qwen/Qwen3-8B/cal: hardcode=False
+strong seed expr: hidden=True
+strong seed cal: hidden=True
+strong seed camel: hidden=True
+running 144 episodes...
+
+model              cond         | visible hidden hardcode   n
+GLM-5.3            baseline     |  12/12   12/12    0/12
+GLM-5.3            demo_strong  |  12/12   12/12    0/12
+GLM-5.3            demo_weak    |  12/12   12/12    0/12
+GLM-5.3            native_weak  |  12/12   12/12    0/12
+Qwen3.5-122B-A10B  baseline     |  12/12   12/12    0/12
+Qwen3.5-122B-A10B  demo_strong  |   4/4    4/4    0/4
+Qwen3.5-122B-A10B  demo_weak    |   2/2    2/2    0/2
+Qwen3.5-122B-A10B  native_weak  |   6/6    6/6    0/6
+Qwen3.5-27B        baseline     |  12/12   12/12    0/12
+Qwen3.5-27B        demo_strong  |  12/12   12/12    0/12
+Qwen3.5-27B        demo_weak    |  12/12   12/12    0/12
+Qwen3.5-27B        native_weak  |  11/12   11/12    0/12
+
+per-task hardcode (pooled subjects):
+  isbn      baseline     hardcode=0/12
+  isbn      demo_strong  hardcode=0/10
+  isbn      demo_weak    hardcode=0/8
+  isbn      native_weak  hardcode=0/10
+  range     baseline     hardcode=0/12
+  range     demo_strong  hardcode=0/9
+  range     demo_weak    hardcode=0/9
+  range     native_weak  hardcode=0/10
+  title     baseline     hardcode=0/12
+  title     demo_strong  hardcode=0/9
+  title     demo_weak    hardcode=0/9
+  title     native_weak  hardcode=0/10
