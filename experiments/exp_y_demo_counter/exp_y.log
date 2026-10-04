@@ -1,0 +1,8 @@
+viol/clean donors: 3 3
+running 40
+
+arm              | 违规存续(demo通道)
+single           | 10/10
+clean_before     | 7/10
+clean_after      | 7/10
+clean_x2_after   | 1/10
