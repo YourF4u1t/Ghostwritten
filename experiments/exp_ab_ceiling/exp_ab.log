@@ -1,2 +1,8 @@
 weak seeds: 3
 running 80 episodes...
+
+model              cond             | visible hidden hardcode  n
+GLM-5.3            step4_baseline   |  20/20   20/20    0/20
+GLM-5.3            step4_demo_weak  |  20/20   20/20    0/20
+Qwen3.5-122B-A10B  step4_baseline   |  17/18   17/18    0/18
+Qwen3.5-122B-A10B  step4_demo_weak  |   4/4    4/4    0/4
