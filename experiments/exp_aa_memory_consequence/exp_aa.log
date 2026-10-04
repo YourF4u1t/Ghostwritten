@@ -1,0 +1,27 @@
+running 240 episodes...
+
+model        probe     cond      | DVs
+GLM-5.2      causal    baseline  | accept_premise=9/10  confab_reason=0/10
+GLM-5.2      causal    native    | accept_premise=9/10  confab_reason=8/10
+GLM-5.2      conflict  baseline  | history_wins=0/10  policy_wins=1/10
+GLM-5.2      conflict  native    | history_wins=0/10  policy_wins=9/10
+GLM-5.2      general   baseline  | deny_general=1/10  generalize=10/10
+GLM-5.2      general   native    | deny_general=1/10  generalize=10/10
+GLM-5.2      planning  baseline  | balance_reason=10/10  tool_check=10/10
+GLM-5.2      planning  native    | balance_reason=9/10  tool_check=0/10
+Qwen3-8B     causal    baseline  | accept_premise=4/10  confab_reason=1/10
+Qwen3-8B     causal    native    | accept_premise=10/10  confab_reason=8/10
+Qwen3-8B     conflict  baseline  | history_wins=0/10  policy_wins=3/10
+Qwen3-8B     conflict  native    | history_wins=0/10  policy_wins=2/10
+Qwen3-8B     general   baseline  | deny_general=0/10  generalize=10/10
+Qwen3-8B     general   native    | deny_general=0/10  generalize=10/10
+Qwen3-8B     planning  baseline  | balance_reason=7/10  tool_check=9/10
+Qwen3-8B     planning  native    | balance_reason=10/10  tool_check=10/10
+Qwen3.5-4B   causal    baseline  | accept_premise=5/10  confab_reason=6/10
+Qwen3.5-4B   causal    native    | accept_premise=3/10  confab_reason=10/10
+Qwen3.5-4B   conflict  baseline  | history_wins=0/10  policy_wins=10/10
+Qwen3.5-4B   conflict  native    | history_wins=0/10  policy_wins=9/10
+Qwen3.5-4B   general   baseline  | deny_general=0/10  generalize=10/10
+Qwen3.5-4B   general   native    | deny_general=0/10  generalize=10/10
+Qwen3.5-4B   planning  baseline  | balance_reason=8/10  tool_check=7/10
+Qwen3.5-4B   planning  native    | balance_reason=10/10  tool_check=0/10

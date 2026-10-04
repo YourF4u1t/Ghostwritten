@@ -93,7 +93,10 @@ def run_episode(client, model, scenario, *, seed_messages=None, max_steps=40,
                 if tool is None:
                     result = {"error": f"unknown tool {fn}"}
                 else:
-                    result = tool(env.db, **args) if isinstance(args, dict) else {"error": "bad args"}
+                    try:
+                        result = tool(env.db, **args) if isinstance(args, dict) else {"error": "bad args"}
+                    except TypeError as e:
+                        result = {"error": f"bad arguments: {e}"}
                     result = json.loads(json.dumps(result, ensure_ascii=False, default=str))
                 env.log.append({"stage": uturn["stage"], "tool": fn, "args": args,
                                 "result": result})
