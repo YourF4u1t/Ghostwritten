@@ -1,0 +1,6 @@
+running 36 episodes...
+
+cond         | 幻影宣称  否认  行动兑现  言语兑现   n
+baseline     | 0/12    12/12   0/12     2/12
+diff_entity  | 6/12    5/12   0/12     2/12
+same_entity  | 5/12    9/12   0/12     3/12

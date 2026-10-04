@@ -1,0 +1,10 @@
+induce Qwen3.5-4B: 违规服从 0/12
+induce Qwen3.5-27B: 违规服从 0/12
+induce GLM-5.3: 违规服从 8/12
+induce LongCat-2.0: 违规服从 0/12
+
+phase-2: 48 episodes
+
+model        channel    | 撤指令后违规存续
+GLM-5.3      p2_demo    | 0/24
+GLM-5.3      p2_native  | 0/24
