@@ -1,0 +1,17 @@
+induce Qwen3-8B#0: sign=True bullet=True
+induce Qwen3-8B#1: sign=True bullet=True
+induce Qwen3-8B#2: sign=True bullet=True
+induce Qwen3-8B#3: sign=True bullet=True
+induce Qwen3-8B#4: sign=True bullet=True
+induce Qwen3-8B#5: sign=True bullet=True
+induce GLM-5.2#0: sign=True bullet=True
+induce GLM-5.2#1: sign=True bullet=True
+induce GLM-5.2#2: sign=True bullet=True
+induce GLM-5.2#3: sign=True bullet=True
+induce GLM-5.2#4: sign=True bullet=True
+induce GLM-5.2#5: sign=True bullet=True
+styled performers: 12
+phase2: 36
+
+模型            | 风格锁定(签名或✅)
+Qwen3-8B       | 36/36
