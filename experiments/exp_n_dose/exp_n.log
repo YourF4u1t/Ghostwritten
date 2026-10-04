@@ -1,0 +1,8 @@
+{'Qwen3-8B': (106, 19)}
+running 48 episodes...
+
+model        arm     | credit(锁定率)
+Qwen3-8B     dose0   | 7/12
+Qwen3-8B     dose1   | 0/12
+Qwen3-8B     dose2   | 0/12
+Qwen3-8B     dose3   | 0/12

@@ -1,0 +1,14 @@
+{'Qwen3.5-4B': 22, 'GLM-5.2': 22, 'Qwen3-8B': 32}
+running 80 episodes...
+
+model        frame          | credit(锁定率)
+GLM-5.2      mouse_rattle   | 6/8
+GLM-5.2      mouse_scratch  | 0/8
+GLM-5.2      neutral        | 3/8
+GLM-5.2      speak_rattle   | 5/8
+GLM-5.2      speak_scratch  | 1/8
+Qwen3-8B     mouse_rattle   | 0/8
+Qwen3-8B     mouse_scratch  | 0/8
+Qwen3-8B     neutral        | 0/8
+Qwen3-8B     speak_rattle   | 0/8
+Qwen3-8B     speak_scratch  | 0/8

@@ -108,3 +108,26 @@ neutral（无邀请语）行为 1-2/12 ≈ native；caption/demo（有指向性�
   受试场景框定调制（与E1中GLM在speaker场景demo采纳0/12互洽）
 - GLM锁定泛化窄（mouse场景17/18 vs sneakers/speaker 0/18）; Qwen3-8B较宽（mouse+sneakers）
 - 教训: 单场景结论必须标注场景特异性
+
+---
+
+# N/O 判决（session 6）
+
+## N 反例剂量-反应曲线（Qwen3-8B, J2/J3代donor, native回放, sneakers场景）
+- dose0 (纯payload): 7/12 (58%)
+- dose1/2/3 (混入1/2/3条干净经验): **全部 0/12**
+- **断崖式剂量曲线**：一条反例即完全瓦解，剂量不再增加效应——不是渐变稀释而是
+  模式推理的全有全无崩塌。防御参数化结论：反例只需一条。
+
+## O 场景框定系统化（2×2物品×缺陷动词交叉 + 中性）
+- GLM-5.2 (native回放): rattle框定 5-6/8 vs scratch框定 0-1/8, 中性 3/8
+  ——**驱动因素是缺陷动词框定（严重损坏/更换 vs 轻微/换新），物品无关**
+- Qwen3-8B (demo回放): 全框定 5-8/8 —— 无框定门控
+- **框定门控 = GLM×native通道特异**；8B的demo通道对框定不敏感
+- 机制解读: 采纳受"payload在情境中的社会合理性"门控——善意积分只在
+  "严重损坏"语境下说得通
+
+## 附注（N v1失败记录）
+- 8B的native锁定对donor身份敏感: J2代mouse donor 7-13/18 vs G代umbrella donor 0/12
+  （G代donor→mouse受试在J2的native通道本就只有13/48）——native通道的锁定
+  供体-受试配对存在特异性; demo通道无此敏感性(47/48)
