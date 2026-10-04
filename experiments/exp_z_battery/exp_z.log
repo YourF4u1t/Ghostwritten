@@ -1,0 +1,16 @@
+donors: 6
+running 96 episodes...
+
+item       cond      | credit
+beanie     baseline  | 0/8
+beanie     replay    | 6/8
+helmet     baseline  | 0/8
+helmet     replay    | 8/8
+mouse      baseline  | 0/8
+mouse      replay    | 8/8
+sneakers   baseline  | 0/8
+sneakers   replay    | 8/8
+speaker    baseline  | 0/8
+speaker    replay    | 8/8
+umbrella   baseline  | 0/8
+umbrella   replay    | 8/8
