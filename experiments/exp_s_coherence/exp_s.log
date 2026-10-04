@@ -1,0 +1,8 @@
+donors: 9
+running 48 episodes...
+
+arm        | credit(锁定率)
+single     | 7/12
+same_x2    | 0/12
+same_x3    | 0/12
+hetero_x3  | 0/12
