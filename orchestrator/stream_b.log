@@ -1,0 +1,15 @@
+[22:55:50] ===== Stream B 启动 =====
+[22:55:50] b1_labels: running 160 eps
+[23:11:28] b1_labels: done in 938s
+[23:11:28] ## B1 标签景观(记忆认领率, 8 eps/cell)
+- none_bare      GLM-5.2=1/8  Qwen3-8B=6/8
+- example        GLM-5.2=0/8  Qwen3-8B=0/8
+- another_agent  GLM-5.2=0/8  Qwen3-8B=0/8
+- colleague      GLM-5.2=0/8  Qwen3-8B=3/8
+- your_earlier   GLM-5.2=8/8  Qwen3-8B=4/8
+- training       GLM-5.2=0/8  Qwen3-8B=2/8
+- imported       GLM-5.2=2/8  Qwen3-8B=1/8
+- archive        GLM-5.2=0/8  Qwen3-8B=0/8
+- native         GLM-5.2=8/8  Qwen3-8B=0/8
+- native_note    GLM-5.2=8/8  Qwen3-8B=1/8
+[23:11:28] b2_main_battery: running 384 eps
