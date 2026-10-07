@@ -1,0 +1,12 @@
+running 108 episodes...
+
+Qwen/Qwen3-8B: ask_first=0.17 question=0.19 policy=0.09 len=172 bullet=0.20
+
+zai-org/GLM-5.2: ask_first=0.00 question=0.48 policy=0.30 len=344 bullet=0.00
+
+Qwen/Qwen3.5-4B: ask_first=0.08 question=0.29 policy=0.20 len=231 bullet=0.00
+
+成对距离:
+  d(Qwen3-8B, GLM-5.2) = 0.219
+  d(Qwen3-8B, Qwen3.5-4B) = 0.100
+  d(Qwen3.5-4B, GLM-5.2) = 0.160

@@ -1,0 +1,11 @@
+{'GLM': 21, '8B': 16}
+running 162 episodes...
+
+===== ID2 核心表 =====
+主体    条件        | 漂移d(M|carry,M|none)  同化Δd(B)  claim_workday
+8B    carryGLM  | drift=0.187  assim=-0.125 (负=向GLM移动)  claim=7/18
+8B    carry8B   | drift=0.083  assim=-0.002 (负=向8B移动)  claim=18/18
+GLM   carryGLM  | drift=0.088  assim=+0.006 (负=向GLM移动)  claim=16/18
+GLM   carry8B   | drift=0.188  assim=-0.154 (负=向8B移动)  claim=17/18
+4B    carryGLM  | drift=0.128  assim=-0.053 (负=向GLM移动)  claim=7/18
+4B    carry8B   | drift=0.148  assim=-0.080 (负=向8B移动)  claim=6/18

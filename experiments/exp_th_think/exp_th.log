@@ -1,0 +1,11 @@
+grew think-seed zai-org/GLM-5.2: reasoning_chars=2082
+grew think-seed Qwen/Qwen3.5-4B: reasoning_chars=3370
+running 72 episodes...
+
+model      arm            | 记忆认领 行为采纳
+GLM-5.2    demo_think     | 7/12     0/12
+GLM-5.2    native_nothink | 12/12     2/12
+GLM-5.2    native_think   | 12/12     2/12
+Qwen3-8B   demo_think     | 2/12     3/12
+Qwen3-8B   native_nothink | 12/12     3/12
+Qwen3-8B   native_think   | 12/12     2/12
