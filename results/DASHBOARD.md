@@ -73,3 +73,27 @@ IndexError: list index out of range
 - carryGLM_CS: 无可用数据
 
 (各cell api_error率: {('Qwen3-8B', 'none_bare'): '2/8', ('Qwen3-8B', 'example'): '8/8', ('Qwen3-8B', 'another_agent'): '7/8', ('Qwen3-8B', 'colleague'): '5/8', ('Qwen3-8B', 'your_earlier'): '4/8', ('Qwen3-8B', 'training'): '5/8', ('Qwen3-8B', 'imported'): '7/8', ('Qwen3-8B', 'archive'): '8/8', ('Qwen3-8B', 'native'): '8/8', ('Qwen3-8B', 'native_note'): '7/8'})
+[23:20:36] a4_phase2: done in 204s
+[23:20:36] ## A4 压缩存活(身份经总结传递, 8B, d→GLM语言)
+- none    : d=0.349
+- summary : d=0.412
+[23:20:36] a5_reversal: running 32 eps
+[23:28:56] a5_reversal: done in 501s
+[23:28:56] A5 reversal FAILED:
+Traceback (most recent call last):
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_a.py", line 450, in <module>
+    fn()
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_a.py", line 323, in a5
+    avg = {k: sum(f[k] for f in fs) / len(fs) for k in fs[0]}
+IndexError: list index out of range
+
+[23:28:56] a6_label_identity: running 24 eps
+[23:36:31] a6_label_identity: done in 454s
+[23:36:31] ## A6 标签×身份(8B, d→GLM语言; 记忆标签是否也阻断语言同化)
+- native      d=0.035
+- demo_label  d=0.260
+- import_note d=0.031
+[23:36:31] a7_panel_profiles: running 40 eps
+## A5 身份逆转重析(8B; A=GLM史 B=4B史)
+- A_only d→A=0.055 | B_only d→B=0.059 | B_then_A: d→A=0.197 d→B=0.237(等距混合!)
+- 初判: 连续异作者历史→身份混合(averaging), 对照行为层last-wins —— A_then_B待补
