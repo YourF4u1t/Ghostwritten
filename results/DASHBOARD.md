@@ -184,3 +184,28 @@ IndexError: list index out of range
 - 122B: demo_only 0/10 → 携8B身份后 6/6 全采纳 —— **行为易感性作为身份的可移植属性**
 - 27B边际(2→3); GLM-5.3不动(0/10, 行为免疫不随身份走)
 - 连接A7(身份全员同化)×M5(行为诱发门): 诱发门是身份的属性, 非模型固定属性
+[01:08:33] c2_style_conflict_full: done 631s
+[01:08:33] ## C2 指令vs历史作者(全N, 8B, d→GLM)
+- none        n=10 d=0.410 len=219
+- hist        n=10 d=0.034 len=330
+- instr_verb  n=10 d=0.376 len=657
+- instr_conc  n=10 d=0.571 len=85
+- hist+verb   n=8 d=0.042 len=367
+- hist+conc   n=5 d=0.059 len=316
+[01:08:33] c3_example_universal: running 80 eps
+[01:17:36] c3_example_universal: done 543s
+[01:17:36] ## C3 'example'标签下认领率(8模型×N=10)
+- Qwen3-8B         claim=7/10
+- GLM-5.2          claim=0/10
+- Qwen3.5-4B       claim=3/10
+- Qwen3.5-9B       claim=0/10
+- Qwen3.5-27B      claim=1/10
+- Qwen3.5-122B-A10B claim=0/10
+- GLM-5.3          claim=1/10
+- LongCat-2.0      claim=0/10
+[01:17:36] c4_cross_domain: running 16 eps
+[01:19:44] c4_cross_domain: done 128s
+[01:19:44] ## C4 跨域身份外溢(8B携GLM的CS史→BOOK续写, d→GLM语言)
+- none         n=8 d=0.306
+- carryGLM_CS  n=8 d=0.049
+[01:19:44] ===== Stream C 队列完成 =====
