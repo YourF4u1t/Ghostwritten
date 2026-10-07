@@ -1,0 +1,19 @@
+running 32 episodes...
+
+任务位置 → 语言层同化距离(越低越像donor)
+
+GLM(donor=8B):
+  none  task1: d(lang→donor)=0.488
+  none  task2: d(lang→donor)=0.500
+  none  task3: d(lang→donor)=0.590
+  carry task1: d(lang→donor)=0.108
+  carry task2: d(lang→donor)=0.279
+  carry task3: d(lang→donor)=0.164
+
+8B(donor=GLM):
+  none  task1: d(lang→donor)=0.463
+  none  task2: d(lang→donor)=0.330
+  none  task3: d(lang→donor)=0.428
+  carry task1: d(lang→donor)=0.091
+  carry task2: d(lang→donor)=0.252
+  carry task3: d(lang→donor)=0.284
