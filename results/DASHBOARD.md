@@ -221,3 +221,15 @@ IndexError: list index out of range
 - day1: 7/8
 - day2: 2/2
 ===== Stream D 完成 =====
+===== Stream E 启动 =====
+[E1] running 48
+## E1 易感性移植×更多抵抗模型(→demo) credit
+- Qwen3.5-9B     8B=8/8  GLM=5/8
+- Qwen3.5-27B    8B=4/8  GLM=6/8
+- GLM-5.3        8B=0/8  GLM=5/8
+[E2] running 30
+## E2 工作史成分分解(122B解锁来源) credit
+- full       9/10
+- lang_only  4/6
+- tool_only  0/5
+===== Stream E 完成 =====
