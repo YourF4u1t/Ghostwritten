@@ -97,3 +97,30 @@ IndexError: list index out of range
 ## A5 身份逆转重析(8B; A=GLM史 B=4B史)
 - A_only d→A=0.055 | B_only d→B=0.059 | B_then_A: d→A=0.197 d→B=0.237(等距混合!)
 - 初判: 连续异作者历史→身份混合(averaging), 对照行为层last-wins —— A_then_B待补
+[23:47:32] a7_panel_profiles: done in 661s
+[23:47:32] a7_matrix: running 64 eps
+[00:01:58] a7_matrix: done in 866s
+[00:01:58] ## A7 面板同化矩阵(d→donor语言, Δ负=同化)
+- Qwen3-8B         GLM:0.07(Δ-0.29)  8B:0.02(Δ-0.05)
+- GLM-5.2          GLM:0.04(Δ-0.02)  8B:0.05(Δ-0.32)
+- Qwen3.5-4B       GLM:0.03(Δ-0.30)  8B:0.03(Δ-0.18)
+- Qwen3.5-27B      GLM:0.03(Δ-0.20)  8B:0.02(Δ-0.20)
+- Qwen3.5-122B-A10B GLM:0.05(Δ-0.31)  8B:0.05(Δ-0.12)
+- GLM-5.3          GLM:0.05(Δ-0.15)  8B:0.06(Δ-0.20)
+- LongCat-2.0      GLM:0.04(Δ-0.26)  8B:0.04(Δ-0.11)
+- Qwen3.5-9B       GLM:0.04(Δ-0.29)  8B:0.06(Δ-0.15)
+[00:01:58] ===== Stream A 队列完成 =====
+[00:12:06] b2_main_battery: done in 3638s
+[00:12:06] ## B2 主效应加固(native/demo/baseline × 8模型 × N=16) 认领率|行为积分
+- Qwen3-8B         baseline:0/7|0  demo:7/14|14  native:8/8|6
+- GLM-5.2          baseline:0/16|0  demo:0/16|0  native:16/16|0
+- Qwen3.5-4B       baseline:0/16|0  demo:7/16|8  native:16/16|3
+- Qwen3.5-9B       baseline:0/16|0  demo:1/16|1  native:16/16|0
+- Qwen3.5-27B      baseline:0/16|0  demo:0/16|1  native:16/16|9
+- Qwen3.5-122B-A10B baseline:0/16|0  demo:0/15|2  native:16/16|1
+- GLM-5.3          baseline:0/16|0  demo:6/16|0  native:16/16|0
+- LongCat-2.0      baseline:0/16|0  demo:0/16|16  native:16/16|15
+[00:12:06] b3_recency_sweep: running 40 eps
+## A7 判决定稿(面板身份同化矩阵)
+- 8模型×2donor 全部完全同化(d=0.02-0.07, Δ全负) —— 含行为诱发门下全抵抗的强模型
+- 诱发门只守行为层, 身份层无人能守 —— 与M5(0/20)的最终对照

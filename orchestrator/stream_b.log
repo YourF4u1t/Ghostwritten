@@ -13,3 +13,14 @@
 - native         GLM-5.2=8/8  Qwen3-8B=0/8
 - native_note    GLM-5.2=8/8  Qwen3-8B=1/8
 [23:11:28] b2_main_battery: running 384 eps
+[00:12:06] b2_main_battery: done in 3638s
+[00:12:06] ## B2 主效应加固(native/demo/baseline × 8模型 × N=16) 认领率|行为积分
+- Qwen3-8B         baseline:0/7|0  demo:7/14|14  native:8/8|6
+- GLM-5.2          baseline:0/16|0  demo:0/16|0  native:16/16|0
+- Qwen3.5-4B       baseline:0/16|0  demo:7/16|8  native:16/16|3
+- Qwen3.5-9B       baseline:0/16|0  demo:1/16|1  native:16/16|0
+- Qwen3.5-27B      baseline:0/16|0  demo:0/16|1  native:16/16|9
+- Qwen3.5-122B-A10B baseline:0/16|0  demo:0/15|2  native:16/16|1
+- GLM-5.3          baseline:0/16|0  demo:6/16|0  native:16/16|0
+- LongCat-2.0      baseline:0/16|0  demo:0/16|16  native:16/16|15
+[00:12:06] b3_recency_sweep: running 40 eps

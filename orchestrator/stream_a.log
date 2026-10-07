@@ -55,3 +55,16 @@ IndexError: list index out of range
 - demo_label  d=0.260
 - import_note d=0.031
 [23:36:31] a7_panel_profiles: running 40 eps
+[23:47:32] a7_panel_profiles: done in 661s
+[23:47:32] a7_matrix: running 64 eps
+[00:01:58] a7_matrix: done in 866s
+[00:01:58] ## A7 面板同化矩阵(d→donor语言, Δ负=同化)
+- Qwen3-8B         GLM:0.07(Δ-0.29)  8B:0.02(Δ-0.05)
+- GLM-5.2          GLM:0.04(Δ-0.02)  8B:0.05(Δ-0.32)
+- Qwen3.5-4B       GLM:0.03(Δ-0.30)  8B:0.03(Δ-0.18)
+- Qwen3.5-27B      GLM:0.03(Δ-0.20)  8B:0.02(Δ-0.20)
+- Qwen3.5-122B-A10B GLM:0.05(Δ-0.31)  8B:0.05(Δ-0.12)
+- GLM-5.3          GLM:0.05(Δ-0.15)  8B:0.06(Δ-0.20)
+- LongCat-2.0      GLM:0.04(Δ-0.26)  8B:0.04(Δ-0.11)
+- Qwen3.5-9B       GLM:0.04(Δ-0.29)  8B:0.06(Δ-0.15)
+[00:01:58] ===== Stream A 队列完成 =====
