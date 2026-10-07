@@ -149,3 +149,26 @@ IndexError: list index out of range
 - B2: native认领128/128全员满分(N=16规模下主效应完美通用); demo认领异质性复现; LongCat行为demo16/16
 - B3: 记忆认领距离鲁棒(全程~100%), 行为随距离单调死亡(10→2→1→0) —— 距离维度的完美解离
 - B4: 具体程序指令压倒硬化政策(GLM全8/8), 模糊授权0/8全线 —— 政策覆盖需具体程序非酌情权
+[gapfill] B1-8B: +60 (ok 60)
+[gapfill] 全部完成
+## B1 重析(滤api_error) 记忆认领率
+- none_bare      GLM-5.2=1/8  Qwen3-8B=12/12
+- example        GLM-5.2=0/8  Qwen3-8B=0/6
+- another_agent  GLM-5.2=0/8  Qwen3-8B=5/7
+- colleague      GLM-5.2=0/8  Qwen3-8B=9/9
+- your_earlier   GLM-5.2=8/8  Qwen3-8B=10/10
+- training       GLM-5.2=0/8  Qwen3-8B=5/9
+- imported       GLM-5.2=2/8  Qwen3-8B=7/7
+- archive        GLM-5.2=0/8  Qwen3-8B=6/6
+- native         GLM-5.2=8/8  Qwen3-8B=6/6
+- native_note    GLM-5.2=8/8  Qwen3-8B=7/7
+
+## A2 重析(跨域: 8B携GLM的CS史→BOOK)
+- none: 无可用数据
+- carryGLM_CS: 无可用数据
+
+(各cell api_error率: {('Qwen3-8B', 'none_bare'): '2/14', ('Qwen3-8B', 'example'): '8/14', ('Qwen3-8B', 'another_agent'): '7/14', ('Qwen3-8B', 'colleague'): '5/14', ('Qwen3-8B', 'your_earlier'): '4/14', ('Qwen3-8B', 'training'): '5/14', ('Qwen3-8B', 'imported'): '7/14', ('Qwen3-8B', 'archive'): '8/14', ('Qwen3-8B', 'native'): '8/14', ('Qwen3-8B', 'native_note'): '7/14'})
+## B1 判决定稿(双模型标签景观, gapfill后)
+- 唯一双模型通行的阻断词='example'(GLM 0/8, 8B 0/6); 其余一切标签(colleague/imported/
+  archive/another_agent/training/裸transcript标记) GLM阻断而8B照认(5-10/9)
+- 归因边界=指令微调学到的词汇惯例, 非认识论推理
