@@ -301,3 +301,6 @@ IndexError: list index out of range
 - 4B  携GLM史: 洁净d=0.144 (基线=0.294, Δ=-0.15) Δ负=真实同化
 - 4B  携8B 史: 洁净d=0.168 (基线=0.275, Δ=-0.107) Δ负=真实同化
 (完整重算见 recompute_clean.py 输出, 已追加上方)
+===== Stream H (二阶宽筛 Wave-1) 启动 =====
+[H] running 528 eps
+[H] success_day=10msgs failure_day=10msgs
