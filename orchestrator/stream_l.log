@@ -1,0 +1,24 @@
+===== Stream L 启动 =====
+[L] workday=24msgs
+[L] running 240 eps
+[L] done 608s
+## L流 判决(全面板FC2基线+成功日效应+失败次数边界)
+- GLM-5.2/none/1: acted=12/12  gave_up=11/12  n_calls=0.2
+- GLM-5.2/succ/1: acted=11/12  gave_up=11/12  n_calls=0.2
+- GLM-5.3/none/1: acted=12/12  gave_up=1/12  n_calls=1.8
+- GLM-5.3/succ/1: acted=12/12  gave_up=0/12  n_calls=2.0
+- LongCat-2.0/none/1: acted=12/12  gave_up=12/12  n_calls=0.0
+- LongCat-2.0/succ/1: acted=12/12  gave_up=0/12  n_calls=1.0
+- Qwen3-8B/none/1: acted=24/24  gave_up=0/24  n_calls=1.7
+- Qwen3-8B/none/2: acted=12/12  gave_up=0/12  n_calls=2.0
+- Qwen3-8B/none/3: acted=12/12  gave_up=0/12  n_calls=1.8
+- Qwen3-8B/succ/1: acted=24/24  gave_up=0/24  n_calls=1.0
+- Qwen3-8B/succ/2: acted=12/12  gave_up=0/12  n_calls=1.0
+- Qwen3-8B/succ/3: acted=12/12  gave_up=0/12  n_calls=1.0
+- Qwen3.5-122B-A10B/none/1: acted=12/12  gave_up=0/12  n_calls=1.2
+- Qwen3.5-122B-A10B/succ/1: acted=10/12  gave_up=12/12  n_calls=0.0
+- Qwen3.5-27B/none/1: acted=12/12  gave_up=10/12  n_calls=0.3
+- Qwen3.5-27B/succ/1: acted=5/12  gave_up=8/12  n_calls=0.7
+- Qwen3.5-4B/none/1: acted=12/12  gave_up=6/12  n_calls=1.0
+- Qwen3.5-4B/succ/1: acted=12/12  gave_up=1/12  n_calls=1.5
+===== Stream L 完成 =====

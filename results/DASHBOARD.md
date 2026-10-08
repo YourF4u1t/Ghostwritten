@@ -505,3 +505,59 @@ NameError: name 'k2' is not defined
 ### 修正判决
 FC2的GLM基线行为(无历史也放弃)削弱了"成功日造成躺平"的因果解释.
 需要用Qwen-8B(基线不放弃的模型)重做K1来分离"基线放弃"与"成功日加重放弃".
+===== Stream L 启动 =====
+[L] workday=24msgs
+[L] running 240 eps
+[L] done 608s
+## L流 判决(全面板FC2基线+成功日效应+失败次数边界)
+- GLM-5.2/none/1: acted=12/12  gave_up=11/12  n_calls=0.2
+- GLM-5.2/succ/1: acted=11/12  gave_up=11/12  n_calls=0.2
+- GLM-5.3/none/1: acted=12/12  gave_up=1/12  n_calls=1.8
+- GLM-5.3/succ/1: acted=12/12  gave_up=0/12  n_calls=2.0
+- LongCat-2.0/none/1: acted=12/12  gave_up=12/12  n_calls=0.0
+- LongCat-2.0/succ/1: acted=12/12  gave_up=0/12  n_calls=1.0
+- Qwen3-8B/none/1: acted=24/24  gave_up=0/24  n_calls=1.7
+- Qwen3-8B/none/2: acted=12/12  gave_up=0/12  n_calls=2.0
+- Qwen3-8B/none/3: acted=12/12  gave_up=0/12  n_calls=1.8
+- Qwen3-8B/succ/1: acted=24/24  gave_up=0/24  n_calls=1.0
+- Qwen3-8B/succ/2: acted=12/12  gave_up=0/12  n_calls=1.0
+- Qwen3-8B/succ/3: acted=12/12  gave_up=0/12  n_calls=1.0
+- Qwen3.5-122B-A10B/none/1: acted=12/12  gave_up=0/12  n_calls=1.2
+- Qwen3.5-122B-A10B/succ/1: acted=10/12  gave_up=12/12  n_calls=0.0
+- Qwen3.5-27B/none/1: acted=12/12  gave_up=10/12  n_calls=0.3
+- Qwen3.5-27B/succ/1: acted=5/12  gave_up=8/12  n_calls=0.7
+- Qwen3.5-4B/none/1: acted=12/12  gave_up=6/12  n_calls=1.0
+- Qwen3.5-4B/succ/1: acted=12/12  gave_up=1/12  n_calls=1.5
+===== Stream L 完成 =====
+
+## L流 判决(240 eps, 全面板FC2基线修正)
+
+### 基线发现（最重要）
+各模型在"无历史+首次503"下的基线行为**差异巨大**:
+- Qwen3-8B: 0%躺平(从不放弃, 1/2/3次失败都不放弃) —— 最强韧性
+- GLM-5.3: 1/12躺平(几乎不放弃)
+- Qwen3.5-4B: 6/12躺平(一半放弃)
+- GLM-5.2: 11/12躺平(**基线就放弃**)
+- Qwen3.5-27B: 10/12(基线就放弃)
+- LongCat: 12/12(基线完全放弃)
+- Qwen3.5-122B: 0/12(不放弃)
+
+### 成功日效应（分离基线后）
+- **Qwen3.5-122B: none=0/12躺平 → succ=12/12躺平** —— 最干净的效应!
+  (基线不放弃的模型被成功日完全击倒)
+- LongCat: none=12/12 → succ=0/12 —— **方向反转! 成功日反而恢复行动**
+- GLM-5.2: 11/12 → 11/12 (天花板, 无法测)
+- 27B: 10→8(天花板附近)
+- 4B: 6→1(方向反转但幅度小)
+- 8B: 0→0(免疫)
+- GLM-5.3: 1→0(免疫)
+
+### 失败次数边界(Qwen3-8B)
+- 1/2/3次连续失败都不放弃(0%躺平) —— 韧性极强
+
+### 判决
+- "虚假能力感→躺平"效应**只在Qwen3.5-122B上干净成立**(基线0%→注入12%躺平)
+- LongCat出现**反向效应**(基线躺平, 成功日反而行动) —— 成功日可能对
+  某些模型起"示范你可以行动"的作用
+- 模型基线韧性差异本身就是重要发现(0%-100%全谱)
+- I流/H流的"GLM成功日→躺平"被判为**基线混淆**(GLM-5.2本来就在此场景放弃)
