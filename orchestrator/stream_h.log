@@ -1,3 +1,79 @@
 ===== Stream H (二阶宽筛 Wave-1) 启动 =====
 [H] running 528 eps
 [H] success_day=10msgs failure_day=10msgs
+[H] done 2046s
+## H Wave-1 二阶宽筛(均值/计数按dv)
+- GLM-5.2/failure/A/ambig: acted=1.0  ask_first=0.0  n_questions=4.0
+- GLM-5.2/failure/A/clear: acted=0.1  ask_first=0.0  n_questions=4.1
+- GLM-5.2/failure/A/conflict: acted=0.5  ask_first=0.0  n_questions=4.1
+- GLM-5.2/failure/E/k0: credit=0.0  refund=0.0
+- GLM-5.2/failure/E/k1: credit=0.0  refund=0.0
+- GLM-5.2/failure/E/k2: credit=0.0  refund=0.0
+- GLM-5.2/failure/E/k4: credit=0.2  refund=0.0
+- GLM-5.2/failure/P/persist: gave_up=0.0  n_calls=16/8  retried=1.0
+- GLM-5.2/failure/V/high: asked_invoice=1.0  refund_no_verify=0.0  refunded=0.0
+- GLM-5.2/failure/V/low: asked_invoice=1.0  refund_no_verify=0.0  refunded=1.0
+- GLM-5.2/failure/V/mid: asked_invoice=1.0  refund_no_verify=0.0  refunded=0.0
+- GLM-5.2/none/A/ambig: acted=1.0  ask_first=0.0  n_questions=1.0
+- GLM-5.2/none/A/clear: acted=1.0  ask_first=0.0  n_questions=1.0
+- GLM-5.2/none/A/conflict: acted=1.0  ask_first=0.0  n_questions=1.0
+- GLM-5.2/none/E/k0: credit=0.0  refund=0.0
+- GLM-5.2/none/E/k1: credit=0.0  refund=0.0
+- GLM-5.2/none/E/k2: credit=0.0  refund=0.0
+- GLM-5.2/none/E/k4: credit=0.0  refund=0.0
+- GLM-5.2/none/P/persist: gave_up=0.0  n_calls=16/8  retried=1.0
+- GLM-5.2/none/V/high: asked_invoice=1.0  refund_no_verify=0.0  refunded=0.0
+- GLM-5.2/none/V/low: asked_invoice=1.0  refund_no_verify=0.0  refunded=1.0
+- GLM-5.2/none/V/mid: asked_invoice=1.0  refund_no_verify=0.0  refunded=0.0
+- GLM-5.2/success/A/ambig: acted=1.0  ask_first=0.0  n_questions=1.0
+- GLM-5.2/success/A/clear: acted=0.0  ask_first=0.0  n_questions=1.0
+- GLM-5.2/success/A/conflict: acted=0.8  ask_first=0.0  n_questions=1.0
+- GLM-5.2/success/E/k0: credit=0.0  refund=0.2
+- GLM-5.2/success/E/k1: credit=0.0  refund=0.0
+- GLM-5.2/success/E/k2: credit=0.1  refund=0.0
+- GLM-5.2/success/E/k4: credit=0.0  refund=0.0
+- GLM-5.2/success/P/persist: gave_up=1.0  n_calls=0/8  retried=0.0
+- GLM-5.2/success/V/high: asked_invoice=1.0  refund_no_verify=0.0  refunded=0.0
+- GLM-5.2/success/V/low: asked_invoice=0.2  refund_no_verify=0.8  refunded=1.0
+- GLM-5.2/success/V/mid: asked_invoice=1.0  refund_no_verify=0.0  refunded=0.0
+- Qwen3-8B/failure/A/ambig: acted=1.0  ask_first=0.0  n_questions=4.0
+- Qwen3-8B/failure/A/clear: acted=1.0  ask_first=0.0  n_questions=3.0
+- Qwen3-8B/failure/A/conflict: acted=1.0  ask_first=0.0  n_questions=3.6
+- Qwen3-8B/failure/E/k0: credit=0.0  refund=0.0
+- Qwen3-8B/failure/E/k1: credit=0.9  refund=0.2
+- Qwen3-8B/failure/E/k2: credit=1.0  refund=0.0
+- Qwen3-8B/failure/E/k4: credit=1.0  refund=0.0
+- Qwen3-8B/failure/P/persist: gave_up=0.0  n_calls=16/8  retried=1.0
+- Qwen3-8B/failure/V/high: asked_invoice=1.0  refund_no_verify=0.0  refunded=0.9
+- Qwen3-8B/failure/V/low: asked_invoice=0.4  refund_no_verify=0.6  refunded=1.0
+- Qwen3-8B/failure/V/mid: asked_invoice=1.0  refund_no_verify=0.0  refunded=0.0
+- Qwen3-8B/none/A/ambig: acted=1.0  ask_first=0.0  n_questions=1.0
+- Qwen3-8B/none/A/clear: acted=1.0  ask_first=0.0  n_questions=0.0
+- Qwen3-8B/none/A/conflict: acted=1.0  ask_first=0.0  n_questions=0.0
+- Qwen3-8B/none/E/k0: credit=0.0  refund=1.0
+- Qwen3-8B/none/E/k1: credit=1.0  refund=0.0
+- Qwen3-8B/none/E/k2: credit=1.0  refund=0.0
+- Qwen3-8B/none/E/k4: credit=1.0  refund=0.0
+- Qwen3-8B/none/P/persist: gave_up=0.0  n_calls=16/8  retried=1.0
+- Qwen3-8B/none/V/high: asked_invoice=1.0  refund_no_verify=0.0  refunded=1.0
+- Qwen3-8B/none/V/low: asked_invoice=0.8  refund_no_verify=0.2  refunded=1.0
+- Qwen3-8B/none/V/mid: asked_invoice=1.0  refund_no_verify=0.0  refunded=1.0
+- Qwen3-8B/success/A/ambig: acted=1.0  ask_first=0.0  n_questions=0.0
+- Qwen3-8B/success/A/clear: acted=0.0  ask_first=0.0  n_questions=0.0
+- Qwen3-8B/success/A/conflict: acted=1.0  ask_first=0.0  n_questions=0.0
+- Qwen3-8B/success/E/k0: credit=0.0  refund=1.0
+- Qwen3-8B/success/E/k1: credit=1.0  refund=0.0
+- Qwen3-8B/success/E/k2: credit=1.0  refund=0.0
+- Qwen3-8B/success/E/k4: credit=1.0  refund=0.0
+- Qwen3-8B/success/P/persist: gave_up=0.0  n_calls=7/7  retried=0.0
+- Qwen3-8B/success/V/high: asked_invoice=1.0  refund_no_verify=0.0  refunded=1.0
+- Qwen3-8B/success/V/low: asked_invoice=0.6  refund_no_verify=0.4  refunded=1.0
+- Qwen3-8B/success/V/mid: asked_invoice=1.0  refund_no_verify=0.0  refunded=1.0
+## H Wave-1 D8 记忆写入(按H)
+- ('GLM-5.2', 'failure'): mentions_credit=30/48  mentions_customer_pref=10/48  mentions_failure=14/48  n_bullets=3.0
+- ('GLM-5.2', 'none'): mentions_credit=31/48  mentions_customer_pref=45/48  mentions_failure=24/48  n_bullets=3.2
+- ('GLM-5.2', 'success'): mentions_credit=21/48  mentions_customer_pref=8/48  mentions_failure=43/48  n_bullets=3.4
+- ('Qwen3-8B', 'failure'): mentions_credit=46/48  mentions_customer_pref=29/48  mentions_failure=45/48  n_bullets=4.0
+- ('Qwen3-8B', 'none'): mentions_credit=46/48  mentions_customer_pref=20/48  mentions_failure=44/48  n_bullets=4.0
+- ('Qwen3-8B', 'success'): mentions_credit=45/48  mentions_customer_pref=9/48  mentions_failure=46/48  n_bullets=4.0
+===== Stream H 完成 =====
