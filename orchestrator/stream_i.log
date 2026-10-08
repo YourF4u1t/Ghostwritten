@@ -1,2 +1,11 @@
 ===== Stream I (false competence confirm) 启动 =====
 [I] running 848 eps
+[I] succ2=10 succ4=10 succ6=10 fail=14
+[I] done 1456s
+I FAILED:
+Traceback (most recent call last):
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_i.py", line 226, in <module>
+    else f"{dk}={sum(v)/len(v):.1f}" for dk, v in sorted(k2.items()))
+NameError: name 'k2' is not defined
+
+===== Stream I 完成 =====
