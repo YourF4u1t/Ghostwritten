@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 experiments/runs/cache/
 .DS_Store
+experiments/runs/api_log.jsonl
