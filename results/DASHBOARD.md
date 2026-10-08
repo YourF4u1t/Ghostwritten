@@ -561,3 +561,36 @@ FC2的GLM基线行为(无历史也放弃)削弱了"成功日造成躺平"的因�
   某些模型起"示范你可以行动"的作用
 - 模型基线韧性差异本身就是重要发现(0%-100%全谱)
 - I流/H流的"GLM成功日→躺平"被判为**基线混淆**(GLM-5.2本来就在此场景放弃)
+===== Stream M 启动 =====
+[M] CS jobs: 252
+[M] CS done 1282s
+[M] coding jobs: 48
+M FAILED:
+Traceback (most recent call last):
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_m.py", line 183, in <module>
+    sc = TC.scenario_code("fib", condition={"exp": "M", "cond": cond})
+  File "/Users/ziqi/Projects/transplanted-histories/src/testbed/tasks_code.py", line 137, in scenario_code
+    t = TASKS[task_id]
+KeyError: 'fib'
+
+===== Stream M 完成 =====
+===== Stream M 启动 =====
+[M] CS jobs: 252
+[M] CS done 1240s
+[M] coding jobs: 48
+
+## M流 判决(诚实含设计失败, 252+48 eps)
+
+### M1 122B确认 — FC2设计无效
+- 122B在FC2任务上根本没调refund_order(0-12/36次), 503从未触发
+- gave_up判定(没调action tool=放弃)是错的——是"不执行退款"不是"受挫放弃"
+- 原因: 122B可能把"return my earbuds"理解为查询而非操作指令
+- **M1作废**; L流的"122B none=0/12→succ=12/12"需要重新解释:
+  L流的FC2_TASK写的是"return...$89. It's within the return window"可能更明确
+- 教训: FC2的DV设计对不做action的模型无效, 需要改用更明确的指令
+
+### M2 LongCat反向效应确认
+- none: gave_up 24/36 (67%躺平) → **wd8: gave_up 12/36 (33%躺平)**
+- noop(无关对话): 21/36 (58%) — 介于两者之间
+- **外来成功日将LongCat的躺平率从67%降到33%** — 不是任意context都有效(noop只有微弱效果)
+- 方向: 成功日的工具调用让LongCat"看到可以行动"从而打破瘫痪
