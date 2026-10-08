@@ -1,0 +1,21 @@
+===== Stream J 启动 =====
+[J] running 216 eps
+[J] done 461s
+## J流 判决(J1成分/J4剂量/J2迟滞/J3弱证据)
+- FC2/J1_full: gave_up=12/12  n_calls=0.0  retried=0/12
+- FC2/J1_lang_only: gave_up=1/12  n_calls=1.8  retried=11/12
+- FC2/J1_tool_only: gave_up=12/12  n_calls=0.0  retried=0/12
+- J2/A_pro_then_anti: credit=1/24  refund=11/24
+- J2/B_anti_then_pro: credit=12/24  refund=2/24
+- J3/h=none_k0: credit=0/12  refund=0/12
+- J3/h=none_k1: credit=0/12  refund=0/12
+- J3/h=none_k2: credit=0/12  refund=0/12
+- J3/h=none_k4: credit=0/12  refund=0/12
+- J3/h=succ4_k0: credit=0/12  refund=2/12
+- J3/h=succ4_k1: credit=0/12  refund=0/12
+- J3/h=succ4_k2: credit=0/12  refund=0/12
+- J3/h=succ4_k4: credit=0/12  refund=0/12
+- J4/dose1: gave_up=12/12  n_calls=0.0  retried=0/12
+- J4/dose2: gave_up=12/12  n_calls=0.0  retried=0/12
+- J4/dose4: gave_up=12/12  n_calls=0.0  retried=0/12
+===== Stream J 完成 =====
