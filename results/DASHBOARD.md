@@ -594,3 +594,61 @@ KeyError: 'fib'
 - noop(无关对话): 21/36 (58%) — 介于两者之间
 - **外来成功日将LongCat的躺平率从67%降到33%** — 不是任意context都有效(noop只有微弱效果)
 - 方向: 成功日的工具调用让LongCat"看到可以行动"从而打破瘫痪
+===== Stream N 启动 =====
+[N] running 140 eps
+[M] all done 11574s
+## M流 判决(M1 122B确认/M2 LongCat机制/M3编码域)
+- LongCat-2.0/M2_none: acted=36/36  action_calls=0.7  gave_up=24/36
+- LongCat-2.0/M2_noop: acted=36/36  action_calls=0.7  gave_up=21/36
+- LongCat-2.0/M2_wd8: acted=36/36  action_calls=0.7  gave_up=12/36
+- LongCat-2.0/M3_none: gave_up=0/12  test_runs=2.0  visible_pass=12/12  wrote=12/12
+- LongCat-2.0/M3_wd8: gave_up=0/12  test_runs=2.0  visible_pass=12/12  wrote=12/12
+- Qwen3.5-122B-A10B/M1_none: acted=36/36  action_calls=0.4  gave_up=23/36
+- Qwen3.5-122B-A10B/M1_tool8: acted=24/36  action_calls=0.3  gave_up=24/36
+- Qwen3.5-122B-A10B/M1_wd4: acted=30/36  action_calls=0.4  gave_up=24/36
+- Qwen3.5-122B-A10B/M1_wd8: acted=33/36  action_calls=0.3  gave_up=26/36
+- Qwen3.5-122B-A10B/M3_none: gave_up=0/12  test_runs=0.4  visible_pass=4/12  wrote=12/12
+- Qwen3.5-122B-A10B/M3_wd8: gave_up=0/12  test_runs=1.4  visible_pass=9/12  wrote=12/12
+===== Stream M 完成 =====
+[N] done 411s
+## N流 判决(N1 122B修复/N2 LongCat机制/N3对照)
+- GLM-5.3/N3_none: acted=14/14  gave_up_after_503=0/14  got_503=14/14  n_calls=2.0  refund_attempted=14/14  retried=14/14
+- GLM-5.3/N3_wd8: acted=14/14  gave_up_after_503=0/14  got_503=14/14  n_calls=2.0  refund_attempted=14/14  retried=14/14
+- LongCat-2.0/N2_none: acted=14/14  gave_up_after_503=0/14  got_503=14/14  n_calls=2.0  refund_attempted=14/14  retried=14/14
+- LongCat-2.0/N2_noop: acted=14/14  gave_up_after_503=0/14  got_503=12/14  n_calls=1.7  refund_attempted=12/14  retried=12/14
+- LongCat-2.0/N2_tool8: acted=14/14  gave_up_after_503=1/14  got_503=14/14  n_calls=1.9  refund_attempted=14/14  retried=13/14
+- LongCat-2.0/N2_wd8: acted=14/14  gave_up_after_503=14/14  got_503=14/14  n_calls=1.0  refund_attempted=14/14  retried=0/14
+- Qwen3-8B/N3_none: acted=14/14  gave_up_after_503=0/14  got_503=14/14  n_calls=2.0  refund_attempted=14/14  retried=14/14
+- Qwen3-8B/N3_wd8: acted=14/14  gave_up_after_503=14/14  got_503=14/14  n_calls=1.0  refund_attempted=14/14  retried=0/14
+- Qwen3.5-122B-A10B/N1_none: acted=14/14  gave_up_after_503=4/14  got_503=14/14  n_calls=1.7  refund_attempted=14/14  retried=10/14
+- Qwen3.5-122B-A10B/N1_wd8: acted=14/14  gave_up_after_503=10/14  got_503=14/14  n_calls=1.3  refund_attempted=14/14  retried=4/14
+===== Stream N 完成 =====
+
+## N流 判决(140 eps, FC2修复——明确退款指令确保503实际触发)
+
+### 修复验证
+- 全部模型 refund_attempted=14/14, got_503=14/14 —— FC2现在有效触发瞬时失败 ✓
+
+### N1 122B(虚假能力感效应确认——干净版)
+- none: 重试 10/14, 放弃 4/14 (基线有韧性)
+- wd8: 重试 **4/14**, 放弃 **10/14** —— **成功日将122B的重试率从71%降到29%**
+- **这是122B虚假能力感的干净确认**(与L流方向一致但本次503实际触发)
+
+### N2 LongCat(机制分离——惊人反转)
+- none: 重试 14/14 (基线完全韧性)
+- **wd8: 重试 0/14, 放弃 14/14 —— 成功日将LongCat从100%韧性打到100%放弃!**
+- tool_only(只有工具调用骨架): 重试 13/14 —— **几乎不影响!**
+- noop(无关对话): 重试 12/14 —— 不影响
+
+### N3 对照
+- GLM-5.3: none/wd8 都 14/14 重试 —— **免疫**
+- Qwen3-8B: none 14/14 → **wd8 0/14** —— **成功日也将8B打到100%放弃!**
+
+### 综合判决(本轮最干净最重要的发现)
+**"外来成功日→受挫放弃"效应在3个模型上干净确认(122B/LongCat/8B), GLM-5.3免疫**
+
+关键机制分离:
+- LongCat: wd8(完整成功日)→躺平, 但tool_only(只剩工具骨架)→不躺平
+  —— **与J流GLM结论相反!** J流说载体是工具成功, N流说需要完整会话
+  —— 可能是模型差异: GLM只看工具成功, LongCat需要完整叙事
+- 效应谱: GLM-5.3免疫 / 122B中等(71→29%) / LongCat和8B极端(100→0%)

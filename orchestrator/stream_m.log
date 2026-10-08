@@ -2,3 +2,17 @@
 [M] CS jobs: 252
 [M] CS done 1240s
 [M] coding jobs: 48
+[M] all done 11574s
+## M流 判决(M1 122B确认/M2 LongCat机制/M3编码域)
+- LongCat-2.0/M2_none: acted=36/36  action_calls=0.7  gave_up=24/36
+- LongCat-2.0/M2_noop: acted=36/36  action_calls=0.7  gave_up=21/36
+- LongCat-2.0/M2_wd8: acted=36/36  action_calls=0.7  gave_up=12/36
+- LongCat-2.0/M3_none: gave_up=0/12  test_runs=2.0  visible_pass=12/12  wrote=12/12
+- LongCat-2.0/M3_wd8: gave_up=0/12  test_runs=2.0  visible_pass=12/12  wrote=12/12
+- Qwen3.5-122B-A10B/M1_none: acted=36/36  action_calls=0.4  gave_up=23/36
+- Qwen3.5-122B-A10B/M1_tool8: acted=24/36  action_calls=0.3  gave_up=24/36
+- Qwen3.5-122B-A10B/M1_wd4: acted=30/36  action_calls=0.4  gave_up=24/36
+- Qwen3.5-122B-A10B/M1_wd8: acted=33/36  action_calls=0.3  gave_up=26/36
+- Qwen3.5-122B-A10B/M3_none: gave_up=0/12  test_runs=0.4  visible_pass=4/12  wrote=12/12
+- Qwen3.5-122B-A10B/M3_wd8: gave_up=0/12  test_runs=1.4  visible_pass=9/12  wrote=12/12
+===== Stream M 完成 =====
