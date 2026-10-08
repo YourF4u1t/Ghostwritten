@@ -652,3 +652,55 @@ KeyError: 'fib'
   —— **与J流GLM结论相反!** J流说载体是工具成功, N流说需要完整会话
   —— 可能是模型差异: GLM只看工具成功, LongCat需要完整叙事
 - 效应谱: GLM-5.3免疫 / 122B中等(71→29%) / LongCat和8B极端(100→0%)
+===== Stream O 启动 =====
+[O1] dose: 120 eps
+[O2] recovery: total 168 eps
+[O3] coding: total 216 eps
+## O流 判决(O1剂量/O2恢复/O3编码域)
+- LongCat-2.0/O1_d0: gave_up=0/12  n_calls=1.8  retried=11/12
+- LongCat-2.0/O1_d1: gave_up=12/12  n_calls=1.0  retried=0/12
+- LongCat-2.0/O1_d2: gave_up=12/12  n_calls=1.0  retried=0/12
+- LongCat-2.0/O1_d4: gave_up=12/12  n_calls=1.0  retried=0/12
+- LongCat-2.0/O1_d6: gave_up=12/12  n_calls=1.0  retried=0/12
+- LongCat-2.0/O2_none_rec: gave_up=0/12  n_calls=2.5  retried=12/12
+- LongCat-2.0/O2_wd4_rec: gave_up=0/12  n_calls=2.0  retried=12/12
+- LongCat-2.0/O3_none: n_runs=2.0  test_rerun=12/12  visible_pass=12/12  wrote_code=12/12
+- LongCat-2.0/O3_wd4: n_runs=2.1  test_rerun=12/12  visible_pass=12/12  wrote_code=12/12
+- Qwen3-8B/O1_d0: gave_up=0/12  n_calls=2.0  retried=12/12
+- Qwen3-8B/O1_d1: gave_up=12/12  n_calls=1.0  retried=0/12
+- Qwen3-8B/O1_d2: gave_up=12/12  n_calls=1.0  retried=0/12
+- Qwen3-8B/O1_d4: gave_up=12/12  n_calls=1.0  retried=0/12
+- Qwen3-8B/O1_d6: gave_up=12/12  n_calls=1.0  retried=0/12
+- Qwen3-8B/O2_none_rec: gave_up=0/12  n_calls=3.0  retried=12/12
+- Qwen3-8B/O2_wd4_rec: gave_up=0/12  n_calls=2.0  retried=12/12
+- Qwen3.5-122B-A10B/O3_none: n_runs=0.7  test_rerun=2/12  visible_pass=5/12  wrote_code=12/12
+- Qwen3.5-122B-A10B/O3_wd4: n_runs=1.7  test_rerun=9/12  visible_pass=11/12  wrote_code=12/12
+===== Stream O 完成 =====
+
+## O流 判决(216 eps, 剂量/恢复/编码域)
+
+### O1 剂量曲线(LongCat + 8B)
+- d0(无历史): 重试 11-12/12
+- d1(1任务成功日): **重试 0/12** ← 1条成功经验即100%摧毁韧性
+- d2/d4/d6: 同样 0/12 —— **断崖式, 无剂量梯度**
+- 与身份同化(ID4: 单调剂量曲线)形成对照——身份需要积累, 能力感一次到位
+
+### O2 恢复
+- 无论有无成功日, 加一句"再试一次"→重试 12/12 —— **用户催促完全恢复**
+- 虚假能力感的瘫痪不是持久状态——一句话即打破
+
+### O3 编码域(跨域泛化)
+- LongCat: none/wd4 都 12/12 重试+通过 —— CS成功日不影响编码域韧性
+- **122B: none=2/12重试率→wd4=9/12** —— **方向反转! CS成功日反而提高了编码域重试率!**
+- 122B none的visible_pass=5/12, wd4=11/12 —— 成功日还提高了通过率
+- 可能解释: 122B在编码域本来就不太敢重试(不自信), CS成功日的"工具一路绿灯"
+  反而给了它信心去重试编码工具
+
+### 综合图景(虚假能力感的完整画像)
+| 属性 | 表现 |
+|---|---|
+| 触发阈值 | 1次工具成功即触发(断崖式) |
+| 域特异性 | CS域内效应极强; 跨到编码域后效应消失甚至反转 |
+| 持久性 | 用户一句催促即完全恢复 |
+| 载体 | 因模型而异(GLM=工具骨架, LongCat=完整叙事) |
+| 模型谱 | 3/4模型确认, GLM-5.3免疫 |

@@ -1,0 +1,24 @@
+===== Stream O 启动 =====
+[O1] dose: 120 eps
+[O2] recovery: total 168 eps
+[O3] coding: total 216 eps
+## O流 判决(O1剂量/O2恢复/O3编码域)
+- LongCat-2.0/O1_d0: gave_up=0/12  n_calls=1.8  retried=11/12
+- LongCat-2.0/O1_d1: gave_up=12/12  n_calls=1.0  retried=0/12
+- LongCat-2.0/O1_d2: gave_up=12/12  n_calls=1.0  retried=0/12
+- LongCat-2.0/O1_d4: gave_up=12/12  n_calls=1.0  retried=0/12
+- LongCat-2.0/O1_d6: gave_up=12/12  n_calls=1.0  retried=0/12
+- LongCat-2.0/O2_none_rec: gave_up=0/12  n_calls=2.5  retried=12/12
+- LongCat-2.0/O2_wd4_rec: gave_up=0/12  n_calls=2.0  retried=12/12
+- LongCat-2.0/O3_none: n_runs=2.0  test_rerun=12/12  visible_pass=12/12  wrote_code=12/12
+- LongCat-2.0/O3_wd4: n_runs=2.1  test_rerun=12/12  visible_pass=12/12  wrote_code=12/12
+- Qwen3-8B/O1_d0: gave_up=0/12  n_calls=2.0  retried=12/12
+- Qwen3-8B/O1_d1: gave_up=12/12  n_calls=1.0  retried=0/12
+- Qwen3-8B/O1_d2: gave_up=12/12  n_calls=1.0  retried=0/12
+- Qwen3-8B/O1_d4: gave_up=12/12  n_calls=1.0  retried=0/12
+- Qwen3-8B/O1_d6: gave_up=12/12  n_calls=1.0  retried=0/12
+- Qwen3-8B/O2_none_rec: gave_up=0/12  n_calls=3.0  retried=12/12
+- Qwen3-8B/O2_wd4_rec: gave_up=0/12  n_calls=2.0  retried=12/12
+- Qwen3.5-122B-A10B/O3_none: n_runs=0.7  test_rerun=2/12  visible_pass=5/12  wrote_code=12/12
+- Qwen3.5-122B-A10B/O3_wd4: n_runs=1.7  test_rerun=9/12  visible_pass=11/12  wrote_code=12/12
+===== Stream O 完成 =====
