@@ -245,3 +245,59 @@ IndexError: list index out of range
 ## F3 门的会话内持续(风格→任务1→任务2, 只在开头带demo)
 - credit 0/7
 ===== Stream F 完成 =====
+════ ID2 洁净重算 (六格, 语言距离→donor) ════
+- 8B  携GLM史: 洁净d=0.13 (基线d=None, Δ=None)
+- 8B  携8B 史: 洁净d=0.175 (基线d=None, Δ=None)
+- GLM 携GLM史: 洁净d=0.128 (基线d=None, Δ=None)
+- GLM 携8B 史: 洁净d=0.249 (基线d=None, Δ=None)
+- 4B  携GLM史: 洁净d=0.17 (基线d=None, Δ=None)
+- 4B  携8B 史: 洁净d=0.179 (基线d=None, Δ=None)
+
+════ A7 洁净重算 (面板, 语言距离→donor; Δ负=真实同化) ════
+- Qwen3-8B         8B:0.08(Δ-0.01)  GLM:0.23(Δ-0.20)
+- Qwen3.5-122B-A10B 8B:0.17(Δ-0.03)  GLM:0.22(Δ-0.21)
+- Qwen3.5-27B      8B:0.07(Δ-0.21)  GLM:0.09(Δ-0.18)
+- Qwen3.5-4B       8B:0.11(Δ-0.15)  GLM:0.07(Δ-0.31)
+- Qwen3.5-9B       8B:0.27(Δ+0.02)  GLM:0.11(Δ-0.28)
+- LongCat-2.0      8B:0.17(Δ-0.03)  GLM:0.20(Δ-0.16)
+- GLM-5.2          8B:0.16(Δ-0.30)  GLM:0.10(Δ+0.05)
+- GLM-5.3          8B:0.16(Δ-0.16)  GLM:0.14(Δ-0.08)
+
+════ A1/C2 洁净重算 (指令vs历史作者; d→GLM) ════
+- [A1]
+  hist        d=0.157
+  hist+conc   d=0.419
+  hist+verb   d=0.151
+  instr_conc  d=0.569
+  instr_verb  d=0.358
+  none        d=0.417
+- [C2]
+  hist        d=0.211
+  hist+conc   d=0.412
+  hist+verb   d=0.143
+  instr_conc  d=0.571
+  instr_verb  d=0.376
+  none        d=0.410
+
+════ A5/A6/C4/ID4 洁净重算 ════
+- [A5] A_only    d→A(GLM)=0.195 d→B(4B)=0.234
+- [A5] A_then_B  d→A(GLM)=0.324 d→B(4B)=0.110
+- [A5] B_only    d→A(GLM)=0.332 d→B(4B)=0.094
+- [A5] B_then_A  d→A(GLM)=0.243 d→B(4B)=0.187
+- [A6] demo_label  d→GLM=0.296
+- [A6] import_note d→GLM=0.190
+- [A6] native      d→GLM=0.197
+- [C4] none         d→GLM(cs语言)=0.316
+- [C4] carryGLM_CS  d→GLM(cs语言)=0.163
+- [ID4] 剂量1: d→8B=0.396
+- [ID4] 剂量3: d→8B=0.207
+- [ID4] 剂量6: d→8B=0.165
+
+════ 勘误#3: 身份层污染重算(reviewer发现) ════
+- 8B  携GLM史: 洁净d=0.073 (基线=0.454, Δ=-0.381) Δ负=真实同化
+- 8B  携8B 史: 洁净d=0.142 (基线=0.095, Δ=0.047) Δ负=真实同化
+- GLM 携GLM史: 洁净d=0.101 (基线=0.057, Δ=0.043) Δ负=真实同化
+- GLM 携8B 史: 洁净d=0.276 (基线=0.519, Δ=-0.243) Δ负=真实同化
+- 4B  携GLM史: 洁净d=0.144 (基线=0.294, Δ=-0.15) Δ负=真实同化
+- 4B  携8B 史: 洁净d=0.168 (基线=0.275, Δ=-0.107) Δ负=真实同化
+(完整重算见 recompute_clean.py 输出, 已追加上方)
