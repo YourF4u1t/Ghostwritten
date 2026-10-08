@@ -1,0 +1,12 @@
+===== Stream K 启动 =====
+[K] running 84 eps
+[K] done 88s
+## K流 判决(K1最小注入/K2跨模型/K3恢复/K4链深度)
+- K1/none: any_tool=12/12  gave_up=12/12  n_calls=0.0  retried=0/12
+- K1/single_tool: any_tool=7/12  gave_up=5/12  n_calls=1.2  retried=7/12
+- K2/8b_tool_success: any_tool=0/12  gave_up=12/12  n_calls=0.0  retried=0/12
+- K3/none: any_tool=12/12  gave_up=0/12  n_calls=1.0  retried=0/12
+- K3/single_tool: any_tool=11/12  gave_up=1/12  n_calls=0.9  retried=0/12
+- K4/none: did_check_pm=12/12  did_refund=4/12  n_distinct_tools=2.5  total_calls=2.5
+- K4/single_tool: did_check_pm=12/12  did_refund=0/12  n_distinct_tools=2.0  total_calls=2.0
+===== Stream K 完成 =====

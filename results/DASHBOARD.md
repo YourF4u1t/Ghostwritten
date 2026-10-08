@@ -466,3 +466,42 @@ NameError: name 'k2' is not defined
 - 虚假能力感 = f(看到工具成功), 不需要语言、不需要叙事、1次即触发
 - 这与C1(易感移植需要对话结构)形成鲜明对照: 
   **身份层面要叙事, 能力感层面只要看到成功**
+===== Stream K 启动 =====
+[K] running 84 eps
+[K] done 88s
+## K流 判决(K1最小注入/K2跨模型/K3恢复/K4链深度)
+- K1/none: any_tool=12/12  gave_up=12/12  n_calls=0.0  retried=0/12
+- K1/single_tool: any_tool=7/12  gave_up=5/12  n_calls=1.2  retried=7/12
+- K2/8b_tool_success: any_tool=0/12  gave_up=12/12  n_calls=0.0  retried=0/12
+- K3/none: any_tool=12/12  gave_up=0/12  n_calls=1.0  retried=0/12
+- K3/single_tool: any_tool=11/12  gave_up=1/12  n_calls=0.9  retried=0/12
+- K4/none: did_check_pm=12/12  did_refund=4/12  n_distinct_tools=2.5  total_calls=2.5
+- K4/single_tool: did_check_pm=12/12  did_refund=0/12  n_distinct_tools=2.0  total_calls=2.0
+===== Stream K 完成 =====
+
+## K流 判决(84 eps, 最小注入/跨模型/恢复/链深度)
+
+### K1 最小注入悖论
+- **none条件: gave_up=12/12** —— 等等, 这与I流FC2/none(16/16躺平)一致但与H流矛盾
+- single_tool(单次工具成功注入): gave_up=5/12 —— **反而降低了躺平**(部分恢复行动)
+- **修正理解**: GLM-5.2在FC2场景下, "无历史"也会躺平(首次503即放弃是它的基线行为),
+  I流的"成功日→躺平"其实不是成功日造成的——**GLM本来就在这个场景躺平**
+- I流的对照组效应需要重新审视: 是"H流里none条件重试了"的原因——
+  H流FC2的none条件是Qwen-8B的重试, I流的FC2/GLM/none=16/16躺平
+- **教训: FC2场景下GLM的基线行为就是放弃, 成功日的"增毒"效应需换DV测量方式**
+
+### K2 跨模型工具成功
+- 8B的完整工作日(tool成功)→GLM: **any_tool=0/12** 完全瘫痪
+- 比single_tool(7/12行动)更强 —— 更长的成功史造成更深的虚假能力感
+
+### K3 恢复
+- 用户说"再试一次"后: none=0/12躺平, single_tool=1/12躺平 —— **一次用户催促即完全恢复**
+- 虚假能力感的"瘫痪"不是持久的——用户的一句话就能打破
+
+### K4 链深度
+- single_tool注入后: did_refund从4/12降到0/12, 工具种类从2.5降到2.0
+- **方向一致但幅度小** —— 虚假能力感使多步任务中的"最后一步"被省略
+
+### 修正判决
+FC2的GLM基线行为(无历史也放弃)削弱了"成功日造成躺平"的因果解释.
+需要用Qwen-8B(基线不放弃的模型)重做K1来分离"基线放弃"与"成功日加重放弃".
