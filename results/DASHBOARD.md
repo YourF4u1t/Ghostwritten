@@ -1007,3 +1007,70 @@ weak指令下两模型都不尝试退款(天花板).
 3. 指令强度: 8B在任何明确指令下都被摧毁; 122B只在强指令下被摧毁
 4. 27B新发现: 只被失败日摧毁(成功日不影响)——模型×历史类型交互
 5. 风格: 成功日和失败日都使风格微弱靠近donor(洁净后中等幅度)
+===== Stream T 启动 =====
+[T] 8B: succ=18 fail=18 | GLM: succ=22 fail=22
+[T] running 336 eps
+[T] done 1510s
+## T流 判决(T1 27B特异性/T2 指令全模型/T3 防御)
+- GLM-5.2            t2_none_med          retried=12/12 attempted=12/12
+- GLM-5.2            t2_none_strong       retried=12/12 attempted=12/12
+- GLM-5.2            t2_succ_med          retried=12/12 attempted=12/12
+- GLM-5.2            t2_succ_strong       retried=11/12 attempted=12/12
+- LongCat-2.0        t3_none_none         retried=12/12 attempted=12/12
+- LongCat-2.0        t3_none_succ         retried=0/12 attempted=12/12
+- LongCat-2.0        t3_sysnote_none      retried=11/12 attempted=11/12
+- LongCat-2.0        t3_sysnote_succ      retried=12/12 attempted=12/12
+- LongCat-2.0        t3_usernote_none     retried=11/12 attempted=11/12
+- LongCat-2.0        t3_usernote_succ     retried=12/12 attempted=12/12
+- Qwen3-8B           t3_none_none         retried=12/12 attempted=12/12
+- Qwen3-8B           t3_none_succ         retried=0/12 attempted=12/12
+- Qwen3-8B           t3_sysnote_none      retried=12/12 attempted=12/12
+- Qwen3-8B           t3_sysnote_succ      retried=12/12 attempted=12/12
+- Qwen3-8B           t3_usernote_none     retried=12/12 attempted=12/12
+- Qwen3-8B           t3_usernote_succ     retried=4/12 attempted=12/12
+- Qwen3.5-27B        t1_8Bfail            retried=6/12 attempted=12/12
+- Qwen3.5-27B        t1_8Bsucc            retried=12/12 attempted=12/12
+- Qwen3.5-27B        t1_GLfail            retried=12/12 attempted=12/12
+- Qwen3.5-27B        t1_none              retried=12/12 attempted=12/12
+- Qwen3.5-4B         t2_none_med          retried=12/12 attempted=12/12
+- Qwen3.5-4B         t2_none_strong       retried=12/12 attempted=12/12
+- Qwen3.5-4B         t2_succ_med          retried=9/12 attempted=12/12
+- Qwen3.5-4B         t2_succ_strong       retried=7/12 attempted=12/12
+- Qwen3.5-9B         t2_none_med          retried=8/12 attempted=9/12
+- Qwen3.5-9B         t2_none_strong       retried=11/12 attempted=12/12
+- Qwen3.5-9B         t2_succ_med          retried=9/12 attempted=12/12
+- Qwen3.5-9B         t2_succ_strong       retried=5/12 attempted=12/12
+===== Stream T 完成 =====
+
+## T流 判决(336 eps, 27B特异性/指令全模型/防御)
+
+### T1 27B失败日特异性
+- 8B失败日: **6/12**(从12/12降半) —— 8B家族的失败史也伤27B
+- GLM失败日: 12/12(不影响) —— **只被Qwen家族的失败史伤害**
+- 8B成功日: 12/12(不影响) —— 确认只对失败敏感
+- **27B的失败特异性带家族锁**: Qwen失败史→伤, GLM失败史→不伤
+
+### T2 指令强度全模型
+| 模型 | none_med | none_strong | succ_med | succ_strong |
+|---|---|---|---|---|
+| GLM-5.2 | 12/12 | 12/12 | 12/12 | 11/12 |
+| 4B | 12/12 | 12/12 | 9/12 | 7/12 |
+| 9B | 8/12 | 11/12 | 9/12 | **5/12** |
+- GLM-5.2全面免疫; 4B中间(75-92%); 9B强指令下被摧毁(11→5)
+- **指令强度效应不是122B独有**——9B也在强指令下被摧毁
+
+### T3 防御 — **系统提示有效!**
+| 模型 | 条件 | 无防御 | sysnote防御 | usernote防御 |
+|---|---|---|---|---|
+| 8B | none | 12/12 | 12/12 | 12/12 |
+| 8B | succ | **0/12** | **12/12** ✓ | 4/12(部分) |
+| LongCat | none | 12/12 | 11/12 | 11/12 |
+| LongCat | succ | **0/12** | **12/12** ✓ | **12/12** ✓ |
+
+**关键发现: 一句system级'工具失败必须重试至少一次'完全消除了重试抑制**
+8B: 0/12 → 12/12; LongCat: 0/12 → 12/12
+
+### 综合更新
+- **防御配方**: system级重试指令 = 完全有效(比经验回放混合/用户催促都强)
+- 27B的失败特异性带家族锁(只被同Qwen家族的失败史伤害)
+- 指令强度门控: 9B和122B都在强指令下被摧毁(非独有现象)

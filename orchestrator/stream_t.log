@@ -1,0 +1,34 @@
+===== Stream T 启动 =====
+[T] 8B: succ=18 fail=18 | GLM: succ=22 fail=22
+[T] running 336 eps
+[T] done 1510s
+## T流 判决(T1 27B特异性/T2 指令全模型/T3 防御)
+- GLM-5.2            t2_none_med          retried=12/12 attempted=12/12
+- GLM-5.2            t2_none_strong       retried=12/12 attempted=12/12
+- GLM-5.2            t2_succ_med          retried=12/12 attempted=12/12
+- GLM-5.2            t2_succ_strong       retried=11/12 attempted=12/12
+- LongCat-2.0        t3_none_none         retried=12/12 attempted=12/12
+- LongCat-2.0        t3_none_succ         retried=0/12 attempted=12/12
+- LongCat-2.0        t3_sysnote_none      retried=11/12 attempted=11/12
+- LongCat-2.0        t3_sysnote_succ      retried=12/12 attempted=12/12
+- LongCat-2.0        t3_usernote_none     retried=11/12 attempted=11/12
+- LongCat-2.0        t3_usernote_succ     retried=12/12 attempted=12/12
+- Qwen3-8B           t3_none_none         retried=12/12 attempted=12/12
+- Qwen3-8B           t3_none_succ         retried=0/12 attempted=12/12
+- Qwen3-8B           t3_sysnote_none      retried=12/12 attempted=12/12
+- Qwen3-8B           t3_sysnote_succ      retried=12/12 attempted=12/12
+- Qwen3-8B           t3_usernote_none     retried=12/12 attempted=12/12
+- Qwen3-8B           t3_usernote_succ     retried=4/12 attempted=12/12
+- Qwen3.5-27B        t1_8Bfail            retried=6/12 attempted=12/12
+- Qwen3.5-27B        t1_8Bsucc            retried=12/12 attempted=12/12
+- Qwen3.5-27B        t1_GLfail            retried=12/12 attempted=12/12
+- Qwen3.5-27B        t1_none              retried=12/12 attempted=12/12
+- Qwen3.5-4B         t2_none_med          retried=12/12 attempted=12/12
+- Qwen3.5-4B         t2_none_strong       retried=12/12 attempted=12/12
+- Qwen3.5-4B         t2_succ_med          retried=9/12 attempted=12/12
+- Qwen3.5-4B         t2_succ_strong       retried=7/12 attempted=12/12
+- Qwen3.5-9B         t2_none_med          retried=8/12 attempted=9/12
+- Qwen3.5-9B         t2_none_strong       retried=11/12 attempted=12/12
+- Qwen3.5-9B         t2_succ_med          retried=9/12 attempted=12/12
+- Qwen3.5-9B         t2_succ_strong       retried=5/12 attempted=12/12
+===== Stream T 完成 =====
