@@ -805,3 +805,87 @@ LongCat-2.0: 重试时风格d=0.145 vs 放弃时风格d=0.239 (差=-0.094)
 1. **身份移植**(风格同化): 需要完整会话结构, 单调剂量, 全模型(除个别例外)
 2. **虚假能力感**(受挫放弃): 断崖式触发, 域绑定, 模型差异极大(0-100%谱)
 两者可以独立出现: GLM-5.3只身份不同化+韧性免疫; LongCat可以韧性崩但风格不变
+===== Stream R 启动 =====
+R FAILED:
+Traceback (most recent call last):
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_r.py", line 179, in <module>
+    fill_block.extend([dict(FILLERS[j % 2]) for _ in [0]])  # one pair
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_r.py", line 179, in <listcomp>
+    fill_block.extend([dict(FILLERS[j % 2]) for _ in [0]])  # one pair
+ValueError: dictionary update sequence element #0 has length 4; 2 is required
+
+===== Stream R 完成 =====
+===== Stream R 启动 =====
+R FAILED:
+Traceback (most recent call last):
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_r.py", line 177, in <module>
+    pair = [dict(x) for x in FILLERS]
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_r.py", line 177, in <listcomp>
+    pair = [dict(x) for x in FILLERS]
+ValueError: dictionary update sequence element #0 has length 4; 2 is required
+
+===== Stream R 完成 =====
+===== Stream R 启动 =====
+[R] running 360 eps
+[R] done 2035s
+## R流 判决(R1全面板解离/R2失败日/R3衰减)
+model              cond     | 重试    风格d→8B
+- GLM-5.2            fail     | 12/12   0.232
+- GLM-5.2            none     | 12/12   0.367
+- GLM-5.2            succ     | 10/12   0.233
+- GLM-5.3            fail     | 12/12   0.176
+- GLM-5.3            none     | 12/12   0.204
+- GLM-5.3            succ     | 12/12   0.217
+- LongCat-2.0        decay0   | 0/12    0.219
+- LongCat-2.0        decay3   | 0/12    0.252
+- LongCat-2.0        decay6   | 0/12    0.228
+- LongCat-2.0        fail     | 0/12    0.204
+- LongCat-2.0        none     | 11/12   0.169
+- LongCat-2.0        succ     | 0/12    0.221
+- Qwen3-8B           decay0   | 0/12    0.221
+- Qwen3-8B           decay3   | 0/12    0.227
+- Qwen3-8B           decay6   | 0/12    0.237
+- Qwen3-8B           fail     | 0/12    0.187
+- Qwen3-8B           none     | 12/12   0.271
+- Qwen3-8B           succ     | 1/12    0.215
+- Qwen3.5-122B-A10B  fail     | 11/12   0.210
+- Qwen3.5-122B-A10B  none     | 8/12    0.214
+- Qwen3.5-122B-A10B  succ     | 9/12    0.244
+- Qwen3.5-27B        fail     | 7/12    0.128
+- Qwen3.5-27B        none     | 12/12   0.215
+- Qwen3.5-27B        succ     | 12/12   0.141
+- Qwen3.5-4B         fail     | 9/12    0.161
+- Qwen3.5-4B         none     | 12/12   0.202
+- Qwen3.5-4B         succ     | 8/12    0.169
+- Qwen3.5-9B         fail     | 3/12    0.210
+- Qwen3.5-9B         none     | 7/12    0.249
+- Qwen3.5-9B         succ     | 3/12    0.233
+===== Stream R 完成 =====
+
+## R流 判决(360 eps, 全面板×3条件 + 衰减)
+
+### 韧性DV(干净, 工具调用计数)
+| 模型 | none | succ(8B成功日) | fail(8B失败日) | decay3 | decay6 |
+|---|---|---|---|---|---|
+| Qwen3-8B | 12/12 | **1/12** | **0/12** | 0/12 | 0/12 |
+| LongCat | 11/12 | **0/12** | **0/12** | 0/12 | 0/12 |
+| GLM-5.2 | 12/12 | 10/12 | 12/12 | — | — |
+| GLM-5.3 | 12/12 | 12/12 | 12/12 | — | — |
+| 122B | 8/12 | 9/12 | 11/12 | — | — |
+| 27B | 12/12 | 12/12 | 7/12 | — | — |
+| 4B | 12/12 | 8/12 | 9/12 | — | — |
+| 9B | 7/12 | 3/12 | 3/12 | — | — |
+
+### 关键发现
+1. **失败日同样摧毁8B和LongCat的韧性!**(0/12) —— 
+   不是"虚假能力感"(成功特异), 是**任何外来历史都降低重试**
+2. **衰减: 零衰减**(8B/LongCat在成功日+3/6 filler对后仍0/12) —— 
+   效应贯穿整个上下文, 不是近因启动
+3. **模型谱(修正后)**: 8B/LongCat极端脆弱; GLM-5.3/27B/122B免疫; 
+   GLM-5.2/4B/9B中间或天花板
+4. **术语修正(采纳评审)**: 应称"history-induced retry suppression"
+   而非"false competence"—— 因为失败日同样抑制重试
+
+### 风格DV(已知污染, 仅参考)
+- 与韧性DV交叉分析无一致方向(有的模型succ近donor有的远) —— 
+  与Q流一样无法下"独立轴"结论

@@ -1,0 +1,36 @@
+===== Stream R 启动 =====
+[R] running 360 eps
+[R] done 2035s
+## R流 判决(R1全面板解离/R2失败日/R3衰减)
+model              cond     | 重试    风格d→8B
+- GLM-5.2            fail     | 12/12   0.232
+- GLM-5.2            none     | 12/12   0.367
+- GLM-5.2            succ     | 10/12   0.233
+- GLM-5.3            fail     | 12/12   0.176
+- GLM-5.3            none     | 12/12   0.204
+- GLM-5.3            succ     | 12/12   0.217
+- LongCat-2.0        decay0   | 0/12    0.219
+- LongCat-2.0        decay3   | 0/12    0.252
+- LongCat-2.0        decay6   | 0/12    0.228
+- LongCat-2.0        fail     | 0/12    0.204
+- LongCat-2.0        none     | 11/12   0.169
+- LongCat-2.0        succ     | 0/12    0.221
+- Qwen3-8B           decay0   | 0/12    0.221
+- Qwen3-8B           decay3   | 0/12    0.227
+- Qwen3-8B           decay6   | 0/12    0.237
+- Qwen3-8B           fail     | 0/12    0.187
+- Qwen3-8B           none     | 12/12   0.271
+- Qwen3-8B           succ     | 1/12    0.215
+- Qwen3.5-122B-A10B  fail     | 11/12   0.210
+- Qwen3.5-122B-A10B  none     | 8/12    0.214
+- Qwen3.5-122B-A10B  succ     | 9/12    0.244
+- Qwen3.5-27B        fail     | 7/12    0.128
+- Qwen3.5-27B        none     | 12/12   0.215
+- Qwen3.5-27B        succ     | 12/12   0.141
+- Qwen3.5-4B         fail     | 9/12    0.161
+- Qwen3.5-4B         none     | 12/12   0.202
+- Qwen3.5-4B         succ     | 8/12    0.169
+- Qwen3.5-9B         fail     | 3/12    0.210
+- Qwen3.5-9B         none     | 7/12    0.249
+- Qwen3.5-9B         succ     | 3/12    0.233
+===== Stream R 完成 =====
