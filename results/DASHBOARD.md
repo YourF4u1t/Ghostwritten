@@ -889,3 +889,121 @@ model              cond     | 重试    风格d→8B
 ### 风格DV(已知污染, 仅参考)
 - 与韧性DV交叉分析无一致方向(有的模型succ近donor有的远) —— 
   与Q流一样无法下"独立轴"结论
+===== Stream S 启动 =====
+[S] matched pair: succ=18 fail=18 msgs
+[S1] style: 144 eps
+[S2] decay: 96 eps
+===== Stream S 启动 =====
+[S] matched pair: succ=18 fail=18 msgs
+[S1] style: 144 eps
+[S2] decay: 96 eps
+[S3] matched: total tool 276 eps
+[S4] instr: total 420 eps
+[S] total: 564 eps
+## S流 判决(评审修正版)
+
+### S1 洁净风格测量(无工具纯对话)
+- GLM-5.3            S1_fail   style_d=0.554 (n=12)
+- GLM-5.3            S1_none   style_d=0.666 (n=12)
+- GLM-5.3            S1_succ   style_d=0.554 (n=12)
+- LongCat-2.0        S1_fail   style_d=0.413 (n=12)
+- LongCat-2.0        S1_none   style_d=0.615 (n=12)
+- LongCat-2.0        S1_succ   style_d=0.252 (n=12)
+- Qwen3-8B           S1_fail   style_d=0.490 (n=12)
+- Qwen3-8B           S1_none   style_d=0.581 (n=12)
+- Qwen3-8B           S1_succ   style_d=0.556 (n=12)
+- Qwen3.5-122B-A10B  S1_fail   style_d=0.551 (n=12)
+- Qwen3.5-122B-A10B  S1_none   style_d=0.650 (n=12)
+- Qwen3.5-122B-A10B  S1_succ   style_d=0.535 (n=12)
+
+### S2 精确衰减(0/1/3/6 filler对)
+- LongCat-2.0        S2_k0    retried=0/12
+- LongCat-2.0        S2_k1    retried=0/12
+- LongCat-2.0        S2_k3    retried=0/12
+- LongCat-2.0        S2_k6    retried=0/12
+- Qwen3-8B           S2_k0    retried=0/12
+- Qwen3-8B           S2_k1    retried=0/12
+- Qwen3-8B           S2_k3    retried=0/12
+- Qwen3-8B           S2_k6    retried=0/12
+
+### S3 匹配成功/失败
+- GLM-5.3            S3_m_fail retried=12/12 attempted=12/12
+- GLM-5.3            S3_m_succ retried=12/12 attempted=12/12
+- GLM-5.3            S3_none   retried=12/12 attempted=12/12
+- LongCat-2.0        S3_m_fail retried=0/12 attempted=12/12
+- LongCat-2.0        S3_m_succ retried=0/12 attempted=12/12
+- LongCat-2.0        S3_none   retried=11/12 attempted=11/12
+- Qwen3-8B           S3_m_fail retried=0/12 attempted=12/12
+- Qwen3-8B           S3_m_succ retried=0/12 attempted=12/12
+- Qwen3-8B           S3_none   retried=12/12 attempted=12/12
+- Qwen3.5-122B-A10B  S3_m_fail retried=0/12 attempted=12/12
+- Qwen3.5-122B-A10B  S3_m_succ retried=1/12 attempted=12/12
+- Qwen3.5-122B-A10B  S3_none   retried=4/12 attempted=12/12
+- Qwen3.5-27B        S3_m_fail retried=2/12 attempted=12/12
+- Qwen3.5-27B        S3_m_succ retried=12/12 attempted=12/12
+- Qwen3.5-27B        S3_none   retried=12/12 attempted=12/12
+
+### S4 指令强度
+- Qwen3-8B           S4_none_med      retried=11/12 attempted=12/12
+- Qwen3-8B           S4_none_strong   retried=12/12 attempted=12/12
+- Qwen3-8B           S4_none_weak     retried=0/12 attempted=0/12
+- Qwen3-8B           S4_succ_med      retried=0/12 attempted=12/12
+- Qwen3-8B           S4_succ_strong   retried=0/12 attempted=12/12
+- Qwen3-8B           S4_succ_weak     retried=0/12 attempted=0/12
+- Qwen3.5-122B-A10B  S4_none_med      retried=10/12 attempted=12/12
+- Qwen3.5-122B-A10B  S4_none_strong   retried=7/12 attempted=12/12
+- Qwen3.5-122B-A10B  S4_none_weak     retried=0/12 attempted=0/12
+- Qwen3.5-122B-A10B  S4_succ_med      retried=8/12 attempted=12/12
+- Qwen3.5-122B-A10B  S4_succ_strong   retried=0/12 attempted=12/12
+- Qwen3.5-122B-A10B  S4_succ_weak     retried=0/12 attempted=0/12
+===== Stream S 完成 =====
+
+## S流 判决(564 eps, 评审修正版——洁净测量+匹配对照+指令强度)
+
+### S1 洁净风格测量(无工具纯对话, 零空消息污染)
+| 模型 | none | succ | fail | 判读 |
+|---|---|---|---|---|
+| LongCat | 0.615 | **0.252** | 0.413 | 成功日→风格靠近donor(Δ-0.36)! 失败日部分 |
+| 8B | 0.581 | 0.556 | 0.490 | 均微弱靠近(Δ-0.03/-0.09) |
+| 122B | 0.650 | 0.535 | 0.551 | 均靠近(Δ-0.10~-0.12) |
+| GLM-5.3 | 0.666 | 0.554 | 0.554 | 均靠近(Δ-0.11) |
+
+**洁净版结论**: 成功日和失败日都使风格靠近donor(方向一致但幅度减弱).
+LongCat成功日效应最大(Δ-0.36). 之前A7的"8/8完全同化"确实是污染——洁净后幅度中等.
+**成功日和失败日在风格上无差异** —— 与韧性DV一致(匹配对照里两者同样摧毁韧性).
+
+### S2 精确衰减
+- 8B/LongCat: **0/1/3/6 filler对全部0/12重试** —— 完全无衰减
+- 确认: 重试抑制贯穿整个上下文, 非近因效应
+
+### S3 匹配成功/失败对照(严格匹配结构/长度/工具调用数, 只改结果)
+| 模型 | none | m_succ | m_fail | 判读 |
+|---|---|---|---|---|
+| 8B | 12/12 | **0/12** | **0/12** | 两者同样摧毁 |
+| LongCat | 11/12 | **0/12** | **0/12** | 两者同样摧毁 |
+| 122B | 4/12 | **1/12** | **0/12** | 两者同样摧毁(基线也低) |
+| 27B | 12/12 | 12/12 | **2/12** | **失败日特异性摧毁27B!** |
+| GLM-5.3 | 12/12 | 12/12 | 12/12 | 双重免疫 |
+
+**新发现: 27B只在失败日条件下失去韧性(12/12→2/12)**, 成功日不影响它——
+与8B/LongCat(两种历史都摧毁)不同, 27B是"失败特异性"
+
+### S4 指令强度(8B + 122B)
+| 条件 | weak | med | strong |
+|---|---|---|---|
+| 8B none | 0尝试 | 11重试 | 12重试 |
+| 8B succ | 0尝试 | **0重试** | **0重试** |
+| 122B none | 0尝试 | 10重试 | 7重试 |
+| 122B succ | 0尝试 | 8重试 | **0重试** |
+
+**关键**: 122B在强指令下被成功日摧毁(7→0), 但中等指令下不受影响(10→8)!
+8B在中等和强指令下都被摧毁(11→0, 12→0).
+weak指令下两模型都不尝试退款(天花板).
+
+### 综合更新(术语按评审修正)
+核心现象更名为: **history-induced retry suppression**
+1. 触发: **任何外来历史**(成功或失败, 严格匹配下同样有效)
+2. 衰减: 零(贯穿上下文)
+3. 指令强度: 8B在任何明确指令下都被摧毁; 122B只在强指令下被摧毁
+4. 27B新发现: 只被失败日摧毁(成功日不影响)——模型×历史类型交互
+5. 风格: 成功日和失败日都使风格微弱靠近donor(洁净后中等幅度)

@@ -1,0 +1,64 @@
+===== Stream S 启动 =====
+[S] matched pair: succ=18 fail=18 msgs
+[S1] style: 144 eps
+[S2] decay: 96 eps
+[S3] matched: total tool 276 eps
+[S4] instr: total 420 eps
+[S] total: 564 eps
+## S流 判决(评审修正版)
+
+### S1 洁净风格测量(无工具纯对话)
+- GLM-5.3            S1_fail   style_d=0.554 (n=12)
+- GLM-5.3            S1_none   style_d=0.666 (n=12)
+- GLM-5.3            S1_succ   style_d=0.554 (n=12)
+- LongCat-2.0        S1_fail   style_d=0.413 (n=12)
+- LongCat-2.0        S1_none   style_d=0.615 (n=12)
+- LongCat-2.0        S1_succ   style_d=0.252 (n=12)
+- Qwen3-8B           S1_fail   style_d=0.490 (n=12)
+- Qwen3-8B           S1_none   style_d=0.581 (n=12)
+- Qwen3-8B           S1_succ   style_d=0.556 (n=12)
+- Qwen3.5-122B-A10B  S1_fail   style_d=0.551 (n=12)
+- Qwen3.5-122B-A10B  S1_none   style_d=0.650 (n=12)
+- Qwen3.5-122B-A10B  S1_succ   style_d=0.535 (n=12)
+
+### S2 精确衰减(0/1/3/6 filler对)
+- LongCat-2.0        S2_k0    retried=0/12
+- LongCat-2.0        S2_k1    retried=0/12
+- LongCat-2.0        S2_k3    retried=0/12
+- LongCat-2.0        S2_k6    retried=0/12
+- Qwen3-8B           S2_k0    retried=0/12
+- Qwen3-8B           S2_k1    retried=0/12
+- Qwen3-8B           S2_k3    retried=0/12
+- Qwen3-8B           S2_k6    retried=0/12
+
+### S3 匹配成功/失败
+- GLM-5.3            S3_m_fail retried=12/12 attempted=12/12
+- GLM-5.3            S3_m_succ retried=12/12 attempted=12/12
+- GLM-5.3            S3_none   retried=12/12 attempted=12/12
+- LongCat-2.0        S3_m_fail retried=0/12 attempted=12/12
+- LongCat-2.0        S3_m_succ retried=0/12 attempted=12/12
+- LongCat-2.0        S3_none   retried=11/12 attempted=11/12
+- Qwen3-8B           S3_m_fail retried=0/12 attempted=12/12
+- Qwen3-8B           S3_m_succ retried=0/12 attempted=12/12
+- Qwen3-8B           S3_none   retried=12/12 attempted=12/12
+- Qwen3.5-122B-A10B  S3_m_fail retried=0/12 attempted=12/12
+- Qwen3.5-122B-A10B  S3_m_succ retried=1/12 attempted=12/12
+- Qwen3.5-122B-A10B  S3_none   retried=4/12 attempted=12/12
+- Qwen3.5-27B        S3_m_fail retried=2/12 attempted=12/12
+- Qwen3.5-27B        S3_m_succ retried=12/12 attempted=12/12
+- Qwen3.5-27B        S3_none   retried=12/12 attempted=12/12
+
+### S4 指令强度
+- Qwen3-8B           S4_none_med      retried=11/12 attempted=12/12
+- Qwen3-8B           S4_none_strong   retried=12/12 attempted=12/12
+- Qwen3-8B           S4_none_weak     retried=0/12 attempted=0/12
+- Qwen3-8B           S4_succ_med      retried=0/12 attempted=12/12
+- Qwen3-8B           S4_succ_strong   retried=0/12 attempted=12/12
+- Qwen3-8B           S4_succ_weak     retried=0/12 attempted=0/12
+- Qwen3.5-122B-A10B  S4_none_med      retried=10/12 attempted=12/12
+- Qwen3.5-122B-A10B  S4_none_strong   retried=7/12 attempted=12/12
+- Qwen3.5-122B-A10B  S4_none_weak     retried=0/12 attempted=0/12
+- Qwen3.5-122B-A10B  S4_succ_med      retried=8/12 attempted=12/12
+- Qwen3.5-122B-A10B  S4_succ_strong   retried=0/12 attempted=12/12
+- Qwen3.5-122B-A10B  S4_succ_weak     retried=0/12 attempted=0/12
+===== Stream S 完成 =====
