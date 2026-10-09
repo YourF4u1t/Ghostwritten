@@ -1074,3 +1074,71 @@ weak指令下两模型都不尝试退款(天花板).
 - **防御配方**: system级重试指令 = 完全有效(比经验回放混合/用户催促都强)
 - 27B的失败特异性带家族锁(只被同Qwen家族的失败史伤害)
 - 指令强度门控: 9B和122B都在强指令下被摧毁(非独有现象)
+===== Stream U 启动 =====
+[U] running 384 eps
+[U] done 1669s
+## U流 判决(U1防御鲁棒性/U2多步链/U3特异性)
+- LongCat-2.0        U1a_def_wd4            hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- LongCat-2.0        U1a_def_wd6            hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- LongCat-2.0        U1a_no_wd4             hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- LongCat-2.0        U1a_no_wd6             hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- LongCat-2.0        U2_none                hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=12/12
+- LongCat-2.0        U2_succ                hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- LongCat-2.0        U3_none                hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=12/12
+- LongCat-2.0        U3_succ                hallucinated_success=0/12  n_refund=1.0  retried=1/12  used_other_after_fail=12/12
+- Qwen3-8B           U1a_def_wd4            hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1a_def_wd6            hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=4/12
+- Qwen3-8B           U1a_no_wd4             hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1a_no_wd6             hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1b_def_f1             hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1b_def_f2             hallucinated_success=0/12  n_refund=2.9  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1b_def_f3             hallucinated_success=0/12  n_refund=3.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1b_no_f1              hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1b_no_f2              hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1b_no_f3              hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_def_auth           hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_def_network        hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_def_server         hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_def_timeout        hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_no_auth            hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_no_network         hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_no_server          hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_no_timeout         hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U2_none                hallucinated_success=0/12  n_refund=2.9  retried=12/12  used_other_after_fail=12/12
+- Qwen3-8B           U2_succ                hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U3_none                hallucinated_success=0/12  n_refund=1.3  retried=4/12  used_other_after_fail=12/12
+- Qwen3-8B           U3_succ                hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=12/12
+- Qwen3.5-122B-A10B  U2_none                hallucinated_success=0/12  n_refund=2.1  retried=12/12  used_other_after_fail=12/12
+- Qwen3.5-122B-A10B  U2_succ                hallucinated_success=0/12  n_refund=1.8  retried=10/12  used_other_after_fail=0/12
+===== Stream U 完成 =====
+
+## U流 判决(384 eps, 防御鲁棒性/多步链/特异性)
+
+### U1a 防御 vs 更长历史
+- system重试指令在wd4和wd6下都完全有效(8B/LC全部12/12) —— **防御对历史长度鲁棒**
+
+### U1b 防御 vs 多次连续失败
+- 有防御: 1/2/3次失败都12/12重试(n_refund 2.0/2.9/3.0) —— 完全恢复
+- 无防御: 全部0/12 —— **防御完全消除多次失败的累积打击**
+
+### U1c 防御 vs 不同错误类型
+- timeout/auth/network/server四种错误: 有防御全部12/12, 无防御全部0/12
+- **防御对错误类型完全鲁棒**
+
+### U2 多步失败链(用户抱怨后再试)
+- 8B: none=12/12重试(用户催促有效); succ=12/12(**用户催促也恢复!**)
+- LongCat: 同上(none和succ都12/12)
+- 122B: none=12/12, succ=10/12(基本恢复)
+- **用户第二轮催促完全消除了重试抑制**(即使在有外来历史的情况下)
+
+### U3 工具特异性 vs 泛化瘫痪
+- 8B succ: retried=0/12 但 used_other_after_fail=12/12
+  —— **只停止重试失败的特定工具, 不瘫痪所有工具**
+- LongCat succ: retried=1/12, used_other=12/12 —— 同上
+- **重试抑制是工具特异的, 不是泛化行动瘫痪**
+
+### 综合更新
+- 防御配方(system重试指令)对所有测试变体完全鲁棒(长度/次数/错误类型)
+- 用户催促(第二轮)也完全有效
+- 重试抑制是**工具特异**的(只影响被失败的那个工具的重试)
+- 无幻觉成功(0/所有——不会谎称退款已发出)

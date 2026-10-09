@@ -1,0 +1,37 @@
+===== Stream U 启动 =====
+[U] running 384 eps
+[U] done 1669s
+## U流 判决(U1防御鲁棒性/U2多步链/U3特异性)
+- LongCat-2.0        U1a_def_wd4            hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- LongCat-2.0        U1a_def_wd6            hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- LongCat-2.0        U1a_no_wd4             hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- LongCat-2.0        U1a_no_wd6             hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- LongCat-2.0        U2_none                hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=12/12
+- LongCat-2.0        U2_succ                hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- LongCat-2.0        U3_none                hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=12/12
+- LongCat-2.0        U3_succ                hallucinated_success=0/12  n_refund=1.0  retried=1/12  used_other_after_fail=12/12
+- Qwen3-8B           U1a_def_wd4            hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1a_def_wd6            hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=4/12
+- Qwen3-8B           U1a_no_wd4             hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1a_no_wd6             hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1b_def_f1             hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1b_def_f2             hallucinated_success=0/12  n_refund=2.9  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1b_def_f3             hallucinated_success=0/12  n_refund=3.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1b_no_f1              hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1b_no_f2              hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1b_no_f3              hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_def_auth           hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_def_network        hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_def_server         hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_def_timeout        hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_no_auth            hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_no_network         hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_no_server          hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U1c_no_timeout         hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=0/12
+- Qwen3-8B           U2_none                hallucinated_success=0/12  n_refund=2.9  retried=12/12  used_other_after_fail=12/12
+- Qwen3-8B           U2_succ                hallucinated_success=0/12  n_refund=2.0  retried=12/12  used_other_after_fail=0/12
+- Qwen3-8B           U3_none                hallucinated_success=0/12  n_refund=1.3  retried=4/12  used_other_after_fail=12/12
+- Qwen3-8B           U3_succ                hallucinated_success=0/12  n_refund=1.0  retried=0/12  used_other_after_fail=12/12
+- Qwen3.5-122B-A10B  U2_none                hallucinated_success=0/12  n_refund=2.1  retried=12/12  used_other_after_fail=12/12
+- Qwen3.5-122B-A10B  U2_succ                hallucinated_success=0/12  n_refund=1.8  retried=10/12  used_other_after_fail=0/12
+===== Stream U 完成 =====
