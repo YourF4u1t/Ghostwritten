@@ -1235,3 +1235,70 @@ weak指令下两模型都不尝试退款(天花板).
 之前U3说"工具特异"(失败后仍用其他工具)——那测的是"还会不会用其他工具",
 W4测的是"其他工具的成功是否抑制当前工具的重试"——答案是**会**.
 两个发现不矛盾: 抑制影响的是"重试被失败的工具"这个动作, 但触发可以是任何工具的成功.
+===== Stream X 启动 =====
+[X] foreign_8B=10 foreign_GLM=0 msgs
+X FAILED:
+Traceback (most recent call last):
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_x.py", line 153, in <module>
+    jobs.append((M, cond, [dict(x) for x in seed], None,
+TypeError: 'NoneType' object is not iterable
+
+===== Stream X 完成 =====
+===== Stream X 启动 =====
+[X] foreign_8B=10 foreign_GLM=0 msgs
+X FAILED:
+Traceback (most recent call last):
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_x.py", line 153, in <module>
+    jobs.append((M, cond, [dict(x) for x in seed], None,
+TypeError: 'NoneType' object is not iterable
+
+===== Stream X 完成 =====
+===== Stream X 启动 =====
+[X] foreign_8B=10 foreign_GLM=0 msgs
+[X] running 112 eps
+[X] done 229s
+## X流 判决(X1四条件对照/X2语言风格/X3标签)
+- Qwen3-8B           X1_demo            gave_up=0/14  n_refund=2.0  retried=14/14
+- Qwen3-8B           X1_foreign         gave_up=5/14  n_refund=0.4  retried=0/14
+- Qwen3-8B           X1_instruction     gave_up=14/14  n_refund=1.0  retried=0/14
+- Qwen3-8B           X1_none            gave_up=0/14  n_refund=2.0  retried=14/14
+- Qwen3-8B           X1_self            gave_up=14/14  n_refund=1.0  retried=0/14
+- Qwen3-8B           X2_8B_style        gave_up=3/14  n_refund=0.2  retried=0/14
+- Qwen3-8B           X3_example_label   gave_up=14/14  n_refund=1.0  retried=0/14
+- Qwen3-8B           X3_no_label        gave_up=2/14  n_refund=0.1  retried=0/14
+===== Stream X 完成 =====
+
+## X流 判决(112 eps, 回归原始idea: 四条件对照/语言风格/标签)
+
+### X1 四条件 head-to-head(8B)
+| 条件 | 重试率 | 解读 |
+|---|---|---|
+| none | 14/14 | 正常基线 |
+| **demo**(外来轨迹作范例) | **14/14** | **完全不影响!** |
+| **foreign**(外来轨迹作原生历史) | **0/14** | 完全抑制 |
+| **self**(自身真实成功) | **0/14** | 完全抑制 |
+| **instruction**("你刚成功处理了一个查询") | **0/14** | 完全抑制 |
+
+**关键发现: 外来历史以demo形式给出时完全不抑制重试, 以native历史给出时完全抑制**
+—— 这就是原始idea的通道差异! 不只是"记忆"和"身份"的通道差, **重试抑制也有通道差**:
+native通道触发, demo通道不触发. 与记忆面(native吸收/demo排除)方向完全一致!
+
+instruction-only(纯文字"你刚成功了")也触发——说明触发条件是"认为这是自己的经历",
+不是"看到工具成功的文本". demo形式下工具成功被归因为"别人的", 不影响自己.
+
+### X2 语言风格(GLM史缺失, 仅8B)
+- 8B自己的史: 0/14(与X1_foreign一致)
+
+### X3 "example"标签
+- 有example标签: 0/14 —— **example标签不阻止重试抑制**(与记忆面不同!记忆面example阻断了)
+- 无标签: 0/14
+- **记忆面 example阻断认领; 重试面 example不阻断抑制** —— 又一个解离
+
+### 回归原始idea: 通道×功能完整映射(最终版)
+| 功能 | native(自传历史) | demo(范例) | instruction |
+|---|---|---|---|
+| 记忆认领 | ✅吸收 | ❌排除(GLM)/部分(8B) | ❌不吸收 |
+| 身份同化 | ✅完全 | ✅部分(需结构) | ❌不同化 |
+| 行为模仿 | 弱(需结构化) | ✅强 | ✅强 |
+| 重试抑制 | ✅完全触发 | ❌不触发 | ✅触发 |
+| 政策服从 | 不影响 | 不影响 | ✅可覆盖 |

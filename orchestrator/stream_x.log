@@ -1,0 +1,14 @@
+===== Stream X 启动 =====
+[X] foreign_8B=10 foreign_GLM=0 msgs
+[X] running 112 eps
+[X] done 229s
+## X流 判决(X1四条件对照/X2语言风格/X3标签)
+- Qwen3-8B           X1_demo            gave_up=0/14  n_refund=2.0  retried=14/14
+- Qwen3-8B           X1_foreign         gave_up=5/14  n_refund=0.4  retried=0/14
+- Qwen3-8B           X1_instruction     gave_up=14/14  n_refund=1.0  retried=0/14
+- Qwen3-8B           X1_none            gave_up=0/14  n_refund=2.0  retried=14/14
+- Qwen3-8B           X1_self            gave_up=14/14  n_refund=1.0  retried=0/14
+- Qwen3-8B           X2_8B_style        gave_up=3/14  n_refund=0.2  retried=0/14
+- Qwen3-8B           X3_example_label   gave_up=14/14  n_refund=1.0  retried=0/14
+- Qwen3-8B           X3_no_label        gave_up=2/14  n_refund=0.1  retried=0/14
+===== Stream X 完成 =====
