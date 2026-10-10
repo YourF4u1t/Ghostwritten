@@ -1,0 +1,17 @@
+===== Stream W 启动 =====
+[W] running 144 eps
+[W] done 1042s
+## W流 判决(W1成功数量/W2失败经验/W3距离/W4跨工具)
+- Qwen3-8B           W1_s0          gave_up=0/12  n_refund=2.0  retried=12/12
+- Qwen3-8B           W1_s1          gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W1_s2          gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W1_s4          gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W2_1s1f        gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W2_2fail_ref   gave_up=0/12  n_refund=2.0  retried=12/12
+- Qwen3-8B           W2_2succ       gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W3_f0          gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W3_f2          gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W3_f4          gave_up=10/12  n_refund=1.2  retried=2/12
+- Qwen3-8B           W4_exch_succ   gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W4_query_succ  gave_up=12/12  n_refund=1.0  retried=0/12
+===== Stream W 完成 =====

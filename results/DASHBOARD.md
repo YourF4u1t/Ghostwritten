@@ -1191,3 +1191,47 @@ weak指令下两模型都不尝试退款(天花板).
 
 **防御最低有效措辞**: 只需"失败请重试"(中等)即可完全防御.
 模糊提及("偶尔会有失败")完全无效.
+===== Stream W 启动 =====
+[W] running 144 eps
+[W] done 1042s
+## W流 判决(W1成功数量/W2失败经验/W3距离/W4跨工具)
+- Qwen3-8B           W1_s0          gave_up=0/12  n_refund=2.0  retried=12/12
+- Qwen3-8B           W1_s1          gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W1_s2          gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W1_s4          gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W2_1s1f        gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W2_2fail_ref   gave_up=0/12  n_refund=2.0  retried=12/12
+- Qwen3-8B           W2_2succ       gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W3_f0          gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W3_f2          gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W3_f4          gave_up=10/12  n_refund=1.2  retried=2/12
+- Qwen3-8B           W4_exch_succ   gave_up=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           W4_query_succ  gave_up=12/12  n_refund=1.0  retried=0/12
+===== Stream W 完成 =====
+
+## W流 判决(144 eps, 成功数量/失败经验/距离/跨工具)
+
+### W1 成功数量梯度
+- s0(无前置成功): 12/12重试
+- s1/s2/s4(1/2/4个前置成功): 全部0/12 —— **1次真实成功即断崖**, 无剂量梯度
+
+### W2 失败经验的预防效果
+- 2个成功: 0/12(被抑制)
+- 1成功+1失败提及: **0/12**(仍被抑制) —— 提及失败不能预防
+- **2个失败提及(无成功): 12/12**(不受抑制) —— 纯失败经验不触发抑制
+- **只有真实成功才触发; 失败经历不预防; 但纯失败也不抑制**
+
+### W3 距离衰减
+- f0(成功后立即失败): 0/12
+- f2(隔2轮闲聊): 0/12
+- f4(隔4轮闲聊): **2/12**(微弱恢复) —— 极慢衰减, 4轮后仅部分恢复
+
+### W4 跨工具
+- 用get_payment_methods成功 → refund失败: 0/12(被抑制)
+- 用exchange_order成功 → refund失败: 0/12(被抑制)
+- **跨工具: 任何工具的成功都抑制后续任何工具的重试** —— 非工具特异
+
+### U3修正
+之前U3说"工具特异"(失败后仍用其他工具)——那测的是"还会不会用其他工具",
+W4测的是"其他工具的成功是否抑制当前工具的重试"——答案是**会**.
+两个发现不矛盾: 抑制影响的是"重试被失败的工具"这个动作, 但触发可以是任何工具的成功.
