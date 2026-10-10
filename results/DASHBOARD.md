@@ -1446,3 +1446,50 @@ assistant消息(结构异常). "模板捕获"标记为不稳定, 需要更多条
 - **LongCat**: 干净设计中正常(Y流确认)——之前的假阳性源于X/W流的混淆
 - **GLM-5.3**: 全面免疫
 - "模板捕获": 不稳定, 可能为Y流外来史的结构特殊性(连续assistant消息)所致
+===== Stream AA 启动 =====
+[AA] running 108 eps
+[AA] done 413s
+## AA流 判决(AA1纯对话/AA2标签/AA3错误类型/AA4无失败)
+- Qwen3-8B           AA1_none         asked_question=0/12  attempted=12/12  n_refund=12/12  retried=12/12  used_any_tool=12/12
+- Qwen3-8B           AA1_pure_conv    asked_question=0/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA1_tool_hist    asked_question=12/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA2_no_label     asked_question=12/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA2_platform     asked_question=12/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA3_auth         asked_question=12/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA3_network      asked_question=12/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA3_server       asked_question=12/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA3_timeout      asked_question=12/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA4_hist         refund_done=12/12  used_any_tool=12/12
+- Qwen3-8B           AA4_none         refund_done=12/12  used_any_tool=12/12
+===== Stream AA 完成 =====
+
+## AA流 判决(108 eps, 8B脆弱性机制)
+
+### AA1 纯对话 vs 带工具史
+- none: 12/12重试
+- **pure_conv(零工具纯对话): 0/12重试** ← 甚至无关对话也摧毁重试!
+- tool_hist: 0/12重试
+- **8B的脆弱性不需要任何工具成功——有外来上下文就够**
+
+### AA2 标签
+- platform标签/无标签: 都是0/12 —— 标签不阻止
+
+### AA3 错误类型
+- timeout/auth/network/server: 全部0/12 —— 错误类型不影响
+
+### AA4 无失败正常任务
+- 有/无外来史: 都12/12完成退款 —— **正常任务不受影响**
+- 脆弱性只在"遭遇失败后"表现, 不影响正常执行
+
+### AA1的关键发现: asked_question
+- none: 0/12提问(直接做)
+- pure_conv: 0/12提问(直接做但不重试)
+- tool_hist: **12/12提问!** —— 有工具史时8B在失败后转向提问而非重试
+
+### 综合机制图景
+8B的外来史脆弱性 = "遭遇工具失败后, 不重试而转向提问/放弃"
+- 触发: 任何外来上下文(纯对话即可)
+- 不影响: 正常任务执行(无失败时12/12完成)
+- 表现: 失败后0%重试, 转向提问(工具史)或沉默放弃(纯对话)
+- 标签免疫, 错误类型免疫
+- **本质: 外来上下文改变了"遭遇失败时的响应模式"(从重试变为求助/放弃)**

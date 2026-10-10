@@ -1,0 +1,16 @@
+===== Stream AA 启动 =====
+[AA] running 108 eps
+[AA] done 413s
+## AA流 判决(AA1纯对话/AA2标签/AA3错误类型/AA4无失败)
+- Qwen3-8B           AA1_none         asked_question=0/12  attempted=12/12  n_refund=12/12  retried=12/12  used_any_tool=12/12
+- Qwen3-8B           AA1_pure_conv    asked_question=0/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA1_tool_hist    asked_question=12/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA2_no_label     asked_question=12/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA2_platform     asked_question=12/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA3_auth         asked_question=12/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA3_network      asked_question=12/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA3_server       asked_question=12/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA3_timeout      asked_question=12/12  attempted=12/12  n_refund=12/12  retried=0/12  used_any_tool=12/12
+- Qwen3-8B           AA4_hist         refund_done=12/12  used_any_tool=12/12
+- Qwen3-8B           AA4_none         refund_done=12/12  used_any_tool=12/12
+===== Stream AA 完成 =====
