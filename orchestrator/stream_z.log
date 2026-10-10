@@ -1,0 +1,17 @@
+===== Stream Z 启动 =====
+[Z] running 168 eps
+[Z] done 551s
+## Z流 判决(Z1触发条件/Z2标签)
+- Qwen3-8B           Z1_diff_domain   attempted=14/14  echo_foreign=0/14  n_refund=1.0  retried=0/14
+- Qwen3-8B           Z1_diff_tool     attempted=14/14  echo_foreign=0/14  n_refund=1.0  retried=0/14
+- Qwen3-8B           Z1_none          attempted=14/14  echo_foreign=0/14  n_refund=1.9  retried=13/14
+- Qwen3-8B           Z1_same_tool     attempted=14/14  echo_foreign=0/14  n_refund=1.0  retried=0/14
+- Qwen3-8B           Z2_labeled       attempted=14/14  echo_foreign=0/14  n_refund=1.0  retried=0/14
+- Qwen3-8B           Z2_unlabeled     attempted=14/14  echo_foreign=0/14  n_refund=1.0  retried=0/14
+- Qwen3.5-122B-A10B  Z1_diff_domain   attempted=13/14  echo_foreign=0/14  n_refund=1.8  retried=12/14
+- Qwen3.5-122B-A10B  Z1_diff_tool     attempted=14/14  echo_foreign=0/14  n_refund=1.6  retried=8/14
+- Qwen3.5-122B-A10B  Z1_none          attempted=14/14  echo_foreign=0/14  n_refund=2.0  retried=14/14
+- Qwen3.5-122B-A10B  Z1_same_tool     attempted=14/14  echo_foreign=0/14  n_refund=2.0  retried=14/14
+- Qwen3.5-122B-A10B  Z2_labeled       attempted=14/14  echo_foreign=0/14  n_refund=2.0  retried=14/14
+- Qwen3.5-122B-A10B  Z2_unlabeled     attempted=14/14  echo_foreign=0/14  n_refund=2.0  retried=14/14
+===== Stream Z 完成 =====

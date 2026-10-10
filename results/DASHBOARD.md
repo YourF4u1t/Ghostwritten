@@ -1400,3 +1400,49 @@ LongCat在干净设计中不受影响——**之前所有LongCat的"极端脆弱
 | 外来史demo→部分抑制 | ⚠️8B独有 | 7/14(vs基线13/14), 其他模型不受影响 |
 | LongCat极端脆弱 | ❌假阳性 | 干净设计中全面正常 |
 | 防御(system重试指令) | ✅有效 | 部分恢复行动启动+完全恢复重试 |
+===== Stream Z 启动 =====
+[Z] running 168 eps
+[Z] done 551s
+## Z流 判决(Z1触发条件/Z2标签)
+- Qwen3-8B           Z1_diff_domain   attempted=14/14  echo_foreign=0/14  n_refund=1.0  retried=0/14
+- Qwen3-8B           Z1_diff_tool     attempted=14/14  echo_foreign=0/14  n_refund=1.0  retried=0/14
+- Qwen3-8B           Z1_none          attempted=14/14  echo_foreign=0/14  n_refund=1.9  retried=13/14
+- Qwen3-8B           Z1_same_tool     attempted=14/14  echo_foreign=0/14  n_refund=1.0  retried=0/14
+- Qwen3-8B           Z2_labeled       attempted=14/14  echo_foreign=0/14  n_refund=1.0  retried=0/14
+- Qwen3-8B           Z2_unlabeled     attempted=14/14  echo_foreign=0/14  n_refund=1.0  retried=0/14
+- Qwen3.5-122B-A10B  Z1_diff_domain   attempted=13/14  echo_foreign=0/14  n_refund=1.8  retried=12/14
+- Qwen3.5-122B-A10B  Z1_diff_tool     attempted=14/14  echo_foreign=0/14  n_refund=1.6  retried=8/14
+- Qwen3.5-122B-A10B  Z1_none          attempted=14/14  echo_foreign=0/14  n_refund=2.0  retried=14/14
+- Qwen3.5-122B-A10B  Z1_same_tool     attempted=14/14  echo_foreign=0/14  n_refund=2.0  retried=14/14
+- Qwen3.5-122B-A10B  Z2_labeled       attempted=14/14  echo_foreign=0/14  n_refund=2.0  retried=14/14
+- Qwen3.5-122B-A10B  Z2_unlabeled     attempted=14/14  echo_foreign=0/14  n_refund=2.0  retried=14/14
+===== Stream Z 完成 =====
+
+## Z流 判决(168 eps, 模板捕获触发条件+标签)
+
+### Z1 触发条件
+| 模型 | none | same_tool | diff_tool | diff_domain | echo |
+|---|---|---|---|---|---|
+| 8B | 13/14重试 | **0/14** | **0/14** | **0/14** | 0/14 |
+| 122B | 14/14重试 | **14/14** | **8/14** | **12/14** | 0/14 |
+
+**8B**: 任何类型的外来历史(同工具/不同工具/不同域)都完全摧毁重试(全0/14)——
+   非模板匹配, 是泛化的"有外来史→不重试"
+**122B**: 同工具不影响(14/14), 不同工具部分抑制(8/14), 查询类轻微(12/14)——
+   按相关性梯度递减
+
+### Z2 example标签
+- 8B: labeled/unlabeled 都是0/14 —— **标签不阻止**(与记忆面的example阻断效应解离)
+- 122B: 都14/14 —— 都不影响
+
+### echo_foreign=0/14 全线
+**Y流发现的"响应模板捕获"(复述外来史文本)在Z流中零复现**——
+可能因为Z的外来史更短(4条消息 vs Y的8条), 或因为Y流的外来史有两个连续
+assistant消息(结构异常). "模板捕获"标记为不稳定, 需要更多条件映射.
+
+### 洁净后最终图景(v4)
+- **8B**: 任何外来历史→不重试(泛化, 无梯度, 标签免疫) ← 8B的"极端脆弱"是真的
+- **122B**: 按历史与当前任务的相关性梯度抑制(同工具不抑制, 异工具抑制)
+- **LongCat**: 干净设计中正常(Y流确认)——之前的假阳性源于X/W流的混淆
+- **GLM-5.3**: 全面免疫
+- "模板捕获": 不稳定, 可能为Y流外来史的结构特殊性(连续assistant消息)所致
