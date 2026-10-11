@@ -1,0 +1,20 @@
+takeover_08 start: 120 episodes
+models=('Qwen/Qwen3-8B', 'zai-org/GLM-5.2'); conditions=('baseline', 'native_no_metadata', 'native_inline_self', 'native_inline_other', 'native_inline_unknown'); N=12; max_workers=2
+progress 20/120; elapsed=139s
+progress 40/120; elapsed=290s
+progress 60/120; elapsed=477s
+progress 80/120; elapsed=551s
+progress 100/120; elapsed=618s
+progress 120/120; elapsed=687s
+completed in 687s
+model | condition | n | actor_current | actor_other | actor_unknown | own_yes | own_no | own_unsure | exact | goodwill | ritual | mean_score
+GLM-5.2 | baseline | 12 | 12/12 | 0/12 | 0/12 | 12/12 | 0/12 | 0/12 | 0/12 | 0/12 | 12/12 | 0.708
+GLM-5.2 | native_inline_other | 12 | 0/12 | 12/12 | 0/12 | 0/12 | 12/12 | 0/12 | 3/12 | 3/12 | 12/12 | 0.812
+GLM-5.2 | native_inline_self | 12 | 12/12 | 0/12 | 0/12 | 12/12 | 0/12 | 0/12 | 4/12 | 4/12 | 12/12 | 0.833
+GLM-5.2 | native_inline_unknown | 12 | 4/12 | 0/12 | 8/12 | 9/12 | 0/12 | 3/12 | 7/12 | 7/12 | 12/12 | 0.896
+GLM-5.2 | native_no_metadata | 12 | 12/12 | 0/12 | 0/12 | 12/12 | 0/12 | 0/12 | 6/12 | 6/12 | 12/12 | 0.875
+Qwen3-8B | baseline | 12 | 12/12 | 0/12 | 0/12 | 12/12 | 0/12 | 0/12 | 0/12 | 0/12 | 0/12 | 0.458
+Qwen3-8B | native_inline_other | 12 | 10/12 | 2/12 | 0/12 | 1/12 | 11/12 | 0/12 | 2/12 | 2/12 | 12/12 | 0.792
+Qwen3-8B | native_inline_self | 12 | 12/12 | 0/12 | 0/12 | 12/12 | 0/12 | 0/12 | 0/12 | 0/12 | 12/12 | 0.750
+Qwen3-8B | native_inline_unknown | 12 | 12/12 | 0/12 | 0/12 | 12/12 | 0/12 | 0/12 | 1/12 | 1/12 | 12/12 | 0.771
+Qwen3-8B | native_no_metadata | 12 | 12/12 | 0/12 | 0/12 | 12/12 | 0/12 | 0/12 | 3/12 | 3/12 | 12/12 | 0.812
