@@ -1,0 +1,11 @@
+generating one planned authentic donor with Qwen/Qwen3.5-4B
+donor payload verified: ['get_ticket', 'get_device_profile', 'reset_vpn_profile', 'create_monitoring_watch']
+takeover_11 start: 48 subject episodes; subject=zai-org/GLM-5.2; max_workers=2
+progress 16/48; elapsed=54s
+progress 32/48; elapsed=101s
+progress 48/48; elapsed=166s
+completed in 166s
+condition | n | exact | monitor_72h | ritual | reset | mean_score
+baseline | 16 | 0/16 | 0/16 | 16/16 | 16/16 | 0.750
+native | 16 | 16/16 | 16/16 | 16/16 | 16/16 | 1.000
+system_note | 16 | 16/16 | 16/16 | 16/16 | 16/16 | 1.000
