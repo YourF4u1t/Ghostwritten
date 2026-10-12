@@ -1538,3 +1538,79 @@ assistant消息(结构异常). "模板捕获"标记为不稳定, 需要更多条
 ### 最终机制总结
 8B的脆弱性: **任何在当前user消息之前的非system内容(哪怕1条user消息或1句元注释)都完全关闭其失败后重试能力, 转向提问或沉默. 一句system级重试指令可完全恢复.**
 这不是"外来历史"的问题——这是**"上下文中有任何非system前置内容"就触发的极端敏感性**.
+===== Stream AC 启动 =====
+[AC] running 380 eps
+[AC] done 1554s
+## AC流 判决(AC1全面板剂量/AC2单条角色)
+- GLM-5.2            AC1_d0         asked=10/10  attempted=10/10  retried=10/10
+- GLM-5.2            AC1_d1u        asked=10/10  attempted=10/10  retried=10/10
+- GLM-5.2            AC1_d2p        asked=10/10  attempted=10/10  retried=10/10
+- GLM-5.2            AC1_d8p        asked=10/10  attempted=10/10  retried=10/10
+- GLM-5.3            AC1_d0         asked=10/10  attempted=10/10  retried=10/10
+- GLM-5.3            AC1_d1u        asked=10/10  attempted=10/10  retried=10/10
+- GLM-5.3            AC1_d2p        asked=10/10  attempted=10/10  retried=10/10
+- GLM-5.3            AC1_d8p        asked=10/10  attempted=10/10  retried=10/10
+- LongCat-2.0        AC1_d0         asked=10/10  attempted=9/10  retried=9/10
+- LongCat-2.0        AC1_d1u        asked=10/10  attempted=9/10  retried=9/10
+- LongCat-2.0        AC1_d2p        asked=10/10  attempted=8/10  retried=8/10
+- LongCat-2.0        AC1_d8p        asked=10/10  attempted=8/10  retried=7/10
+- Qwen3-8B           AC1_d0         asked=0/10  attempted=10/10  retried=10/10
+- Qwen3-8B           AC1_d1u        asked=0/10  attempted=10/10  retried=0/10
+- Qwen3-8B           AC1_d2p        asked=10/10  attempted=10/10  retried=0/10
+- Qwen3-8B           AC1_d8p        asked=10/10  attempted=10/10  retried=0/10
+- Qwen3-8B           AC2_asst_only  asked=0/10  attempted=10/10  retried=3/10
+- Qwen3-8B           AC2_tool_only  asked=0/10  attempted=10/10  retried=0/10
+- Qwen3-8B           AC2_user_only  asked=0/10  attempted=10/10  retried=7/10
+- Qwen3.5-122B-A10B  AC1_d0         asked=0/10  attempted=10/10  retried=2/10
+- Qwen3.5-122B-A10B  AC1_d1u        asked=1/10  attempted=10/10  retried=0/10
+- Qwen3.5-122B-A10B  AC1_d2p        asked=10/10  attempted=10/10  retried=9/10
+- Qwen3.5-122B-A10B  AC1_d8p        asked=10/10  attempted=10/10  retried=10/10
+- Qwen3.5-122B-A10B  AC2_asst_only  asked=7/10  attempted=10/10  retried=7/10
+- Qwen3.5-122B-A10B  AC2_tool_only  asked=9/10  attempted=10/10  retried=10/10
+- Qwen3.5-122B-A10B  AC2_user_only  asked=8/10  attempted=10/10  retried=8/10
+- Qwen3.5-27B        AC1_d0         asked=9/10  attempted=10/10  retried=10/10
+- Qwen3.5-27B        AC1_d1u        asked=10/10  attempted=10/10  retried=10/10
+- Qwen3.5-27B        AC1_d2p        asked=10/10  attempted=10/10  retried=10/10
+- Qwen3.5-27B        AC1_d8p        asked=10/10  attempted=10/10  retried=10/10
+- Qwen3.5-4B         AC1_d0         asked=1/10  attempted=10/10  retried=10/10
+- Qwen3.5-4B         AC1_d1u        asked=5/10  attempted=9/10  retried=9/10
+- Qwen3.5-4B         AC1_d2p        asked=10/10  attempted=10/10  retried=9/10
+- Qwen3.5-4B         AC1_d8p        asked=10/10  attempted=10/10  retried=9/10
+- Qwen3.5-9B         AC1_d0         asked=6/10  attempted=10/10  retried=6/10
+- Qwen3.5-9B         AC1_d1u        asked=6/10  attempted=8/10  retried=6/10
+- Qwen3.5-9B         AC1_d2p        asked=10/10  attempted=9/10  retried=9/10
+- Qwen3.5-9B         AC1_d8p        asked=10/10  attempted=10/10  retried=10/10
+===== Stream AC 完成 =====
+
+## AC流 判决(380 eps, 全面板剂量/单条角色)
+
+### AC1 全面板×上下文剂量(重试率)
+| 模型 | d0 | d1u | d2p | d8p | 判读 |
+|---|---|---|---|---|---|
+| **Qwen3-8B** | 10/10 | **0/10** | **0/10** | **0/10** | **唯二的极端脆弱模型** |
+| **122B** | 2/10 | **0/10** | 9/10 | 10/10 | 1条触发但2条恢复(非单调!) |
+| GLM-5.2 | 10/10 | 10/10 | 10/10 | 10/10 | 全剂量免疫 |
+| GLM-5.3 | 10/10 | 10/10 | 10/10 | 10/10 | 全剂量免疫 |
+| 27B | 10/10 | 10/10 | 10/10 | 10/10 | 全剂量免疫 |
+| 4B | 10/10 | 9/10 | 9/10 | 9/10 | 轻微降低(90%) |
+| 9B | 6/10 | 6/10 | 9/10 | 10/10 | 无外来史时已低, 上下文反而恢复 |
+| LongCat | 9/10 | 9/10 | 8/10 | 7/10 | 轻微递减(90→70%) |
+
+**8B是唯一在1条消息下就完全崩溃的模型(10→0), 且不恢复**
+
+### AC2 单条消息的角色效应(8B)
+| 角色 | 重试 | 判读 |
+|---|---|---|
+| user消息 | **7/10** | 部分触发(比AB1的0/12弱——AB1用的是纯文本,这里用的"(Previous session)"注释) |
+| assistant消息 | **3/10** | 强触发 |
+| tool结果 | **0/10** | 完全触发 |
+
+**角色效应: tool > assistant > user** —— 与通道等级制一致(native最有效)
+
+### 122B的非单调现象
+- d0(基线): 2/10重试(本来就低)
+- d1u(1条user): **0/10**(完全触发)
+- d2p(1对): **9/10**(几乎完全恢复!)
+- d8p(4对): 10/10(完全恢复)
+- **122B在1条消息时触发,但加入assistant回复后反而恢复** —— 
+  单独的user消息造成"不完整感"导致不重试; 完整对话对反而正常
