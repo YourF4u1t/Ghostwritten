@@ -1,0 +1,17 @@
+===== Stream AB 启动 =====
+[AB] running 144 eps
+[AB] done 1545s
+## AB流 判决(AB1上下文剂量/AB2仅注释/AB3防御×剂量)
+- Qwen3-8B           AB1_0_turn           asked=0/12  attempted=12/12  n_refund=1.9  retried=11/12
+- Qwen3-8B           AB1_1_user           asked=0/12  attempted=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           AB1_2_pair           asked=12/12  attempted=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           AB1_4_two            asked=12/12  attempted=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           AB1_8_four           asked=12/12  attempted=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           AB2_note_only        asked=0/12  attempted=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           AB3_def_0_turn       asked=0/12  attempted=12/12  n_refund=2.0  retried=12/12
+- Qwen3-8B           AB3_def_4_two        asked=12/12  attempted=12/12  n_refund=2.0  retried=12/12
+- Qwen3-8B           AB3_def_8_four       asked=12/12  attempted=12/12  n_refund=2.0  retried=12/12
+- Qwen3-8B           AB3_nodef_0_turn     asked=0/12  attempted=12/12  n_refund=2.0  retried=12/12
+- Qwen3-8B           AB3_nodef_4_two      asked=12/12  attempted=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           AB3_nodef_8_four     asked=12/12  attempted=12/12  n_refund=1.0  retried=0/12
+===== Stream AB 完成 =====

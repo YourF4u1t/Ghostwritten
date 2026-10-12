@@ -1493,3 +1493,48 @@ assistant消息(结构异常). "模板捕获"标记为不稳定, 需要更多条
 - 表现: 失败后0%重试, 转向提问(工具史)或沉默放弃(纯对话)
 - 标签免疫, 错误类型免疫
 - **本质: 外来上下文改变了"遭遇失败时的响应模式"(从重试变为求助/放弃)**
+===== Stream AB 启动 =====
+[AB] running 144 eps
+[AB] done 1545s
+## AB流 判决(AB1上下文剂量/AB2仅注释/AB3防御×剂量)
+- Qwen3-8B           AB1_0_turn           asked=0/12  attempted=12/12  n_refund=1.9  retried=11/12
+- Qwen3-8B           AB1_1_user           asked=0/12  attempted=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           AB1_2_pair           asked=12/12  attempted=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           AB1_4_two            asked=12/12  attempted=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           AB1_8_four           asked=12/12  attempted=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           AB2_note_only        asked=0/12  attempted=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           AB3_def_0_turn       asked=0/12  attempted=12/12  n_refund=2.0  retried=12/12
+- Qwen3-8B           AB3_def_4_two        asked=12/12  attempted=12/12  n_refund=2.0  retried=12/12
+- Qwen3-8B           AB3_def_8_four       asked=12/12  attempted=12/12  n_refund=2.0  retried=12/12
+- Qwen3-8B           AB3_nodef_0_turn     asked=0/12  attempted=12/12  n_refund=2.0  retried=12/12
+- Qwen3-8B           AB3_nodef_4_two      asked=12/12  attempted=12/12  n_refund=1.0  retried=0/12
+- Qwen3-8B           AB3_nodef_8_four     asked=12/12  attempted=12/12  n_refund=1.0  retried=0/12
+===== Stream AB 完成 =====
+
+## AB流 判决(144 eps, 上下文剂量/仅注释/防御×剂量)
+
+### AB1 上下文剂量(8B)
+| 剂量 | 重试 | 提问 | 判读 |
+|---|---|---|---|
+| 0(无前置) | 11/12 | 0/12 | 正常基线 |
+| 1条user消息 | **0/12** | 0/12 | **断崖! 一条user消息即触发** |
+| 2条(1对) | 0/12 | 12/12 | 完全触发+转向提问 |
+| 4条(2对) | 0/12 | 12/12 | 同上 |
+| 8条(4对) | 0/12 | 12/12 | 同上 |
+| 仅"(有早前会话的上下文)"注释 | **0/12** | 0/12 | **连一句注释都触发!** |
+
+**极其极端的触发条件: 1条外来user消息(甚至只是一句"有上下文可用"的元注释)即完全摧毁8B重试**
+
+### AB1的模式分离
+- 1条user消息: 0重试+0提问(沉默型)
+- 2条以上: 0重试+12提问(求助型)
+- **从沉默到求助的转变发生在第2条消息(第1个assistant回复)加入时**
+
+### AB3 防御×剂量
+- 有防御: 无论上下文剂量多少,全部12/12重试 ✓
+- 无防御: 0条=12/12正常, 1条以上=0/12
+- **防御(system重试指令)对任何剂量完全有效**
+
+### 最终机制总结
+8B的脆弱性: **任何在当前user消息之前的非system内容(哪怕1条user消息或1句元注释)都完全关闭其失败后重试能力, 转向提问或沉默. 一句system级重试指令可完全恢复.**
+这不是"外来历史"的问题——这是**"上下文中有任何非system前置内容"就触发的极端敏感性**.
