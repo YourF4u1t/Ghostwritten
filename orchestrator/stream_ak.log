@@ -1,0 +1,14 @@
+===== Stream AK 启动 =====
+[AK] 8B assistant texts: 48
+## AK流 判决(AK1内容类型/AK2 assistant数量/AK3交错)
+- AK1_code               d→8B = 0.364 (n=12)
+- AK1_dialog             d→8B = 0.467 (n=12)
+- AK1_json               d→8B = 0.354 (n=12)
+- AK1_json_user          d→8B = 0.686 (n=12)
+- AK2_1asst              d→8B = 0.468 (n=12)
+- AK2_2asst              d→8B = 0.273 (n=12)
+- AK2_4asst              d→8B = 0.225 (n=12)
+- AK2_8asst              d→8B = 0.143 (n=12)
+- AK3_interleaved        d→8B = 0.230 (n=12)
+- AK_none                d→8B = 0.675 (n=12)
+===== Stream AK 完成 =====
