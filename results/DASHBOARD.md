@@ -2231,3 +2231,56 @@ AP在更严格的对照下确认了这一点.
 
 之前"身份同化是普遍且不可防御的"结论需要加上重要的边界条件:
 **在纯风格/闲聊场景中成立; 在任务导向的工作场景中可能大幅减弱或消失**.
+===== Stream AQ 启动 =====
+AQ FAILED:
+Traceback (most recent call last):
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_aq.py", line 132, in <module>
+    save("diagnosis", eps)
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_aq.py", line 32, in save
+    with f"{ROOT}/experiments/stream_aq/{name}.jsonl" as f:
+AttributeError: __enter__
+
+===== Stream AQ 完成 =====
+===== Stream AQ 启动 =====
+[AQ] total: 72 eps
+## AQ流 判决(AQ1工具/AQ3任务前置)
+cond                     | all_msgs  last_msg
+- AQ1_none                 | 0.668     0.668
+- AQ1_notool               | 0.685     0.685
+- AQ1_notool_wd8           | 0.082     0.589
+- AQ1_withtool             | 0.625     0.625
+- AQ1_withtool_wd8         | 0.070     0.574
+- AQ3_task_then_style_wd8  | 0.093     0.602
+===== Stream AQ 完成 =====
+
+## AQ流 判决(72 eps, 诊断AP阴性——关键解谜)
+
+### 核心发现: 同化在会话内衰减
+| 条件 | all_msgs | last_msg | 差异 |
+|---|---|---|---|
+| none(基线) | 0.668 | 0.668 | 无差异 |
+| wd8无工具 | **0.082**(88%) | **0.589**(12%) | **巨大!** |
+| wd8有工具 | **0.070**(90%) | **0.574**(10%) | **巨大!** |
+| wd8任务前 | **0.093**(86%) | **0.602**(10%) | **巨大!** |
+
+### 解谜: AP的"同化消失"是测量伪影
+- **AP只测了最后一条回复(last_msg)→ 看到的已是衰减后的残余**
+- 当看全部消息(all_msgs)时, 同化仍然是88-90%
+- **工具定义、任务轮次都不是原因——原因就是会话内衰减**
+
+### 同化的会话内梯度
+外来史注入后, 模型在最初的几条回复中完全采用外来风格(88-90%),
+但随着对话推进, 逐渐回到自己的风格(最后一条回复仅10-12%).
+这解释了:
+- AE/AL的"88-93%"(纯风格任务只有1-2条回复→全部被同化)
+- AO的"35-48%"(多轮任务→平均了高同化的前几条和低同化的后几条)
+- AP的"消失"(只测最后一条→已是残余)
+
+### 修正后的身份同化画像
+| 属性 | 修正后 |
+|---|---|
+| 触发 | ROLE位置(不变) |
+| 初始强度 | 88-90%(不变) |
+| 会话内衰减 | **会话内逐渐回到自身风格** |
+| 工具/任务影响 | **不减缓同化(只是给衰减提供了时间)** |
+| 跨session | 消失(新session=基线) |

@@ -1,0 +1,11 @@
+===== Stream AQ 启动 =====
+[AQ] total: 72 eps
+## AQ流 判决(AQ1工具/AQ3任务前置)
+cond                     | all_msgs  last_msg
+- AQ1_none                 | 0.668     0.668
+- AQ1_notool               | 0.685     0.685
+- AQ1_notool_wd8           | 0.082     0.589
+- AQ1_withtool             | 0.625     0.625
+- AQ1_withtool_wd8         | 0.070     0.574
+- AQ3_task_then_style_wd8  | 0.093     0.602
+===== Stream AQ 完成 =====
