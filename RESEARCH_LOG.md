@@ -380,3 +380,10 @@
 ### 工程债清算(session 13 终)
 - MANIFEST.md: 16,546 episodes, 528 errors(3.2%), 按实验/文件分解
 - 下一步: 统计管线(Wilson CI + Fisher + Holm)
+
+### AJ流判决（session 13 终——机制终极判决）
+- **demo不同化的原因=user-role包裹**: lang_only=86%≈carry, tool_only=0%≈demo
+- 标签完全无效: "这是别人的"=87%, "这是你自己的"=2%
+- **消息ROLE位置是身份归属的唯一决定因素**
+- assistant自写笔记=46%部分同化(中等)
+- 总计: ~15,000 eps, 107 commits, H→AJ 25流
