@@ -1,0 +1,19 @@
+===== Stream AI 启动 =====
+[AI] workday=24 msgs
+[AI1] dose: 72 eps
+[AI2] p1: 12 eps
+[AI2] p2: total 96 eps
+[AI3] competition: total 132 eps
+## AI流 判决(AI1剂量/AI2跨session/AI3竞争)
+- AI1_0msg               d→8B = 0.673 (n=12)
+- AI1_16msg              d→8B = 0.139 (n=12)
+- AI1_24msg              d→8B = 0.080 (n=12)
+- AI1_2msg               d→8B = 0.696 (n=12)
+- AI1_4msg               d→8B = 0.479 (n=12)
+- AI1_8msg               d→8B = 0.239 (n=12)
+- AI2_p1_with_hist       d→8B = 0.082 (n=12)
+- AI2_p2_nohist          d→8B = 0.685 (n=12)
+- AI3_foreign_only       d→8B = 0.084 (n=12)
+- AI3_foreign_then_own   d→8B = 0.086 (n=12)
+- AI3_own_then_foreign   d→8B = 0.075 (n=12)
+===== Stream AI 完成 =====
