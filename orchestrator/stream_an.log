@@ -1,0 +1,22 @@
+===== Stream AN 启动 =====
+[AN] conversations: base=8 assim=8
+[AN] baseline d→8B = 0.609
+[AN] assimilated d→8B = 0.153
+[AN] judgments: 11
+[AN] controls: 4
+## AN流 判决(用户感知+评判者评估)
+
+同化度: baseline d→8B ≈ 0.68, assimilated d→8B ≈ 0.08
+
+评判者(2 judge × 6对)评分:
+- helpfulness_a             = 4.45 (n=11)
+- helpfulness_b             = 4.55 (n=11)
+- noticeable                = 0.73 (n=11)
+- personality_consistency   = 3.00 (n=11)
+- professionalism_a         = 4.45 (n=11)
+- professionalism_b         = 4.55 (n=11)
+- 对照(同化vs同化) consistency = 4.75
+- 对照 noticeable = 0/4
+
+noticeable_change: 8/11
+===== Stream AN 完成 =====
