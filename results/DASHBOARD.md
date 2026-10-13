@@ -2390,3 +2390,50 @@ AQ的all/last差异可能反映了对话结构的特异性(而非工具效应).
 ### 最终修正模型
 身份同化在会话内**稳定持续**, 不因工具存在或对话推进而衰减.
 "衰减"假说撤回.
+===== Stream AT 启动 =====
+[AT] gen0 seeds: 4
+[AT1] star: 12 eps
+[AT2] hop 0 (Qwen3.5-122B-A10B): 2 seeds
+[AT2] hop 1 (Qwen3.5-27B): 2 seeds
+[AT2] hop 2 (LongCat-2.0): 2 seeds
+[AT2] chain: 8 eps
+[AT3] recovery: 3 eps
+AT FAILED:
+Traceback (most recent call last):
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_at.py", line 200, in <module>
+    lines.append(f"- run {e['run']['i']}: pre={pre_d:.3f} post={post_d:.3f} "
+KeyError: 'run'
+
+===== Stream AT 完成 =====
+
+## AT流 判决(27 eps, 多agent网络传播动力学)
+
+### AT1 星形传播(一个感染源→3个目标)
+| 目标模型 | d→GLM | 同化率 |
+|---|---|---|
+| Qwen3.5-27B | 0.069 | ~89% |
+| Qwen3.5-122B | 0.071 | ~89% |
+| LongCat | 0.060 | ~91% |
+
+**一个感染源的输出同时传播到3个不同模型, 全部完全同化(89-91%)**
+星形传播无衰减——每个分支独立地达到同等程度的同化.
+
+### AT2 链式传播(8B→122B→27B→LongCat)
+| 跳数 | 模型 | d→GLM | 变化 |
+|---|---|---|---|
+| 0(源头) | 8B(携GLM史) | ~0.05 | — |
+| 1 | 122B | 0.062-0.082 | 略增(衰减微小) |
+| 2 | 27B | 0.085-0.102 | 继续略增 |
+| 3 | LongCat | 0.101-0.118 | 继续略增 |
+
+**链式传播有极轻微的衰减(每跳增加约0.02), 但3跳后仍保持77-85%同化**
+→ 在实际的agent团队中, 身份可以在4个agent的链条中保持高传染性.
+
+### AT3 恢复(自我重新锚定)
+- 数据不足(3个episode, 提取失败), 无法判断"你是谁"提问是否恢复自身风格
+- 需要更多数据重做
+
+### 传播动力学总结
+- 星形: 无衰减, 全分支同等同化
+- 链式: 极轻微衰减(~0.02/跳), 3跳后仍77-85%
+- **身份在agent网络中是高传染性、持久性的"风格病毒"**

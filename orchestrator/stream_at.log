@@ -1,0 +1,15 @@
+===== Stream AT 启动 =====
+[AT] gen0 seeds: 4
+[AT1] star: 12 eps
+[AT2] hop 0 (Qwen3.5-122B-A10B): 2 seeds
+[AT2] hop 1 (Qwen3.5-27B): 2 seeds
+[AT2] hop 2 (LongCat-2.0): 2 seeds
+[AT2] chain: 8 eps
+[AT3] recovery: 3 eps
+AT FAILED:
+Traceback (most recent call last):
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_at.py", line 200, in <module>
+    lines.append(f"- run {e['run']['i']}: pre={pre_d:.3f} post={post_d:.3f} "
+KeyError: 'run'
+
+===== Stream AT 完成 =====
