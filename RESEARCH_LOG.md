@@ -376,3 +376,7 @@
 - 最终: 身份是"声音"不是"决策"
 
 ### 总计: ~14,000 eps, 89 commits, H→AG 14流
+
+### 工程债清算(session 13 终)
+- MANIFEST.md: 16,546 episodes, 528 errors(3.2%), 按实验/文件分解
+- 下一步: 统计管线(Wilson CI + Fisher + Holm)
