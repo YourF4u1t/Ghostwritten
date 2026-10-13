@@ -1,0 +1,16 @@
+===== Stream AP 启动 =====
+[AP] total: 132 eps
+## AP流 判决(任务密度调节+任务类型)
+cond                     | d→8B
+- AP1_none_n0              | 0.505 (n=12)
+- AP1_none_n1              | 0.354 (n=12)
+- AP1_none_n2              | 0.452 (n=12)
+- AP1_none_n4              | 0.505 (n=12)
+- AP1_wd8_n0               | 0.538 (n=12)
+- AP1_wd8_n1               | 0.573 (n=12)
+- AP1_wd8_n2               | 0.603 (n=12)
+- AP1_wd8_n4               | 0.601 (n=12)
+- AP2_factual              | 0.589 (n=12)
+- AP2_opinion              | 0.600 (n=12)
+- AP2_tool                 | 0.564 (n=12)
+===== Stream AP 完成 =====
