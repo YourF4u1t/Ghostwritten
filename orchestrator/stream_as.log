@@ -1,0 +1,15 @@
+===== Stream AS 启动 =====
+## AS流 判决(工具定义作为风格锚定)
+pos | booktools_wd8  | cstools_wd8    | notool_none    | notool_wd8     | 1tool_wd8     
+  0 |          0.357         0.357         0.679         0.357         0.357
+  1 |          0.329         0.329         0.643         0.329         0.329
+  2 |          0.315         0.315         0.636         0.315         0.315
+  3 |          0.259         0.259         0.598         0.259         0.259
+
+均值(全部位置):
+- AS1_booktools_wd8      = 0.376
+- AS1_cstools_wd8        = 0.381
+- AS1_notool_none        = 0.639
+- AS1_notool_wd8         = 0.401
+- AS2_1tool_wd8          = 0.373
+===== Stream AS 完成 =====
