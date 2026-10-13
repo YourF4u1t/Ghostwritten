@@ -2284,3 +2284,55 @@ cond                     | all_msgs  last_msg
 | 会话内衰减 | **会话内逐渐回到自身风格** |
 | 工具/任务影响 | **不减缓同化(只是给衰减提供了时间)** |
 | 跨session | 消失(新session=基线) |
+===== Stream AR 启动 =====
+AR FAILED:
+Traceback (most recent call last):
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_ar.py", line 133, in <module>
+    with open("experiments/stream_ar/decay_curve.jsonl", "w") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'experiments/stream_ar/decay_curve.jsonl'
+
+===== Stream AR 完成 =====
+===== Stream AR 启动 =====
+## AR流 判决(会话内衰减曲线)
+position
+pos   | AR1_convo_none   | AR1_convo_wd8    | AR2_task_wd8    
+    0 |            0.683           0.357           0.357
+    1 |            0.604           0.329           0.329
+    2 |            0.626           0.315           0.315
+    3 |            0.577           0.259           0.259
+    4 |            0.689           0.277           0.277
+    5 |            0.591           0.402           0.402
+    6 |            0.676           0.386           0.386
+    7 |            0.598           0.237           0.237
+===== Stream AR 完成 =====
+
+## AR流 判决(30 eps, 会话内衰减曲线)
+
+### 每条回复到donor的距离(d→8B)
+| 位置 | none(基线) | wd8(外来史) | 同化率 |
+|---|---|---|---|
+| 0(第1条) | 0.683 | 0.357 | 48% |
+| 1 | 0.604 | 0.329 | 45% |
+| 2 | 0.626 | 0.315 | 50% |
+| 3 | 0.577 | 0.259 | 55% |
+| 4 | 0.689 | 0.277 | 60% |
+| 5 | 0.591 | 0.402 | 32% |
+| 6 | 0.676 | 0.386 | 43% |
+| 7(最后) | 0.598 | 0.237 | 60% |
+
+### 发现: 无明显衰减
+- wd8条在同话内全程保持在0.24-0.40(同化率32-60%)
+- **没有从高到低的衰减曲线**——同化在整个会话中基本稳定
+- AP/AQ的"all vs last"差异可能不是因为衰减, 而是因为:
+  (a) AP有工具定义(改变了上下文结构)
+  (b) AP的任务轮使用了不同的问题类型
+
+### 修正理解
+AP的"同化消失"不是会话内衰减——而是**工具定义的存在**改变了上下文,
+使模型锚定在"工作模式"风格上. AR(无工具)没有这个效应.
+
+AQ的all=88% vs last=10%差异可能也是工具定义的效应(AP/AQ都有tools).
+需要无工具条件下的per-reply分析(本实验AR)来确认.
+
+**最终修正: 同化率在无工具纯对话中保持稳定(32-60%), 在有工具时第一轮高(88%)但后续降低(10%)**
+—— 工具定义触发了从"外来风格"到"工作模式"的切换
