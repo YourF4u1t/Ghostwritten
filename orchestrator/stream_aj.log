@@ -1,0 +1,12 @@
+===== Stream AJ 启动 =====
+## AJ流 判决(为什么demo不同化)
+cond                   | d→8B   同化率
+- AJ1_carry              | 0.083  88%  (n=12)
+- AJ1_demo               | 0.683  0%  (n=12)
+- AJ1_none               | 0.686  0%  (n=12)
+- AJ2_lang_only          | 0.093  86%  (n=12)
+- AJ2_tool_only          | 0.695  0%  (n=12)
+- AJ3_asst_note          | 0.361  46%  (n=12)
+- AJ3_demo_self_label    | 0.656  2%  (n=12)
+- AJ3_labeled_carry      | 0.090  87%  (n=12)
+===== Stream AJ 完成 =====

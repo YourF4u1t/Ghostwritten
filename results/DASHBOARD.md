@@ -1916,3 +1916,46 @@ model          cond           | d→8B   d→GLM  d→4B   n
 | 跨agent链 | ✅(传播确认) |
 | 功能传导 | ❌(风格变/行为不变) |
 | Demo通道 | ❌(完全不同化) |
+===== Stream AJ 启动 =====
+## AJ流 判决(为什么demo不同化)
+cond                   | d→8B   同化率
+- AJ1_carry              | 0.083  88%  (n=12)
+- AJ1_demo               | 0.683  0%  (n=12)
+- AJ1_none               | 0.686  0%  (n=12)
+- AJ2_lang_only          | 0.093  86%  (n=12)
+- AJ2_tool_only          | 0.695  0%  (n=12)
+- AJ3_asst_note          | 0.361  46%  (n=12)
+- AJ3_demo_self_label    | 0.656  2%  (n=12)
+- AJ3_labeled_carry      | 0.090  87%  (n=12)
+===== Stream AJ 完成 =====
+
+## AJ流 判决(96 eps, demo为何不同化的机制判决)
+
+### 完整解离表
+| 条件 | d→8B | 同化率 | 结构 |
+|---|---|---|---|
+| carry(原生) | 0.083 | **88%** | user/assistant/tool 三种role |
+| **lang_only**(去工具) | 0.093 | **86%** | 只剩 user/assistant 对话 |
+| **tool_only**(去对话) | 0.695 | **0%** | 工具骨架+OK |
+| demo(user消息包裹) | 0.683 | **0%** | 全部内容在user消息内 |
+| demo+"这是你自己做的" | 0.656 | **2%** | 同上+自我标签 |
+| carry+"这是别人的" | 0.090 | **87%** | 原生+"他人"标签 |
+| assistant笔记 | 0.361 | **46%** | 自写的session summary |
+
+### 机制判决
+1. **语言层携带同化, 工具骨架不携带**: lang_only=86% ≈ carry=88%;
+   tool_only=0% ≈ demo=0% —— **同化的载体是对话文本, 不是工具调用**
+2. **包裹在user消息内=零同化**: 即使贴上"这是你自己做的"标签(demo_self),
+   只要内容在user消息里就完全不同化(2%)
+3. **原生assistant位置的文本=高同化**: 即使贴上"这是别人的"标签(labeled_carry),
+   只要文本在assistant位置就同化(87%)
+4. **assistant自写笔记=部分同化(46%)**: 模型自己写的session summary
+   在assistant位置产生中等同化
+
+### 核心结论
+**demo不同化的原因是"内容被放在user消息内"——是消息ROLE位置决定了身份归属**
+不是标签、不是工具调用、不是"example"字眼——是**"谁在说话"这个结构性信号**.
+内容在assistant位置→"这是我说的"→同化; 在user位置→"这是别人说的"→不同化.
+
+这直接连接到H流的发现: 归因是标签门控 vs 位置万能.
+在身份同化中, **位置(assistant role)是唯一的决定因素, 标签完全不干预**.
