@@ -1,0 +1,29 @@
+===== Stream AF 启动 =====
+[AF1] gen1: 12 eps
+[AF1] gen1 seeds: 6
+[AF1] gen2: 12 eps
+[AF2] demo: 108 eps
+[AF3] mixed: 108 eps
+## AF流 判决(AF1链式传播/AF2 demo vs carry/AF3混合)
+model          cond           | d→8B   d→GLM  d→4B   n
+- GLM-5.2        AF2_carry      | 0.090  0.347  0.140  12
+- GLM-5.2        AF2_demo       | 0.693  0.327  0.606  12
+- GLM-5.2        AF2_none       | 0.692  0.325  0.604  12
+- GLM-5.2        AF3_mixed      | 0.283  0.128  0.229  12
+- GLM-5.2        AF3_wd8only    | 0.092  0.354  0.139  12
+- GLM-5.2        AF3_wdGonly    | 0.460  0.062  0.349  12
+- LongCat-2.0    AF2_carry      | 0.040  0.419  0.199  12
+- LongCat-2.0    AF2_demo       | 0.652  0.306  0.577  12
+- LongCat-2.0    AF2_none       | 0.674  0.312  0.589  12
+- LongCat-2.0    AF3_mixed      | 0.279  0.133  0.233  12
+- LongCat-2.0    AF3_wd8only    | 0.052  0.416  0.189  12
+- LongCat-2.0    AF3_wdGonly    | 0.456  0.057  0.345  12
+- Qwen3-8B       AF1_gen1       | 0.447  0.047  0.335  12
+- Qwen3-8B       AF2_carry      | 0.072  0.373  0.162  12
+- Qwen3-8B       AF2_demo       | 0.577  0.318  0.534  12
+- Qwen3-8B       AF2_none       | 0.585  0.316  0.557  12
+- Qwen3-8B       AF3_mixed      | 0.242  0.162  0.235  12
+- Qwen3-8B       AF3_wd8only    | 0.063  0.375  0.172  12
+- Qwen3-8B       AF3_wdGonly    | 0.446  0.048  0.334  12
+- Qwen3.5-122B-A10B AF1_gen2       | 0.472  0.077  0.364  12
+===== Stream AF 完成 =====
