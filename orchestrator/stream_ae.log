@@ -1,0 +1,35 @@
+===== Stream AE 启动 =====
+[AE] donors: ['Qwen/Qwen3-8B', 'zai-org/GLM-5.2', 'Qwen/Qwen3.5-4B']
+[AE1] style: 288 eps
+[AE2] compaction: total 336 eps
+## AE流 判决(AE1洁净身份/AE2压缩)
+model              cond       | d→8B    d→GLM   n
+- GLM-5.2            AE1_none   | 0.598  0.255  12
+- GLM-5.2            AE1_wd8    | 0.087  0.330  12
+- GLM-5.2            AE1_wdG    | 0.467  0.072  12
+- GLM-5.3            AE1_none   | 0.682  0.311  12
+- GLM-5.3            AE1_wd8    | 0.115  0.295  12
+- GLM-5.3            AE1_wdG    | 0.476  0.080  12
+- LongCat-2.0        AE1_none   | 0.602  0.248  12
+- LongCat-2.0        AE1_wd8    | 0.049  0.406  12
+- LongCat-2.0        AE1_wdG    | 0.459  0.066  12
+- Qwen3-8B           AE1_none   | 0.567  0.275  12
+- Qwen3-8B           AE1_wd8    | 0.088  0.344  12
+- Qwen3-8B           AE1_wdG    | 0.450  0.051  12
+- Qwen3-8B           comp_none  | 0.506  0.571  12
+- Qwen3-8B           comp_wd8   | 0.132  0.332  12
+- Qwen3.5-122B-A10B  AE1_none   | 0.670  0.299  12
+- Qwen3.5-122B-A10B  AE1_wd8    | 0.102  0.325  12
+- Qwen3.5-122B-A10B  AE1_wdG    | 0.476  0.081  12
+- Qwen3.5-122B-A10B  comp_none  | 0.608  0.259  12
+- Qwen3.5-122B-A10B  comp_wd8   | 0.150  0.304  12
+- Qwen3.5-27B        AE1_none   | 0.645  0.318  12
+- Qwen3.5-27B        AE1_wd8    | 0.095  0.328  12
+- Qwen3.5-27B        AE1_wdG    | 0.474  0.078  12
+- Qwen3.5-4B         AE1_none   | 0.651  0.319  12
+- Qwen3.5-4B         AE1_wd8    | 0.117  0.331  12
+- Qwen3.5-4B         AE1_wdG    | 0.469  0.072  12
+- Qwen3.5-9B         AE1_none   | 0.647  0.317  12
+- Qwen3.5-9B         AE1_wd8    | 0.096  0.337  12
+- Qwen3.5-9B         AE1_wdG    | 0.468  0.069  12
+===== Stream AE 完成 =====
