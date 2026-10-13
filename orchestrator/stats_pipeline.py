@@ -98,7 +98,8 @@ try:
         n = len(texts); all_t = " ".join(texts)
         def frac(p): return sum(1 for t in texts if re.search(p, t.lower())) / n
         return {"avg_len": len(all_t)/n, "bullet": frac(r"^\s*[-*•\d]+[.)]?\s"),
-                "bold": frac(r"\*\*"), "exclaim": frac(r"!")}
+                "bold": frac(r"\*\*"), "exclaim": frac(r"!"),
+                "question": frac(r"\?")}
     def dist(p1, p2):
         if not p1 or not p2: return None
         ds = []
