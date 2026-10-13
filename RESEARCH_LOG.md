@@ -400,3 +400,9 @@
 - 与AJ机制一致: ROLE位置直接决定归属, 不经过语言理解
 - 身份同化是当前agent架构中无法防御的漏洞
 - 总计: ~15,500 eps, 115 commits, H→AM 29流
+
+### AN流判决
+- 73%评判者认为用户会察觉身份变化(personality_consistency 3.00 vs 对照4.75)
+- helpfulness/professionalism不受影响(4.45 vs 4.55)——与AG功能不传导一致
+- 完整安全链: 不可防御注入→同化→用户察觉→功能正常
+- 总计: ~15,600 eps, 117 commits, H→AN 30流
