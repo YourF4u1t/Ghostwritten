@@ -2437,3 +2437,33 @@ KeyError: 'run'
 - 星形: 无衰减, 全分支同等同化
 - 链式: 极轻微衰减(~0.02/跳), 3跳后仍77-85%
 - **身份在agent网络中是高传染性、持久性的"风格病毒"**
+===== Stream AU 启动 =====
+[AU1] Style fingerprint detection
+AU FAILED:
+Traceback (most recent call last):
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_au.py", line 156, in <module>
+    lines.append(f"- 准确率 = {(tp+tn)/(tp+fp+tn+fn)*100:.0f}%")
+ZeroDivisionError: division by zero
+
+===== Stream AU 完成 =====
+
+## AU流 判决(检测方法——弱/阴性)
+
+### AU1 风格指纹检测
+- TP=12 FP=13 TN=23 FN=12
+- 准确率=58%, 灵敏度=50%, 特异度=64%
+- **仅略优于随机(50%)——简单风格特征不足以可靠检测身份同化**
+
+### 原因分析
+- 5个粗粒度风格特征(avg_len/bullet/bold/exclaim/question)太粗糙
+- 122B基线样本少(n=12)
+- 身份变化可能涉及更深层的语言模式(句法/词汇选择/论证结构)
+
+### 含义
+简单风格指纹不能作为身份审计工具. 需要更丰富的特征集或LLM-based检测.
+但AN流的评判者数据显示73%的"可察觉率"——说明人类/强模型可能检测得到,
+只是简单统计特征不够.
+
+### 推荐方案
+- 生产环境: 定期用同一问题集抽查agent回答, 与已存基线做LLM-based对比
+- 研究方向: 微调专用的"身份检测器"(类似AI文本检测器)

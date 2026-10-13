@@ -1,0 +1,9 @@
+===== Stream AU 启动 =====
+[AU1] Style fingerprint detection
+AU FAILED:
+Traceback (most recent call last):
+  File "/Users/ziqi/Projects/transplanted-histories/orchestrator/stream_au.py", line 156, in <module>
+    lines.append(f"- 准确率 = {(tp+tn)/(tp+fp+tn+fn)*100:.0f}%")
+ZeroDivisionError: division by zero
+
+===== Stream AU 完成 =====
