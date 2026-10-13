@@ -1,0 +1,13 @@
+===== Stream AM 启动 =====
+[AM] baseline d→8B = 0.685
+[AM] total: 98 eps
+## AM流 判决(身份同化防御) 基线d→8B=0.685
+cond               | d→8B   同化率   有效?
+- AM0_no_defense     | 0.072    89%   ✗  (n=14)
+- AM1_identity       | 0.081    88%   ✗  (n=14)
+- AM2_provenance     | 0.074    89%   ✗  (n=14)
+- AM3_boundary       | 0.079    88%   ✗  (n=14)
+- AM4_self_prime     | 0.075    89%   ✗  (n=14)
+- AM5_combo          | 0.086    87%   ✗  (n=14)
+- baseline           | 0.685     0%   ✓  (n=14)
+===== Stream AM 完成 =====
