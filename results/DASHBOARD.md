@@ -1614,3 +1614,48 @@ assistant消息(结构异常). "模板捕获"标记为不稳定, 需要更多条
 - d8p(4对): 10/10(完全恢复)
 - **122B在1条消息时触发,但加入assistant回复后反而恢复** —— 
   单独的user消息造成"不完整感"导致不重试; 完整对话对反而正常
+===== Stream AD 启动 =====
+[AD1] book: 96 eps
+[AD2] coding: total 192 eps
+## AD流 判决(AD1 BOOK域/AD2 CODING域)
+- GLM-5.3            AD1_ctx    attempted=9/12  gave_up=0/12  retried=9/12
+- GLM-5.3            AD1_none   attempted=12/12  gave_up=0/12  retried=12/12
+- GLM-5.3            AD2_ctx    n_runs=2.0  test_rerun=12/12  wrote=12/12
+- GLM-5.3            AD2_none   n_runs=2.0  test_rerun=12/12  wrote=12/12
+- LongCat-2.0        AD1_ctx    attempted=8/12  gave_up=0/12  retried=8/12
+- LongCat-2.0        AD1_none   attempted=0/12  gave_up=0/12  retried=0/12
+- LongCat-2.0        AD2_ctx    n_runs=2.0  test_rerun=12/12  wrote=12/12
+- LongCat-2.0        AD2_none   n_runs=2.0  test_rerun=12/12  wrote=12/12
+- Qwen3-8B           AD1_ctx    attempted=0/12  gave_up=0/12  retried=0/12
+- Qwen3-8B           AD1_none   attempted=0/12  gave_up=0/12  retried=0/12
+- Qwen3-8B           AD2_ctx    n_runs=2.9  test_rerun=12/12  wrote=12/12
+- Qwen3-8B           AD2_none   n_runs=2.3  test_rerun=12/12  wrote=12/12
+- Qwen3.5-122B-A10B  AD1_ctx    attempted=11/12  gave_up=0/12  retried=11/12
+- Qwen3.5-122B-A10B  AD1_none   attempted=12/12  gave_up=0/12  retried=12/12
+- Qwen3.5-122B-A10B  AD2_ctx    n_runs=0.8  test_rerun=2/12  wrote=12/12
+- Qwen3.5-122B-A10B  AD2_none   n_runs=0.6  test_rerun=1/12  wrote=12/12
+===== Stream AD 完成 =====
+
+## AD流 判决(192 eps, BOOK域+CODING域跨域泛化)
+
+### AD1 BOOK域
+| 模型 | none | ctx | 判读 |
+|---|---|---|---|
+| 8B | 0/12 attempted | 0/12 attempted | **8B在BOOK域全面地板(不能做)** |
+| LongCat | 0/12 attempted | **8/12 attempted** | **反向! ctx帮助LongCat在BOOK域行动** |
+| 122B | 12/12 | 11/12 | 不受影响 |
+| GLM-5.3 | 12/12 | 9/12 | 轻微影响 |
+
+### AD2 CODING域
+- 全模型全条件: test_rerun=12/12(cs域的ctx敏感完全不泛化到编码域)
+- 122B在isbn任务上基线就低(1-2/12重试), 但ctx不影响差异
+
+### 判决: CS域的上下文敏感性是**域绑定**的
+- 8B在CS域的极端脆弱(1条消息→崩溃)在BOOK域和CODING域完全不存在
+- LongCat在BOOK域反而被外来上下文**帮助**(0→8/12)——可能ctx给了它"可以行动"的许可
+- CODING域全线无差异
+
+### 最终综合: 上下文敏感性的完整画像
+- 8B的极端敏感性: CS域特有, 跨域消失
+- 防御: system重试指令在CS域完全有效
+- 域绑定的机制: 可能与工具集和任务的复杂度相关

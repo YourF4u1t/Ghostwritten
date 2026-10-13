@@ -1,0 +1,21 @@
+===== Stream AD 启动 =====
+[AD1] book: 96 eps
+[AD2] coding: total 192 eps
+## AD流 判决(AD1 BOOK域/AD2 CODING域)
+- GLM-5.3            AD1_ctx    attempted=9/12  gave_up=0/12  retried=9/12
+- GLM-5.3            AD1_none   attempted=12/12  gave_up=0/12  retried=12/12
+- GLM-5.3            AD2_ctx    n_runs=2.0  test_rerun=12/12  wrote=12/12
+- GLM-5.3            AD2_none   n_runs=2.0  test_rerun=12/12  wrote=12/12
+- LongCat-2.0        AD1_ctx    attempted=8/12  gave_up=0/12  retried=8/12
+- LongCat-2.0        AD1_none   attempted=0/12  gave_up=0/12  retried=0/12
+- LongCat-2.0        AD2_ctx    n_runs=2.0  test_rerun=12/12  wrote=12/12
+- LongCat-2.0        AD2_none   n_runs=2.0  test_rerun=12/12  wrote=12/12
+- Qwen3-8B           AD1_ctx    attempted=0/12  gave_up=0/12  retried=0/12
+- Qwen3-8B           AD1_none   attempted=0/12  gave_up=0/12  retried=0/12
+- Qwen3-8B           AD2_ctx    n_runs=2.9  test_rerun=12/12  wrote=12/12
+- Qwen3-8B           AD2_none   n_runs=2.3  test_rerun=12/12  wrote=12/12
+- Qwen3.5-122B-A10B  AD1_ctx    attempted=11/12  gave_up=0/12  retried=11/12
+- Qwen3.5-122B-A10B  AD1_none   attempted=12/12  gave_up=0/12  retried=12/12
+- Qwen3.5-122B-A10B  AD2_ctx    n_runs=0.8  test_rerun=2/12  wrote=12/12
+- Qwen3.5-122B-A10B  AD2_none   n_runs=0.6  test_rerun=1/12  wrote=12/12
+===== Stream AD 完成 =====
